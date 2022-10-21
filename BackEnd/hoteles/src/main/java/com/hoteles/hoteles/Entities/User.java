@@ -21,8 +21,8 @@ public class User {
     @Column
     private String name;
 
-    @Column
-    private String userLastName;
+    @Column(name = "last_name")
+    private String lastName;
 
     @Column
     private String email;
