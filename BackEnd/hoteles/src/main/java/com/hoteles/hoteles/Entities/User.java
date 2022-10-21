@@ -1,6 +1,6 @@
 package com.hoteles.hoteles.Entities;
 
-/*import javax.persistence.*;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -10,9 +10,9 @@ import lombok.Setter;
 @Entity
 @Table(name = "users")
 @Getter
-@Setter*/
+@Setter
 public class User {
-/*
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
@@ -34,5 +34,5 @@ public class User {
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"}, allowSetters = true)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_role")
-    private Role role;*/
+    private Role role;
 }
