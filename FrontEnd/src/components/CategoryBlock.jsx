@@ -2,7 +2,7 @@ import React from 'react'
 import Categories from '../resources/categories.json'
 import img_categoria from '../resources/img_categoria.png'
 
-export const CategoryBlock = () => {
+const CategoryBlock = () => {
  
   return (
     <div className="category_block">
@@ -24,3 +24,5 @@ export const CategoryBlock = () => {
     </div>
   );
 }
+
+export default CategoryBlock;

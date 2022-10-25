@@ -6,7 +6,7 @@ import tweeter_dark   from "../resources/tweeter-dark.svg"
 import facebook_dark   from "../resources/facebook-dark.svg"
 import instagram_dark   from "../resources/instagram-dark.svg"
 import linkedin_dark  from "../resources/linkedin-dark.svg"
-
+import './styles/header.css'
 
 
 const Header = () => {

@@ -3,6 +3,7 @@ import tweeter   from "../resources/tweeter.svg"
 import facebook   from "../resources/facebook.svg"
 import instagram   from "../resources/instagram.svg"
 import linkedin   from "../resources/linkedin.svg"
+import './styles/footer.css'
 
 const Footer = () => {
     return (
