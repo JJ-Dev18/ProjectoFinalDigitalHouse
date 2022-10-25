@@ -1,8 +1,11 @@
 import React from 'react'
+import { CategoryBlock } from './CategoryBlock'
 
 const Main = () => {
   return (
-    <main>Main</main>
+    <>
+      <CategoryBlock/>
+    </>
   )
 }
 
