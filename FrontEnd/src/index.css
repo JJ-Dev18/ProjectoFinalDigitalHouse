@@ -2,7 +2,7 @@
 
 :root {
   --light-blue:#1DBEB4; 
-  --gray:#545776;
+  --gray:#f1f1f1;
   --white: #fff;
   --dark-gray:#383B58;
   --speed: 500ms;
@@ -233,3 +233,29 @@ footer ul li {
 }
 
 
+.color-principal {
+  color: #1DBEB4;
+}
+
+.color-second {
+  color: #383B58;
+}
+
+.heading-1 {
+  position: relative;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+}
+
+.text-2 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.row-2 {
+  text-align: center;
+}
