@@ -12,7 +12,7 @@ const CategoryBlock = () => {
         {Categories.map((category, index) => (
           <li key={index} className="category_card">
             <img src={img_categoria} alt="" />
-            <div className='info_card_category'>
+            <div className='info_card_category'>  
               <h2>{category.name}</h2>
               <p>{category.cant}</p>
             </div>
