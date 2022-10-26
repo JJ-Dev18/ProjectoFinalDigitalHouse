@@ -7,6 +7,7 @@ import facebook_dark   from "../resources/facebook-dark.svg"
 import instagram_dark   from "../resources/instagram-dark.svg"
 import linkedin_dark  from "../resources/linkedin-dark.svg"
 import './styles/header.css'
+import { Link } from 'react-router-dom';
 
 
 const Header = () => {
@@ -22,12 +23,12 @@ const Header = () => {
 
     return (
     <header>
-        <img className='xs-screen logo' src={logo_non_desktop} alt="logo_non_desktop" />            
-        <img className='xl-screen logo' src={logo_desktop} alt="logo_desktop" />            
-        <img className='menu-icon' onClick={clickHandler} src={menu} alt="md-screen menu" />            
+        <Link to="/"><img className='xs-screen logo' src={logo_non_desktop} alt="logo_non_desktop" /> </Link>           
+        <Link to="/"><img className='xl-screen logo' src={logo_desktop} alt="logo_desktop" />  </Link>           
+        <Link to="/"><img className='menu-icon' onClick={clickHandler} src={menu} alt="md-screen menu" /></Link> 
         <div className='md-screen buttons'>
-            <button>{menuItems[0]}</button>
-            <button>{menuItems[1]}</button>
+            <button><Link to="/register">{menuItems[0]}</Link></button>
+            <button><Link to="/login">{menuItems[1]}</Link></button>
         </div>
         <div className={`xs-screen menu ${showMenu ? `active` : `inactive` }`}>
             <div className='top'>
@@ -35,9 +36,9 @@ const Header = () => {
                 <h1>MENÚ</h1>
             </div>
             <ul className='list'>
-                <li>{menuItems[0]}</li>
+                <li><Link to="/register">{menuItems[0]}</Link></li>
                 <hr />
-                <li>{menuItems[1]}</li>
+                <li><Link to="/login">{menuItems[1]}</Link></li>
             </ul>
             <div className='social'>
               <ul>

@@ -1,6 +1,7 @@
-.form {
+.form-2 {
     width: 448px;
     margin: 0 auto;
+    display: block;
 }
 
 .row {
