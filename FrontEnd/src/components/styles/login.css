@@ -31,9 +31,10 @@
     line-height: 14px;
 }
 
-.form {
+.form-login {
     width: 448px;
     margin: 0 auto;
+    display: block;
 }
 
 

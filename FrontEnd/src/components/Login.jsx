@@ -1,12 +1,12 @@
 import React from "react";
 import './styles/login.css'
+import { Link } from 'react-router-dom';
 
-
-const Login = () => {
+const Login = (props) => {
     return (
         <div className="login">
             <p className="heading-1 color-principal">Iniciar sesión</p>
-            <form className="form" action="">
+            <form className="form-login" action="">
                 <div className="row-4">
                     <label className="text-2 color-second" htmlFor="username">
                         Username
@@ -21,9 +21,10 @@ const Login = () => {
                 </div>
                 <div className="row-2">
                     <input type="submit" value="Ingresar" />
-                    <p className="color-second">¿Aún no tenes cuenta? <a href="a">Registrate</a></p>
+                    <p className="color-second">¿Aún no tenes cuenta? <Link to="/register">Registrate</Link></p>
                 </div>
             </form>
+            {props.children}
         </div>
     );
 }

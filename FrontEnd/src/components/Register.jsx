@@ -1,8 +1,8 @@
 import React from "react";
 import './styles/register.css'
+import { Link } from 'react-router-dom';
 const Register = () => {
     return (
-
         <div>
             <p className="heading-1 color-principal">Crear Cuenta</p>
             <form className="form" action="">
@@ -40,7 +40,7 @@ const Register = () => {
                 </div>
                 <div className="row-2">
                     <input type="submit" value="Crear cuenta" />
-                    <p className="color-second">¿Ya tienes una cuenta? <a href="a">Iniciar sesión</a></p>
+                    <p className="color-second">¿Ya tienes una cuenta? <Link to="/login"> Iniciar sesión</Link></p>
                 </div>
             </form>
         </div>
