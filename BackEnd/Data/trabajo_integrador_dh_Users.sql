@@ -35,6 +35,13 @@ CREATE TABLE `Users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+INSERT INTO `hoteles`.`users` (`id_user`, `name`, `last_name`, `email`, `password`, `id_role`) VALUES ('1', 'Maru', 'Ferraro', 'ferraro.mariaeugenia@gmail.com', '1234', '1');
+INSERT INTO `hoteles`.`users` (`id_user`, `name`, `last_name`, `email`, `password`, `id_role`) VALUES ('2', 'Juan', 'Murillo', 'juanjomb1_vi@hotmail.com', '1234', '1');
+INSERT INTO `hoteles`.`users` (`id_user`, `name`, `last_name`, `email`, `password`, `id_role`) VALUES ('3', 'Daniel', 'Arcila', 'darcilaibague@gmail.com', '1234', '1');
+INSERT INTO `hoteles`.`users` (`id_user`, `name`, `last_name`, `email`, `password`, `id_role`) VALUES ('4', 'Daniel', 'Lopez', 'dalro1028@hotmail.com', '1234', '1');
+INSERT INTO `hoteles`.`users` (`id_user`, `name`, `last_name`, `email`, `password`, `id_role`) VALUES ('5', 'Ruth', 'Borda', 'ruthbordam@gmail.com', '1234', '1');
+INSERT INTO `hoteles`.`users` (`id_user`, `name`, `last_name`, `email`, `password`, `id_role`) VALUES ('6', 'Jairo', 'Rivera', 'jairo.rivera.developer@gmail.com', '1234', '1');
+
 --
 -- Dumping data for table `Users`
 --

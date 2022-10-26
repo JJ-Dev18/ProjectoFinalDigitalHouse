@@ -31,6 +31,11 @@ CREATE TABLE `Categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+INSERT INTO `hoteles`.`categories` (`id_category`, `title`, `description`, `image_url`) VALUES ('1', 'Hoteles', '807.105 hoteles', 'https://cdn.pixabay.com/photo/2015/11/06/11/45/interior-1026452_960_720.jpg');
+INSERT INTO `hoteles`.`categories` (`id_category`, `title`, `description`, `image_url`) VALUES ('2', 'Hostels', '807.105 hoteles', 'https://cdn.pixabay.com/photo/2020/10/18/09/16/bedroom-5664221_960_720.jpg');
+INSERT INTO `hoteles`.`categories` (`id_category`, `title`, `description`, `image_url`) VALUES ('3', 'Departamentos', '807.105 hoteles', 'https://eston.ca/wp-content/uploads/2017/09/hotel-room-1447201_640.jpg');
+INSERT INTO `hoteles`.`categories` (`id_category`, `title`, `description`, `image_url`) VALUES ('4', 'Bed and breakfast', '807.105 hoteles', 'https://cdn.pixabay.com/photo/2017/05/31/10/23/manor-house-2359884_960_720.jpg');
+
 --
 -- Dumping data for table `Categories`
 --
