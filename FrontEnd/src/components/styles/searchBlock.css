@@ -45,6 +45,17 @@
     margin-bottom: 9px;
 }
 
+.search-block .select {
+    width: var(--input-width-sm);
+    /* height: var(--input-height-sm); */
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--disabled-input-text);
+    margin-bottom: 9px;
+    background-color: var(--white);
+}
+
 .search-block form button {
     width: 394px;
     height: 48px;

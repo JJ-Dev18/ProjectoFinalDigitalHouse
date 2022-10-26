@@ -1,7 +1,10 @@
 import React from 'react'
 import { FaMapMarkerAlt } from 'react-icons/fa'
 import { IoMdCalendar } from 'react-icons/io'
+import Cities from '../resources/cities.json'
 import './styles/searchBlock.css'
+
+
 
 const SearchBlock = () => {
   return (
@@ -11,6 +14,15 @@ const SearchBlock = () => {
             <div className="input-icon">
                 <div className="icon"><FaMapMarkerAlt /></div>
                 <input className="" id="city" type="text" placeholder='          ¿A dónde vamos?'/>
+                <div className='select'>
+                  <ul>
+                   {Cities.map( item =>  (<div key={item.id}>
+                                            <p>{item.city}</p>
+                                            <p>{item.country}</p>
+                                            <hr />
+                                          </div> ))}
+                  </ul>
+                </div>
             </div>
             <div className="input-icon">
                 <div className="icon"><IoMdCalendar /></div>
