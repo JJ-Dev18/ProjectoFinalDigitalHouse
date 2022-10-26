@@ -4,12 +4,13 @@ import SearchBlock from './SearchBlock'
 import CategoryBlock from './CategoryBlock'
 
 
-const Main = () => {
+
+const Main = (props) => {
   return (
     <main>
       <SearchBlock />
       <CategoryBlock /> 
-    </main>
+  </main>
   )
 }
 
