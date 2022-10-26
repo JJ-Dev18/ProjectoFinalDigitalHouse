@@ -14,7 +14,6 @@
     align-items: center;
     justify-content: center;
     background-color: var(--semi-dark-gray);
-    z-index: 0;
     width: 100vw;
 } 
 
@@ -43,17 +42,6 @@
     font-weight: 500;
     color: var(--disabled-input-text);
     margin-bottom: 9px;
-}
-
-.search-block .select {
-    width: var(--input-width-sm);
-    /* height: var(--input-height-sm); */
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--disabled-input-text);
-    margin-bottom: 9px;
-    background-color: var(--white);
 }
 
 .search-block form button {
@@ -85,6 +73,94 @@
     left: 0;
     font-size: 20px;
 }
+
+
+.select {
+    background-color: var(--white);
+    width: 395px;
+    height: 254px;
+    color: var(--semi-dark-gray);
+    display: none;
+    z-index:500;
+    position: absolute;
+    top: var(--input-height-sm + 10px);
+    overflow: scroll;
+    border-radius: 0px 0px 5px 5px;
+    border: 1px solid #F3F1ED;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.select.active {
+    display: block;
+    visibility: visible;
+    transform: translateX(0px);
+    transition: var(--speed) ease;
+    z-index:500;
+}
+  
+.select.inactive{
+    visibility: hidden;
+    transform: translateX(303px);
+    transition: var(--speed) ease;
+    z-index:500;
+}
+
+
+.select ul {
+    z-index:500;
+    position: relative;
+}
+
+.select ul li {
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+.option {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.option-icon {
+    /* height: 23px;
+    width: 17px; */
+    font-size: 23px;
+    color: var(--semi-dark-gray);
+    margin: 10px;
+}
+
+.option-heading {
+    height: 12.6px;
+    width: 190px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+    text-align: left;
+    color: black;
+    margin-bottom: 7px;
+}
+
+.option-paragraph {
+    height: 19px;
+    width: 68px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+    text-align: left;
+    color: var(--semi-dark-gray);
+}
+
+
+.select .option hr {
+    border-top: 2px solid var(--light-blue);
+    width: 368px
+}
+
 
 @media screen and (min-width: 768px) {
 
