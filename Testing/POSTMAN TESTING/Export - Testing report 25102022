@@ -1,0 +1,361 @@
+{
+	"id": "0ddf65f8-4b56-4e10-9fa3-a26d8f296000",
+	"name": "ProyetoIntegradorG7C8",
+	"timestamp": "2022-10-26T03:34:46.786Z",
+	"collection_id": "21244538-8ff9c79b-3e09-4875-bb1f-63f381875239",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 18,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "e607a4ae-87a0-461e-9eea-0532bd38987b",
+			"name": "getAllCategories",
+			"url": "http://localhost:8090/hoteles/categories",
+			"time": 243,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Category Title": true,
+				"Category Description": true,
+				"Category imageUrl": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Category Title": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Category Description": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Category imageUrl": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				243
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Category Title": true,
+					"Category Description": true,
+					"Category imageUrl": true
+				}
+			]
+		},
+		{
+			"id": "75288b32-3200-4fb0-860f-744e1828350c",
+			"name": "saveCategory",
+			"url": "http://localhost:8090/hoteles/categories",
+			"time": 52,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code shoud be 201": true,
+				"Category Title": true,
+				"Category Description": true,
+				"Category imageUrl": true
+			},
+			"testPassFailCounts": {
+				"Status code shoud be 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Category Title": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Category Description": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Category imageUrl": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				52
+			],
+			"allTests": [
+				{
+					"Status code shoud be 201": true,
+					"Category Title": true,
+					"Category Description": true,
+					"Category imageUrl": true
+				}
+			]
+		},
+		{
+			"id": "14b01765-5d0b-41bf-9562-eff5d57286cd",
+			"name": "getCategoryById",
+			"url": "http://localhost:8090/hoteles/categories/5",
+			"time": 19,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Category Title": true,
+				"Category Description": true,
+				"Category imageUrl": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Category Title": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Category Description": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Category imageUrl": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Category Title": true,
+					"Category Description": true,
+					"Category imageUrl": true
+				}
+			]
+		},
+		{
+			"id": "888ea4b1-84e6-47fb-b51c-2a48184254cd",
+			"name": "updateCategory",
+			"url": "http://localhost:8090/hoteles/categories",
+			"time": 21,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code shoud be 200": true,
+				"Category Title": true,
+				"Category Description": true,
+				"Category imageUrl": true
+			},
+			"testPassFailCounts": {
+				"Status code shoud be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Category Title": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Category Description": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Category imageUrl": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				21
+			],
+			"allTests": [
+				{
+					"Status code shoud be 200": true,
+					"Category Title": true,
+					"Category Description": true,
+					"Category imageUrl": true
+				}
+			]
+		},
+		{
+			"id": "53174f29-e141-4e89-a978-6d304a0bc204",
+			"name": "deleteCategory",
+			"url": "http://localhost:8090/hoteles/categories/5",
+			"time": 19,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code shoud be 200": true,
+				"Message delete": true
+			},
+			"testPassFailCounts": {
+				"Status code shoud be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Message delete": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status code shoud be 200": true,
+					"Message delete": true
+				}
+			]
+		},
+		{
+			"id": "a1a5de3c-6ca5-430d-b846-950b407ea6ed",
+			"name": "getUserById",
+			"url": "http://localhost:8090/hoteles/users/1",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				14
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "3680025a-92b6-4915-aeb2-64e73581ef51",
+			"name": "getAllUsers",
+			"url": "http://localhost:8090/hoteles/users",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				10
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "f99f0fa0-6b40-4f76-958a-667eca6845b6",
+			"name": "saveUser",
+			"url": "http://localhost:8090/hoteles/users",
+			"time": 46,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				46
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a28d9d4c-81bc-4352-bfcd-b5e08da753b8",
+			"name": "updateUser",
+			"url": "http://localhost:8090/hoteles/users",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				10
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "55223216-dc22-4fbf-901b-b955060590c9",
+			"name": "deleteUser",
+			"url": "http://localhost:8090/hoteles/users/3",
+			"time": 10,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				10
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 444,
+	"collection": {
+		"requests": [
+			{
+				"id": "e607a4ae-87a0-461e-9eea-0532bd38987b",
+				"method": "GET"
+			},
+			{
+				"id": "75288b32-3200-4fb0-860f-744e1828350c",
+				"method": "POST"
+			},
+			{
+				"id": "14b01765-5d0b-41bf-9562-eff5d57286cd",
+				"method": "GET"
+			},
+			{
+				"id": "888ea4b1-84e6-47fb-b51c-2a48184254cd",
+				"method": "PUT"
+			},
+			{
+				"id": "53174f29-e141-4e89-a978-6d304a0bc204",
+				"method": "DELETE"
+			},
+			{
+				"id": "a1a5de3c-6ca5-430d-b846-950b407ea6ed",
+				"method": "GET"
+			},
+			{
+				"id": "3680025a-92b6-4915-aeb2-64e73581ef51",
+				"method": "GET"
+			},
+			{
+				"id": "f99f0fa0-6b40-4f76-958a-667eca6845b6",
+				"method": "POST"
+			},
+			{
+				"id": "a28d9d4c-81bc-4352-bfcd-b5e08da753b8",
+				"method": "PUT"
+			},
+			{
+				"id": "55223216-dc22-4fbf-901b-b955060590c9",
+				"method": "DELETE"
+			}
+		]
+	}
+}
