@@ -23,7 +23,6 @@ body {
   color: var(--white);
 }
 
-
 .md-screen {
   display: none;
 }
@@ -72,19 +71,21 @@ body {
   /* height: 193px; */
   
 }
+
 .info_card_category {
   padding: 11px;
 }
+
 .category_card h2 {
   font-size: 20px;
   text-align: left;
   font-weight: 700;
 }
+
 .category_card p {
   opacity: 60%;
   font-size: 14px;
 }
-
 
 .color-principal {
   color: var(--light-blue);
