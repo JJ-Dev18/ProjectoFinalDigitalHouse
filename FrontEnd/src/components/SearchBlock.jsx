@@ -6,14 +6,19 @@ import { IoMdCalendar } from 'react-icons/io'
 import './styles/searchBlock.css'
 import DropDown from './DropDown'
 import SearchCalendar from './SearchCalendar'
+// import { useGlobalStates } from './Context'
 
 
 
 const SearchBlock = () => {
 
-  let [dropDown, setDropDown] = useState(false);
-  let [showCalendar, setShowCalendar] = useState(false);
-    
+  const [dropDown, setDropDown] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(false);
+  
+  const [city, setCity] = useState("");
+  const [datesPicked, setDatesPicked] = useState("");
+
+
   const clickCityHandler = () => {
       setDropDown(!dropDown);
       console.log(dropDown);
@@ -22,7 +27,9 @@ const SearchBlock = () => {
   const clickDateHandler = () => {
     setShowCalendar(!showCalendar);
     console.log(showCalendar);
-}
+  }
+
+
 
   return (
     <div className="search-block">
@@ -32,38 +39,19 @@ const SearchBlock = () => {
               <div className="input-container">
                 <div className="input-icon">
                   <div className="icon"><FaMapMarkerAlt /></div>
-                  <input className="" id="city" type="text"  onClick={clickCityHandler}  placeholder='          ¿A dónde vamos?'/>
+                  <input value={city} className="" id="city" type="text"  onClick={clickCityHandler}  placeholder='          ¿A dónde vamos?'/>
                 </div>
-                <DropDown class={`select ${dropDown ? `active` : `inactive` }`}/>
+                <DropDown setValue={setCity} class={`select ${dropDown ? `active` : `inactive` }`}/>
               </div>
-{/*               <div className={`select ${dropDown ? `active` : `inactive` }`}>
-                <ul>
-                  {Cities.map( item => (
-                    <div className="option">
-                      <li key={item.id}>
-                        <div className="option-icon">
-                          <BiMap />
-                        </div>
-                        <div>
-                          <p className="option-heading">{item.city}</p>
-                          <p className="option-paragraph">{item.country}</p>
-                        </div>
-                      </li>
-                      <hr />
-                    </div>
-                  ))}
-                </ul>
-              </div> */}
-            </div>
-            
+            </div>            
             <div className="input-container">
               <div className="input-icon">
                 <div className="icon">
                   <IoMdCalendar />
                 </div>
-                <input className="" id="check" type="text" onClick={clickDateHandler}  placeholder='          Check in - Check - out'/>
+                <input value={datesPicked} className="" id="dates" type="text" onClick={clickDateHandler} placeholder='          Check in - Check - out'/>
               </div>
-              <SearchCalendar class={`select calendar ${showCalendar ? `active` : `inactive` }`} />            
+              <SearchCalendar setValues={setDatesPicked} class={`select calendar ${showCalendar ? `active` : `inactive` }`} />            
             </div>
             <button className="form-button">Buscar</button>
         </form>
