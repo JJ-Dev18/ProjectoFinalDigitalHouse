@@ -1,14 +1,21 @@
-import React from 'react'
+import { useRef } from 'react'
 import { BiMap } from 'react-icons/bi'
 import Cities from '../resources/cities.json'
 
 
 const DropDown = (props) => {
-  return (
+  
+    const onClickHandler = (e , key) => {
+        const inputStr = Cities[key-1].city + ', ' + Cities[key-1].country
+        console.log(inputStr);
+        props.setValue("      " + inputStr); 
+    }
+
+    return (
     <div className={props.class}>
         <ul>
         {Cities.map( item => (
-            <div key={item.id} className="option">
+            <div onClick={ event => onClickHandler(event, item.id)} key={item.id} className="option">
             <li>
                 <div className="option-icon">
                 <BiMap />
