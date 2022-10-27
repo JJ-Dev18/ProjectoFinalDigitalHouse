@@ -44,6 +44,7 @@
     font-weight: 500;
     color: var(--disabled-input-text);
     margin-bottom: 9px;
+    cursor: pointer;
 }
 
 .search-block .form-button {
@@ -55,6 +56,7 @@
     background-color: var(--light-blue);
     color: var(--white);
     border-width: 0px;
+    cursor: pointer;
 }
 
 /* .search-input {
@@ -133,6 +135,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 .option-icon {

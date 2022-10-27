@@ -21,11 +21,13 @@ const SearchBlock = () => {
 
   const clickCityHandler = () => {
       setDropDown(!dropDown);
+      if (showCalendar) setShowCalendar(!showCalendar);
       console.log(dropDown);
   }
 
   const clickDateHandler = () => {
     setShowCalendar(!showCalendar);
+    if (dropDown) setDropDown(!dropDown);
     console.log(showCalendar);
   }
 
