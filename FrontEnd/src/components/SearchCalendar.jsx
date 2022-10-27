@@ -17,14 +17,22 @@ const SearchCalendar = (props) => {
       let inputString = '';
       startDateStr === endDateStr ? inputString =  startDateStr + '.' : inputString = startDateStr + ' - ' + endDateStr + '.';
       props.setValues("        " + inputString);
-      console.log(inputString);
+      props.clickDateHandler();
   }
 
   return (
     <div className={props.class}>
-        <Calendar onChange={onDateChange} value={dates} next2Label={null} prev2Label={null} selectRange={true} returnValue="range"/>
+      <Calendar
+        onChange={onDateChange}
+        value={dates}
+        next2Label={null}
+        prev2Label={null}
+        selectRange={true}
+        returnValue="range"
+  
+      />
     </div>
-  )
+  );
 }
 
 export default SearchCalendar
