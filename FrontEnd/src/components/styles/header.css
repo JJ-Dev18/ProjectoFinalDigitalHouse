@@ -109,7 +109,7 @@ header a{
 
 hr {
   width: 280px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
 }
 
 .menu .social ul {
