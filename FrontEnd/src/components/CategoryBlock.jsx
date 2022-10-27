@@ -10,7 +10,9 @@ const CategoryBlock = () => {
       {/* <p>Paragrafo</p> */}
       <div className="content_categories">
         <ul className="list_categories">
-        {/* <h2 className="categories_title">Buscar por tipo de alojamiento</h2> */}
+          <div className="categories_title">
+            <h2>Buscar por tipo de alojamiento</h2>
+          </div>
           {Categories.map((category, index) => (
             <li key={index} className="category_card">
               <img src={category.urlImage} alt="image category" />
