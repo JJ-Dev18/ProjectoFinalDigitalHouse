@@ -33,30 +33,54 @@ const SearchBlock = () => {
 
   return (
     <div className="search-block">
-        <h1>Busca ofertas en hoteles, casas y mucho más</h1>
-        <form>
-            <div>
-              <div className="input-container">
-                <div className="input-icon">
-                  <div className="icon"><FaMapMarkerAlt /></div>
-                  <input value={city} className="" id="city" type="text"  onClick={clickCityHandler}  placeholder='          ¿A dónde vamos?'/>
-                </div>
-                <DropDown setValue={setCity} class={`select ${dropDown ? `active` : `inactive` }`}/>
+      <h1>Busca ofertas en hoteles, casas y mucho más</h1>
+      <form>
+        <div>
+          <div className="input-container">
+            <div className="input-icon">
+              <div className="icon">
+                <FaMapMarkerAlt />
               </div>
-            </div>            
-            <div className="input-container">
-              <div className="input-icon">
-                <div className="icon">
-                  <IoMdCalendar />
-                </div>
-                <input value={datesPicked} className="" id="dates" type="text" onClick={clickDateHandler} placeholder='          Check in - Check - out'/>
-              </div>
-              <SearchCalendar setValues={setDatesPicked} class={`select calendar ${showCalendar ? `active` : `inactive` }`} />            
+              <input
+                value={city}
+                className=""
+                id="city"
+                type="text"
+                onClick={clickCityHandler}
+                placeholder="          ¿A dónde vamos?"
+              />
             </div>
-            <button className="form-button">Buscar</button>
-        </form>
+            <DropDown
+              clickCityHandler={clickCityHandler}
+              setValue={setCity}
+              class={`select ${dropDown ? `active` : `inactive`}`}
+            />
+          </div>
+        </div>
+        <div className="input-container">
+          <div className="input-icon">
+            <div className="icon">
+              <IoMdCalendar />
+            </div>
+            <input
+              value={datesPicked}
+              className=""
+              id="dates"
+              type="text"
+              onClick={clickDateHandler}
+              placeholder="          Check in - Check - out"
+            />
+          </div>
+          <SearchCalendar
+            clickDateHandler={clickDateHandler}
+            setValues={setDatesPicked}
+            class={`select calendar ${showCalendar ? `active` : `inactive`}`}
+          />
+        </div>
+        <button className="form-button">Buscar</button>
+      </form>
     </div>
-  )
+  );
 }
 
 export default SearchBlock

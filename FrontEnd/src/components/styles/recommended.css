@@ -178,6 +178,7 @@
      width: 311px;
      height: 100%;
      border-radius: 8px;
+     object-fit: cover;
   }
   .heart{
      height: 19px !important;
@@ -211,6 +212,6 @@ width: 710px;
 border-radius: 10px; */
   }
   .title_recommended {
-    left: 80px;
+    left: 280px;
   }
 }

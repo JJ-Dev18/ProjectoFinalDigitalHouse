@@ -9,6 +9,7 @@ const DropDown = (props) => {
         const inputStr = Cities[key-1].city + ', ' + Cities[key-1].country
         console.log(inputStr);
         props.setValue("      " + inputStr); 
+        props.clickCityHandler()
     }
 
     return (
