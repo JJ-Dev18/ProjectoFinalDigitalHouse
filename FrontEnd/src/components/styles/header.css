@@ -7,7 +7,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;  
+  align-items: center;
 }
 
 header img {
@@ -50,7 +50,7 @@ header button {
   transition: var(--speed) ease;
 }
 
-.menu.inactive{
+.menu.inactive {
   visibility: hidden;
   transform: translateX(303px);
   transition: var(--speed) ease;
@@ -61,7 +61,7 @@ header button {
   background-color: var(--light-blue);
   width: 100%;
   display: flex;
-  
+
   flex-direction: column;
   justify-content: space-between;
 }
@@ -85,7 +85,7 @@ header button {
   color: var(--dark-gray);
   list-style-type: none;
   text-align: end;
-  margin-right: 20px; 
+  margin-right: 20px;
   font-size: 16px;
   font-weight: 700;
   height: calc(100vh - 175px);
@@ -103,30 +103,89 @@ header button {
   justify-content: end;
 }
 
-@media screen and (min-width: 768px) {
-    .menu-icon {
-      display: none;
-    }
-  
-    .menu {
-      display: none;
-    }
-  
-    .md-screen {
-      display: flex;
-    }
+.welcome {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: rgba(0, 0, 0, 0.5);
+  margin-left: 10px;
+}
+
+.name {
+  color: var(--light-blue);
+}
+
+.div-avatar-mobile {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.avatar-mobile {
+  margin-left: 55px;
+}
+
+.logout {
+  position: absolute;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 26px;
+  text-align: center;
+  color: #383B58;
+  top: 6px;
+}
+
+@media screen and (max-width: 767px) {
+  .welcome {
+    color: var(--white);
+    margin-right: 20px;
   }
 
-  @media screen and (min-width: 1060px) {
-    .xs-screen {
-      display: none;
-    }
-  
-    .md-screen .logo {
-      display: none;
-    }
-  
-    .xl-screen {
-      display: flex;
-    }
+  .name {
+    color: rgba(0, 0, 0, 0.5);
   }
+
+  .list {
+    display: flex;
+    flex-direction: column-reverse;
+    align-content: flex-end;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .menu-icon {
+    display: none;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .md-screen {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .avatar {
+    width: 576px;
+    margin-right: 80px;
+  }
+}
+
+@media screen and (min-width: 1060px) {
+  .xs-screen {
+    display: none;
+  }
+
+  .md-screen .logo {
+    display: none;
+  }
+
+  .xl-screen {
+    display: flex;
+  }
+}
