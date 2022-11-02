@@ -20,15 +20,15 @@ const Recommended = () => {
     <div className="recommended_block">
       <div className="content_recommended">
         <ul className="list_recommended">
-          <div className="title_recommended">
-            <h2>Recomendaciones</h2>
-          </div>
           {recommended.map((product, index) => (
             <li className="card_producto" key={index}>
-                <div className="content_image">
-                <img src={heart} alt="like image" className="heart"/>
-               <img src={product.urlImage} alt="image product" />
-                </div>
+              <div className="title_recommended">
+                <h2>Recomendaciones</h2>
+              </div>
+              <div className="content_image">
+                <img src={heart} alt="like image" className="heart" />
+                <img src={product.urlImage} alt="image product" />
+              </div>
               <div className="content_info_producto ">
                 <div className="info_producto">
                   <div>
