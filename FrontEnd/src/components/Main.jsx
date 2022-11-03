@@ -3,6 +3,7 @@ import './styles/main.css'
 import SearchBlock from './SearchBlock'
 import CategoryBlock from './CategoryBlock'
 import Recommended from './Recommended'
+import Characteristics from './Characteristics'
 
 
 
@@ -12,6 +13,7 @@ const Main = (props) => {
       <SearchBlock />
       <CategoryBlock /> 
       <Recommended/>
+      <Characteristics/>
    </main>
   )
 }

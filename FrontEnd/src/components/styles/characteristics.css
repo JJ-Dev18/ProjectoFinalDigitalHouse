@@ -1,0 +1,39 @@
+.content-characterstics{
+ display: flex;
+ flex-direction: column;
+ padding-bottom: 17px;
+}
+.content-characterstics h1{
+font-size: 24px;
+font-weight: 700;
+line-height: 28px;
+letter-spacing: 0em;
+text-align: left;
+color: var(--dark-gray);
+border-bottom: 1px solid var(--light-blue) ;
+padding: 12px 6px;
+
+}
+.characteristics-list{
+ display: flex;
+ flex-wrap: wrap;
+ width: 100%;
+}
+
+
+.characteristic{
+  display: flex;
+  width: 50%;
+  padding: 15px 13px;
+  align-items: center;
+}
+.characteristic img {
+margin-right: 7px;
+height: 16px;
+width: 18px;
+
+}
+.characteristic p {
+  color: #4F4F50;
+  font-size: 14px;
+}
