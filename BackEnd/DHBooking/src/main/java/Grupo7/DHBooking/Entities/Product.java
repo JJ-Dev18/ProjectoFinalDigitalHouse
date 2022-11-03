@@ -32,5 +32,7 @@ public class Product {
     @JoinColumn(name = "id_category", insertable = false, updatable = false)
     private Category category;
 
-
+    @ManyToOne
+    @JoinColumn(name = "id_city", insertable = false, updatable = false)
+    private City city;
 }
