@@ -6,17 +6,17 @@ import "./styles/category.css";
 const CategoryBlock = () => {
  
   return (
-    <div className="category_block">
+    <div className="category-block">
       {/* <p>Paragrafo</p> */}
-      <div className="content_categories">
-        <ul className="list_categories">
-          <div className="categories_title">
+      <div className="content-categories">
+        <ul className="list-categories">
+          {Categories.map((category, index) => (
+            <li key={index} className="category-card">
+          <div className="categories-title">
             <h2>Buscar por tipo de alojamiento</h2>
           </div>
-          {Categories.map((category, index) => (
-            <li key={index} className="category_card">
               <img src={category.urlImage} alt="image category" />
-              <div className="info_card_category">
+              <div className="info-card-category">
                 <h2>{category.name}</h2>
                 <p>{category.cant}</p>
               </div>
