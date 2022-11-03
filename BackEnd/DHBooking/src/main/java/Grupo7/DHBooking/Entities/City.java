@@ -22,6 +22,9 @@ public class City {
     private String name;
 
     @Column
+    private String state;
+
+    @Column
     private String country;
 
     @OneToMany(mappedBy = "city")
