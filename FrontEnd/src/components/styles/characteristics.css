@@ -50,3 +50,14 @@ width: 18px;
  }
 
 }
+
+@media screen and (min-width: 1060px) {
+ .characteristic{
+  width: 25%;
+  padding: 22px 47px;
+ }
+ .characteristics-list{
+  padding-bottom: 24px;
+ }
+ 
+}
