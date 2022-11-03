@@ -37,3 +37,16 @@ width: 18px;
   color: #4F4F50;
   font-size: 14px;
 }
+
+@media screen and (min-width: 768px) {
+ .characteristic{
+  padding: 28px 31px;
+ }
+ .characteristics-list{
+  padding-top: 17px;
+ }
+ .content-characterstics h1{
+  padding: 13px 33px;
+ }
+
+}
