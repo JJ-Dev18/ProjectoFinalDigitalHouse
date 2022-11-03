@@ -4,7 +4,9 @@ import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import Main from './components/Main'
 import Login from './components/Login'
-import Register from './components/Register'
+import Register from './components/Register' 
+import ProductDetail from './components/ProductDetail'
+
 import { Auth } from './components/Auth'
 
 const App = () => {
@@ -16,6 +18,7 @@ const App = () => {
           <Route path="/" element={<Main />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/product-detail" element={<ProductDetail />} />
         </Routes>
       </Layout>
     </div>
