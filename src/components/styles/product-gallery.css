@@ -1,8 +1,0 @@
-.product-gallery-container {
-  height: 70vh;
-  background-color: var(--semi-dark-gray);
-  display: grid;
-  align-content: center;
-  padding: 1rem;
-  color: white;
-}
