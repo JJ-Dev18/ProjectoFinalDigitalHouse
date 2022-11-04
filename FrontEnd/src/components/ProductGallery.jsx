@@ -1,6 +1,6 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectFade, Navigation, Pagination } from "swiper";
+import { Autoplay, EffectFade, Navigation, Pagination } from "swiper";
 
 import 'swiper/css';
 import "swiper/css/pagination";
@@ -12,23 +12,23 @@ const ProductGallery = ({ images }) => {
     <div className='product-gallery-container'>
       <Swiper
         className='gallery'
+        loop={true}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
         pagination={{
           type: "fraction",
         }}
-        spaceBetween={50}
-        slidesPerView={3}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
         effect={"fade"}
-        navigation={true}
-        modules={[EffectFade, Navigation, Pagination]}
+        modules={[Autoplay, EffectFade, Navigation, Pagination]}
       >
         {
           images.map(
             (img, i) => {
               return (
                 <SwiperSlide key={i}>
-                  <img src={img} alt='Hotel' />
+                  <img src={img} alt={'View '+i} />
                 </SwiperSlide>
               )
             }

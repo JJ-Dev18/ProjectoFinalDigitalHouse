@@ -13,11 +13,12 @@
 .product-header-container> :nth-child(2) {
   background-color: var(--semi-dark-gray-transp);
   color: var(--dark-gray);
+  gap: 2rem;
 }
 
 .product-header-container> :nth-child(3) {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .product-category {

@@ -15,7 +15,7 @@ const ProductRating = ({ score }) => {
           {
             Array(5).fill('').map(
               (_, i) => {
-                return <img key={i} src={starIcon} className={halfScore > i || 'disable'} alt="star icon" />
+                return <img key={i} src={starIcon} className={halfScore > i ? '' : 'disable'} alt="star icon" />
               }
             )
           }
