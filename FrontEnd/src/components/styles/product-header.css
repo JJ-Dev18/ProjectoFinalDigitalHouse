@@ -15,6 +15,11 @@
   color: var(--dark-gray);
 }
 
+.product-header-container> :nth-child(3) {
+  display: flex;
+  justify-content: start;
+}
+
 .product-category {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
