@@ -11,7 +11,7 @@ letter-spacing: 0em;
 text-align: left;
 color: var(--dark-gray);
 border-bottom: 1px solid var(--light-blue) ;
-padding: 12px 6px;
+padding: 12px 15px;
 
 }
 .characteristics-list{
@@ -46,7 +46,7 @@ width: 18px;
   padding-top: 17px;
  }
  .content-characterstics h1{
-  padding: 13px 33px;
+  padding: 13px 31px;
  }
 
 }
@@ -58,6 +58,9 @@ width: 18px;
  }
  .characteristics-list{
   padding-bottom: 24px;
+ }
+ .content-characterstics h1{
+  padding: 13px 47px;
  }
  
 }
