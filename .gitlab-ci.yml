@@ -26,4 +26,3 @@ deploy-backend:
   rules:
   - changes:
     - BackEnd/**/*
-  when: manual
