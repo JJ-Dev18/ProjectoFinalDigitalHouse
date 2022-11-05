@@ -5,6 +5,7 @@ import "./styles/product-detail.css";
 import Characteristics from "./ProductCharacteristics";
 import ProductCharacteristics from "./ProductCharacteristics";
 import ProductPolicies from "./ProductPolicies";
+import ProductReservation from "./ProductReservation";
 
 const ProductDetail = () => {
   return (
@@ -13,6 +14,7 @@ const ProductDetail = () => {
       <ProductGallery images={["TODO"]} />
       <div> {`<product-description/>`}</div>
       <ProductCharacteristics />
+      <ProductReservation />
       <ProductPolicies/>
     </div>
   );
