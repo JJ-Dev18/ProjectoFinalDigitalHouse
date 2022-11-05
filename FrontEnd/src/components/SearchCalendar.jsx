@@ -26,14 +26,16 @@ const SearchCalendar = (props) => {
   return (
     <div className={props.class}>
       <DatePicker 
-         inline
-         range
+        inline
+        range
         className='picker'
         onChange={onDateChange}
         monthsShown={windowWidth<768 ? 1 : 2}
         startDate={startDate}
         endDate={endDate}
         selectsRange
+        formatWeekDay={dayName => dayName.slice(0, 1).toUpperCase()}
+        local={"es"}
       />
     </div>
   );
