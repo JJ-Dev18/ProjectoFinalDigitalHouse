@@ -6,6 +6,7 @@ import gps from "../resources/gps.svg";
 import swim from "../resources/swim.svg";
 import wifi from "../resources/wifi.svg";
 import heart from '../resources/heart.svg'
+import { Link } from 'react-router-dom';
 
 const renderStars = (num) => {
   let arrayStars = [];
@@ -60,7 +61,9 @@ const Recommended = () => {
                   <p>
                     {product.description} <span>más...</span>
                   </p>
+                  <Link key={index} to={"/product-detail"}> 
                   <button className="btn-product">Ver más </button>
+                  </Link> 
                 </div>
               </div>
             </li>
