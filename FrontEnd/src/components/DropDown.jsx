@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { BiMap } from 'react-icons/bi'
 import Cities from '../resources/cities.json'
-
+import './styles/search-dropdown.css'
 
 const DropDown = (props) => {
   

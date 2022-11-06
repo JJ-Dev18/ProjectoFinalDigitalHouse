@@ -1,20 +1,23 @@
 import { useState } from 'react'
-import Calendar from 'react-calendar'
-import './styles/calendar.css'
-import 'react-calendar/dist/Calendar.css'
-import { useGlobalStates } from './Context'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import './styles/search-calendar.css'
+
 
 const SearchCalendar = (props) => {
-    
-  const [dates, setDates] = useState('')
+ 
+  const windowWidth = window.innerWidth
   
-  const onDateChange = (dates) => {  
-      const startDate = dates[0].toString().split(' ');
-      const endDate = dates[1].toString().split(' ');
-      const startDateStr = startDate[2] + ' de '+ startDate[1].toLowerCase();
-      const endDateStr = endDate[2] + ' de '+ endDate[1].toLowerCase();
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(null);
+
+  const onDateChange = (dates) => {
+
+      const startDateStr = dates[0].toString().split(' ')[2] + ' de '+ dates[0].toString().split(' ')[1].toLowerCase();
+      const endDateStr   = dates[1].toString().split(' ')[2] + ' de '+ dates[1].toString().split(' ')[1].toLowerCase();
       
       let inputString = '';
+
       startDateStr === endDateStr ? inputString =  startDateStr + '.' : inputString = startDateStr + ' - ' + endDateStr + '.';
       props.setValues("        " + inputString);
       props.clickDateHandler();
@@ -22,14 +25,17 @@ const SearchCalendar = (props) => {
 
   return (
     <div className={props.class}>
-      <Calendar
+      <DatePicker 
+        inline
+        range
+        className='picker'
         onChange={onDateChange}
-        value={dates}
-        next2Label={null}
-        prev2Label={null}
-        selectRange={true}
-        returnValue="range"
-  
+        monthsShown={windowWidth<768 ? 1 : 2}
+        startDate={startDate}
+        endDate={endDate}
+        selectsRange
+        formatWeekDay={dayName => dayName.slice(0, 1).toUpperCase()}
+        local={"es"}
       />
     </div>
   );

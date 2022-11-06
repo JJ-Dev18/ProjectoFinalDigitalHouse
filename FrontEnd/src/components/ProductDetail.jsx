@@ -1,7 +1,11 @@
-import React from 'react'
-import ProductHeader from './ProductHeader';
-import ProductGallery from './ProductGallery';
-import './styles/product-detail.css';
+import React from "react";
+import ProductHeader from "./ProductHeader";
+import ProductGallery from "./ProductGallery";
+import "./styles/product-detail.css";
+import Characteristics from "./ProductCharacteristics";
+import ProductCharacteristics from "./ProductCharacteristics";
+import ProductPolicies from "./ProductPolicies";
+import ProductReservation from "./ProductReservation";
 
 const ProductDetail = () => {
   const images = [
@@ -12,14 +16,21 @@ const ProductDetail = () => {
   ];
 
   return (
+<<<<<<< HEAD
     <div className='product-detail-container'>
       <ProductHeader category={'Hotel'} name={'Hotel Hermitage'} />
       <ProductGallery images={images} />
+=======
+    <div className="product-detail-container">
+      <ProductHeader category={"Hotel"} name={"Hotel Hermitage"} />
+      <ProductGallery images={["TODO"]} />
+>>>>>>> features_frontend
       <div> {`<product-description/>`}</div>
-      <div> {`<product-characteristics/>`}</div>
-      <div> {`<product-policies/>`}</div>
+      <ProductCharacteristics />
+      <ProductReservation />
+      <ProductPolicies/>
     </div>
-  )
-}
+  );
+};
 
 export default ProductDetail;

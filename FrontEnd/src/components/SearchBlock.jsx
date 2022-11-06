@@ -1,13 +1,9 @@
 import { useState}  from 'react'
 import { FaMapMarkerAlt } from 'react-icons/fa'
 import { IoMdCalendar } from 'react-icons/io'
-// import { BiMap } from 'react-icons/bi'
-// import Cities from '../resources/cities.json'
-import './styles/searchBlock.css'
+import './styles/search-block.css'
 import DropDown from './DropDown'
 import SearchCalendar from './SearchCalendar'
-// import { useGlobalStates } from './Context'
-
 
 
 const SearchBlock = () => {
@@ -55,7 +51,7 @@ const SearchBlock = () => {
             <DropDown
               clickCityHandler={clickCityHandler}
               setValue={setCity}
-              class={`select ${dropDown ? `active` : `inactive`}`}
+              class={`select dropdown ${dropDown ? `active` : `inactive`}`}
             />
           </div>
         </div>
@@ -76,7 +72,7 @@ const SearchBlock = () => {
           <SearchCalendar
             clickDateHandler={clickDateHandler}
             setValues={setDatesPicked}
-            class={`select calendar ${showCalendar ? `active` : `inactive`}`}
+            class={`select picker ${showCalendar ? `active` : `inactive`}`}
           />
         </div>
         <button className="form-button">Buscar</button>
