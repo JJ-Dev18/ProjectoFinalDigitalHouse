@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("city")
+@RequestMapping("cities")
 public class CityController {
 
     @Autowired
