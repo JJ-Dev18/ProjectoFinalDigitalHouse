@@ -1,8 +1,9 @@
-package Service.impl;
+package Grupo7.DHBooking.Service.impl;
 
-import Entities.Product;
-import Repository.IProductRepository;
-import Service.IProductService;
+import Grupo7.DHBooking.Entities.Category;
+import Grupo7.DHBooking.Entities.Product;
+import Grupo7.DHBooking.Repository.IProductRepository;
+import Grupo7.DHBooking.Service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

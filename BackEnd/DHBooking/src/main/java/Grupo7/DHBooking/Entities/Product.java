@@ -1,4 +1,4 @@
-package Entities;
+package Grupo7.DHBooking.Entities;
 
 import lombok.Getter;
 import lombok.Setter;

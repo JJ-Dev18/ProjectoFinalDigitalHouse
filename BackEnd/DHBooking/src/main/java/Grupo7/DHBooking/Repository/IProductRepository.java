@@ -1,9 +1,7 @@
-package Repository;
+package Grupo7.DHBooking.Repository;
 
-import Entities.Product;
+import Grupo7.DHBooking.Entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface IProductRepository extends JpaRepository<Product, Long> {
 }
