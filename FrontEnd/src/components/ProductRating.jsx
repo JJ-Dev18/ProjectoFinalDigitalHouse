@@ -1,28 +1,30 @@
 import React from 'react';
 import './styles/product-rating.css';
-import starIcon from "../resources/star.svg";
+import StarIcon from "../resources/star.svg";
 
-const ProductRating = ({ score }) => {
+const ProductRating = (props) => {
+  let rating = Math.min(Math.max(props.rating, 1), 5); //clamp value
+
   const wordsRating = ['Muy malo', 'Regular', 'Bueno', 'Muy Bueno', 'Excelente'];
-  const halfScore = Math.ceil(score / 2);
+  const dobleRating = rating * 2;
   return (
     <div className='product-rating-container'>
       <div>
         <div className='word-rating'>
-          {wordsRating[halfScore]}
+          {wordsRating[rating - 1]}
         </div>
         <div>
           {
             Array(5).fill('').map(
               (_, i) => {
-                return <img key={i} src={starIcon} className={halfScore > i ? '' : 'disable'} alt="star icon" />
+                return <img key={`star-${i}`} src={StarIcon} className={rating > i ? '' : 'disable'} alt="star icon" />
               }
             )
           }
         </div>
       </div>
       <div className='big-number'>
-        <span>{score}</span>
+        <span>{dobleRating}</span>
       </div>
     </div>
   )

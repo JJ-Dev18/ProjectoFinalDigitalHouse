@@ -1,9 +1,10 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade, Navigation, Pagination } from "swiper";
+import { Autoplay, Navigation, Pagination } from "swiper";
 
 import 'swiper/css';
 import "swiper/css/pagination";
+import "swiper/css/autoplay";
 
 import './styles/product-gallery.css'
 
@@ -13,28 +14,29 @@ const ProductGallery = ({ images }) => {
       <Swiper
         className='gallery'
         loop={true}
+        slidesPerView={1}
         autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
+          delay: 3000
         }}
         pagination={{
           type: "fraction",
         }}
-        effect={"fade"}
-        modules={[Autoplay, EffectFade, Navigation, Pagination]}
+        effect={"slide"}
+        modules={[Autoplay, Navigation, Pagination]}
       >
         {
           images.map(
             (img, i) => {
               return (
-                <SwiperSlide key={i}>
-                  <img src={img} alt={'View '+i} />
+                <SwiperSlide
+                  role="img" aria-label={img.title}
+                  key={`img-mob-${img.idImage}`}
+                  style={{ backgroundImage: `url(${img.url})` }} >
                 </SwiperSlide>
               )
             }
           )
         }
-
       </Swiper>
     </div>
   )
