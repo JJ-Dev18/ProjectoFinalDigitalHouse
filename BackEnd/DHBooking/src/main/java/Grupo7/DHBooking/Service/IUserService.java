@@ -1,6 +1,6 @@
-package Service;
+package Grupo7.DHBooking.Service;
 
-import Entities.User;
+import Grupo7.DHBooking.Entities.User;
 
 import java.util.List;
 

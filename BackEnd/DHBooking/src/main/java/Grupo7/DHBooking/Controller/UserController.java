@@ -1,7 +1,8 @@
-package Controller;
+package Grupo7.DHBooking.Controller;
 
-import Entities.User;
-import Service.IUserService;
+import Grupo7.DHBooking.Entities.Category;
+import Grupo7.DHBooking.Entities.User;
+import Grupo7.DHBooking.Service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin
+
 @RestController
 @RequestMapping("/users")
 public class UserController {

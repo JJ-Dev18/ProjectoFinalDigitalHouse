@@ -1,7 +1,7 @@
-package Controller;
+package Grupo7.DHBooking.Controller;
 
-import Entities.Product;
-import Service.IProductService;
+import Grupo7.DHBooking.Entities.Product;
+import Grupo7.DHBooking.Service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin
+
 @RestController
 @RequestMapping("/products")
 public class ProductController {

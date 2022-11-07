@@ -1,4 +1,4 @@
-package Entities;
+package Grupo7.DHBooking.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
