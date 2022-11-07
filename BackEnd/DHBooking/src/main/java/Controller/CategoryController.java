@@ -1,7 +1,7 @@
-package Grupo7.DHBooking.Controller;
+package Controller;
 
-import Grupo7.DHBooking.Entities.Category;
-import Grupo7.DHBooking.Service.ICategoryService;
+import Entities.Category;
+import Service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/categories")
 public class CategoryController {

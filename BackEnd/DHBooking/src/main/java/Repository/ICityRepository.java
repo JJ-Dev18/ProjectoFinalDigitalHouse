@@ -1,6 +1,6 @@
-package Grupo7.DHBooking.Repository;
+package Repository;
 
-import Grupo7.DHBooking.Entities.City;
+import Entities.City;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.stereotype.Repository;

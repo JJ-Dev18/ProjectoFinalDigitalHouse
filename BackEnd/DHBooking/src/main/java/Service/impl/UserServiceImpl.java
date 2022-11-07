@@ -1,8 +1,8 @@
-package Grupo7.DHBooking.Service.impl;
+package Service.impl;
 
-import Grupo7.DHBooking.Entities.User;
-import Grupo7.DHBooking.Repository.IUserRepository;
-import Grupo7.DHBooking.Service.IUserService;
+import Entities.User;
+import Repository.IUserRepository;
+import Service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
