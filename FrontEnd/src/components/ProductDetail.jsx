@@ -50,15 +50,15 @@ const ProductDetail = () => {
                 : <ProductGalleryDesktop images={product.images} />
             }
             <ProductDescription
-              title={product[0].titleDescription}
-              description={product[0].category.description}
+              title={product.titleDescription}
+              description={product.category.description}
             />
-            <ProductCharacteristics characteristics={product[0].characteristics} />
+            <ProductCharacteristics characteristics={product.characteristics} />
             <ProductReservation />
             <ProductPolicies
-              normsPolicy={product[0].NormsPolicy}
-              securityPolicy={product[0].SecurityPolicy}
-              cancellationPolicy={product[0].CancellationPolicy}
+              normsPolicy={product.NormsPolicy}
+              securityPolicy={product.SecurityPolicy}
+              cancellationPolicy={product.CancellationPolicy}
             />
           </div>
       }

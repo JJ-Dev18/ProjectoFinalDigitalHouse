@@ -18,63 +18,60 @@ const ProductGalleryDesktop = ({ images }) => {
 
   return (
     <>
-      {
-        isModal
-          ? <div className='product-gallery-container modal'>
-            < Swiper
-              className='gallery'
-              loop={true}
-              slidesPerView={1}
-              autoplay={{
-                delay: 3000
-              }}
-              pagination={{
-                type: "fraction",
-              }}
-              effect={"slide"}
-              thumbs={{ swiper: thumbsSwiper }}
-              modules={[Thumbs, Autoplay, Navigation, Pagination]}
-            >
-              {
-                images.map(
-                  (img, i) => {
-                    return (
-                      <SwiperSlide
-                        role="img" aria-label={img.title}
-                        key={`photo-${img.idImage}`}
-                        style={{ backgroundImage: `url(${img.url})` }} >
-                      </SwiperSlide>
-                    )
-                  }
+      <div className={`product-gallery-container modal ${isModal ? 'modal-open' : ''}`} >
+        < Swiper
+          className='gallery'
+          loop={true}
+          slidesPerView={1}
+          autoplay={{
+            delay: 3000
+          }}
+          pagination={{
+            type: "fraction",
+          }}
+          effect={"slide"}
+          thumbs={{ swiper: thumbsSwiper }}
+          modules={[Thumbs, Autoplay, Navigation, Pagination]}
+        >
+          {
+            images.map(
+              (img, i) => {
+                return (
+                  <SwiperSlide
+                    role="img" aria-label={img.title}
+                    key={`photo-${img.idImage}`}
+                    style={{ backgroundImage: `url(${img.url})` }} >
+                  </SwiperSlide>
                 )
               }
-            </Swiper >
-            < Swiper
-              watchSlidesProgress={true}
-              onSwiper={setThumbsSwiper}
-              loop={true}
-              spaceBetween={20}
-              slidesPerView={4}
-              freeMode={true}
-              modules={[FreeMode, Navigation, Thumbs]}
-            >
-              {
-                images.map(
-                  (img, i) => {
-                    return (
-                      <SwiperSlide
-                        key={`thumb-${img.idImage}`}>
-                        <img src={img.url} alt={img.title} />
-                      </SwiperSlide>
-                    )
-                  }
+            )
+          }
+        </Swiper >
+        < Swiper
+          watchSlidesProgress={true}
+          onSwiper={setThumbsSwiper}
+          loop={true}
+          spaceBetween={20}
+          slidesPerView={4}
+          freeMode={true}
+          modules={[FreeMode, Navigation, Thumbs]}
+        >
+          {
+            images.map(
+              (img, i) => {
+                return (
+                  <SwiperSlide
+                    key={`thumb-${img.idImage}`}>
+                    <img src={img.url} alt={img.title} />
+                  </SwiperSlide>
                 )
               }
+            )
+          }
 
-            </Swiper >
-            <button className='close-modal-btn' onClick={() => setIsModal(!isModal)}><img src={CloseIcon} alt="close button" /></button>
-          </div >
-          : ''}
+        </Swiper >
+        <button className='close-modal-btn' onClick={() => setIsModal(!isModal)}><img src={CloseIcon} alt="close button" /></button>
+      </div >
 
       <div className='collage'>
         {
