@@ -1,6 +1,6 @@
-package Grupo7.DHBooking.Service;
+package Service;
 
-import Grupo7.DHBooking.Entities.City;
+import Entities.City;
 import java.util.List;
 
 public interface ICityService {
