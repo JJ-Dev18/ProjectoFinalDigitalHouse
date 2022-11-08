@@ -18,19 +18,10 @@ build-backend:
 
 deploy-backend:
   stage: deploy
-  image: ubuntu:latest
-  variables:
-    AWS_ACCESS_KEY_ID: "$AWS_ACCESS_KEY_ID"
-    AWS_SECRET_ACCESS_KEY: "$AWS_SECRET_ACCESS_KEY"
-    AWS_DEFAULT_REGION: "$AWS_DEFAULT_REGION"
+  image: alpine:3.11
   script:
     - echo "Deploying application. backend.."
-    - apt-get update
-    - apt-get upgrade
-    - export TZ=Europe/Paris
-    - ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-    - apt-get install -y awscli
-    - apt-get install -y openssh-client
+    - apk update && apk add openssh-client bash 
     - mkdir -p ~/.ssh 
     - eval $(ssh-agent -s) 
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null 
