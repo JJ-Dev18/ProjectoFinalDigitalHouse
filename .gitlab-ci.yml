@@ -4,7 +4,7 @@ stages:
 
 build-backend:
   stage: build
-  image: maven:latest-alpine
+  image: maven:latest
   script:
   - echo "Compiling the code..."
   - cd BackEnd/DHBooking
@@ -18,11 +18,10 @@ build-backend:
 
 deploy-backend:
   stage: deploy
-  image: python:latest
+  image: alpine:latest
   script:
     - echo "Deploying application. backend.."
-    - sudo pip install --upgrade pip
-    - sudo pip install awscli
+    - apk add --no-cache aws-cli
     - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
     - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
     - aws configure set region $AWS_DEFAULT_REGION
