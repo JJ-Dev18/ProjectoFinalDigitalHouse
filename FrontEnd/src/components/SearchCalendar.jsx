@@ -8,10 +8,15 @@ const SearchCalendar = (props) => {
  
   const windowWidth = window.innerWidth
   
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
+
   const onDateChange = (dates) => {
+
+      const [start, end] = dates;
+      setStartDate(start);
+      setEndDate(end);
 
       const startDateStr = dates[0].toString().split(' ')[2] + ' de '+ dates[0].toString().split(' ')[1].toLowerCase();
       const endDateStr   = dates[1].toString().split(' ')[2] + ' de '+ dates[1].toString().split(' ')[1].toLowerCase();
