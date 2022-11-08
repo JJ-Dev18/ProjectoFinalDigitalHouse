@@ -21,9 +21,9 @@ deploy-backend:
   image: ubuntu:latest
   script:
     - echo "Deploying application. backend.."
-    - sudo apt-get update
-    - sudo apt-get upgrade
-    - sudo apt-get install awscli
+    - apt-get update
+    - apt-get upgrade
+    - apt-get install awscli
     - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
     - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
     - aws configure set region $AWS_DEFAULT_REGION
