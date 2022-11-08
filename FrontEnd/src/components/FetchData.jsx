@@ -15,7 +15,7 @@ const FetchData = ({modo}) => {
     return (
         <div className='fetch'>
             <h1>API DATA</h1>
-            {errorMessage ? <p>{errorMessage}</p> : apiData.map( (item) => <p>{item.name}</p>)}
+            {/* {errorMessage ? <p>{errorMessage}</p> : apiData.map( (item) => <p>{item.name}</p>)} */}
         </div>
     )
 }
