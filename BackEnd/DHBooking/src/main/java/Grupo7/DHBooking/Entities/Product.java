@@ -50,4 +50,12 @@ public class Product {
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_security_policy", insertable = false, updatable = false)
     private List<SecurityPolicy> securityPolicy;
+
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id_image", insertable = false, updatable = false)
+    private List<Image> images;
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id_feature", insertable = false, updatable = false)
+    private List<Feature> feature;
 }
