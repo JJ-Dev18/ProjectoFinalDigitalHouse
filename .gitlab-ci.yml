@@ -19,6 +19,10 @@ build-backend:
 deploy-backend:
   stage: deploy
   image: ubuntu:latest
+  variables:
+    AWS_ACCESS_KEY_ID: "$AWS_ACCESS_KEY_ID"
+    AWS_SECRET_ACCESS_KEY: "$AWS_SECRET_ACCESS_KEY"
+    AWS_DEFAULT_REGION: "$AWS_DEFAULT_REGION"
   script:
     - echo "Deploying application. backend.."
     - apt-get update
@@ -26,10 +30,7 @@ deploy-backend:
     - export TZ=Europe/Paris
     - ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
     - apt-get install -y awscli
-    - aws configure set aws_access_key_id AKIASDYGBXDR7W6DXTFF
-    - aws configure set aws_secret_access_key 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
-    - aws configure set region us-east-2
-    - scp -i grupo7.pem BackEnd/DHBooking/target/*.jar ubuntu@ec2-52-14-228-70.us-east-2.compute.amazonaws.com:~/. app.jar
+    - scp -i grupo7.pem BackEnd/DHBooking/target/*.jar ubuntu@ec2-52-14-228-70.us-east-2.compute.amazonaws.com:~/.
   rules:
   - changes:
     - BackEnd/**/*
