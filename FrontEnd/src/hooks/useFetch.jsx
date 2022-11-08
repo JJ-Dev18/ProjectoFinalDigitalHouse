@@ -8,11 +8,11 @@ const useFetch = (url) => {
   
     useEffect(() => {
       setIsLoading(true);
+      console.log('hola')
       const fetchData = async () => {
         try {
             const response = await axios(url);
-            //console.log('HOLAAAAAAAAAAAAAAAAAAAAAAAAAA')
-            //console.log(response.data[0].name)
+            console.log('hola')
             setApiData(response.data)
         } 
         catch (error) {
@@ -24,10 +24,7 @@ const useFetch = (url) => {
       };
       fetchData();
     }, [url]);
-
-    //return { isLoading, apiData, errorMessage };
-    return apiData;
-
+    return { isLoading, errorMessage, apiData } ;
   };
 
 export default useFetch;
