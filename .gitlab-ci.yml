@@ -31,7 +31,7 @@ deploy-backend:
     - ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
     - apt-get install -y awscli
     - apt-get install -y openssh-client
-    - scp -i grupo7.pem BackEnd/DHBooking/target/*.jar ubuntu@ec2-52-14-228-70.us-east-2.compute.amazonaws.com:~/.
+    - scp -i grupo7.ppk BackEnd/DHBooking/target/*.jar ubuntu@ec2-52-14-228-70.us-east-2.compute.amazonaws.com:~/.
   rules:
   - changes:
     - BackEnd/**/*
