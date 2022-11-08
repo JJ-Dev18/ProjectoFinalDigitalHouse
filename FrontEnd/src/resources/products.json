@@ -37,15 +37,15 @@
           "title": "Wifi"
         },
         {
-          "idCharacteristic": 3,
+          "idCharacteristic": 5,
           "title": "Televisor"
         },
         {
-          "idCharacteristic": 4,
+          "idCharacteristic": 6,
           "title": "Apto mascotas"
         },
         {
-          "idCharacteristic": 3,
+          "idCharacteristic": 7,
           "title": "Pileta"
         }
       ],
