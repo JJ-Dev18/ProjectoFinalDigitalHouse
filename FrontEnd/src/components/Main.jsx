@@ -10,7 +10,7 @@ const Main = (props) => {
   return (
     <main>
       <SearchBlock />
-      <FetchData />
+      {/* <FetchData /> */}
       <CategoryBlock />
       <Recommended />
     </main>
