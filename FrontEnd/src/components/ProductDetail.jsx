@@ -7,6 +7,10 @@ import "./styles/product-detail.css";
 import ProductCharacteristics from "./ProductCharacteristics";
 import ProductPolicies from "./ProductPolicies";
 import ProductReservation from "./ProductReservation";
+<<<<<<< HEAD
+import FetchData from "./FetchData";
+
+=======
 import ProductDescription from "./ProductDescription";
 import useWindowSize from "../utils/useWindowSize";
 
@@ -14,6 +18,7 @@ async function fetchProductDetail(id) {
   // return await fetch(`API/${id}`).then(data => data.json());
   return await import('../resources/products.json').then(data => data[0]);
 }
+>>>>>>> 34323187d0832402cf73a9d6da153cc9051bee78
 
 const ProductDetail = () => {
   const params = useParams();
@@ -34,6 +39,17 @@ const ProductDetail = () => {
     , [params.productId]);
 
   return (
+<<<<<<< HEAD
+    <div className="product-detail-container">
+      <FetchData />
+      <ProductHeader category={"Hotel"} name={"Hotel Hermitage"} />
+      <ProductGallery images={["TODO"]} />
+      <div> {`<product-description/>`}</div>
+      <ProductCharacteristics />
+      <ProductReservation />
+      <ProductPolicies/>
+    </div>
+=======
     <>
       {
         product == null
@@ -63,6 +79,7 @@ const ProductDetail = () => {
           </div>
       }
     </>
+>>>>>>> 34323187d0832402cf73a9d6da153cc9051bee78
   );
 };
 
