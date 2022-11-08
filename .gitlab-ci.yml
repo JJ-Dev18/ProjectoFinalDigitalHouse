@@ -26,9 +26,9 @@ deploy-backend:
     - export TZ=Europe/Paris
     - ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
     - apt-get install -y awscli
-    - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-    - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-    - aws configure set region $AWS_DEFAULT_REGION
+    - aws configure set aws_access_key_id AKIASDYGBXDR7W6DXTFF
+    - aws configure set aws_secret_access_key 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
+    - aws configure set region us-east-2
     - scp -i grupo7.pem BackEnd/DHBooking/target/*.jar ubuntu@ec2-52-14-228-70.us-east-2.compute.amazonaws.com:~/. app.jar
   rules:
   - changes:
