@@ -6,10 +6,13 @@ import Characteristics from "./ProductCharacteristics";
 import ProductCharacteristics from "./ProductCharacteristics";
 import ProductPolicies from "./ProductPolicies";
 import ProductReservation from "./ProductReservation";
+import FetchData from "./FetchData";
+
 
 const ProductDetail = () => {
   return (
     <div className="product-detail-container">
+      <FetchData />
       <ProductHeader category={"Hotel"} name={"Hotel Hermitage"} />
       <ProductGallery images={["TODO"]} />
       <div> {`<product-description/>`}</div>
