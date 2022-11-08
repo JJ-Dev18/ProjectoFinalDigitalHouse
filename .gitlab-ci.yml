@@ -29,7 +29,7 @@ deploy-backend:
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config 
     - ssh-keyscan -H ec2-52-14-228-70.us-east-2.compute.amazonaws.com >> ~/.ssh/known_hosts
     - scp BackEnd/DHBooking/target/*.jar ubuntu@ec2-52-14-228-70.us-east-2.compute.amazonaws.com:~/.
-    - ssh ubuntu@ec2-52-14-228-70.us-east-2.compute.amazonaws.com pwd
+    - ssh ubuntu@ec2-52-14-228-70.us-east-2.compute.amazonaws.com systemctl status sbapp
     - echo "Application OK..."
   rules:
   - changes:
