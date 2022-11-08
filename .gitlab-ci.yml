@@ -1,28 +1,31 @@
 stages:
 - build
-- test
 - deploy
 
 build-backend:
   stage: build
+  image: maven:latest
   script:
   - echo "Compiling the code..."
-  rules:
-  - changes:
-    - BackEnd/**/*
-
-test-backend:
-  stage: test
-  script:
-  - echo "Running unit tests..."
+  - cd BackEnd/DHBooking
+  - mvn compile install
+  artifacts:
+    paths:
+      - BackEnd/DHBooking/target/*.jar
   rules:
   - changes:
     - BackEnd/**/*
 
 deploy-backend:
   stage: deploy
+  image: python:latest
   script:
-  - echo "Deploying application. backend.."
+    - echo "Deploying application. backend.."
+    - pip install awscli
+    - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+    - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+    - aws configure set region $AWS_DEFAULT_REGION
+    - scp -i grupo7.pem BackEnd/DHBooking/target/*.jar ubuntu@ec2-52-14-228-70.us-east-2.compute.amazonaws.com:~/. app.jar
   rules:
   - changes:
     - BackEnd/**/*
