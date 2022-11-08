@@ -1,0 +1,5 @@
+main {
+    position: absolute;
+    top: var(--header-xl-h);
+    z-index: 0;
+}
