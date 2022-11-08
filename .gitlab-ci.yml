@@ -4,7 +4,7 @@ stages:
 
 build-backend:
   stage: build
-  image: maven:latest
+  image: maven:latest-alpine
   script:
   - echo "Compiling the code..."
   - cd BackEnd/DHBooking
