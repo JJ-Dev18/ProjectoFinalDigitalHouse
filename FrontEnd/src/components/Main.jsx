@@ -4,11 +4,13 @@ import SearchBlock from "./SearchBlock";
 import CategoryBlock from "./CategoryBlock";
 import Recommended from "./Recommended";
 import Characteristics from "./ProductCharacteristics";
+import FetchData from "./FetchData";
 
 const Main = (props) => {
   return (
     <main>
       <SearchBlock />
+      <FetchData />
       <CategoryBlock />
       <Recommended />
     </main>
