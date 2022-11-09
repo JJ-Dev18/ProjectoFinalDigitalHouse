@@ -7,7 +7,7 @@ import './styles/search-calendar.css'
 const SearchCalendar = (props) => {
  
   const windowWidth = window.innerWidth
-  
+   
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
@@ -22,7 +22,6 @@ const SearchCalendar = (props) => {
       const endDateStr   = dates[1].toString().split(' ')[2] + ' de '+ dates[1].toString().split(' ')[1].toLowerCase();
       
       let inputString = '';
-
       startDateStr === endDateStr ? inputString =  startDateStr + '.' : inputString = startDateStr + ' - ' + endDateStr + '.';
       props.setValues("        " + inputString);
       props.clickDateHandler();
@@ -32,7 +31,6 @@ const SearchCalendar = (props) => {
     <div className={props.class}>
       <DatePicker 
         inline
-        range
         className='picker'
         onChange={onDateChange}
         monthsShown={windowWidth<768 ? 1 : 2}
@@ -41,6 +39,7 @@ const SearchCalendar = (props) => {
         selectsRange
         formatWeekDay={dayName => dayName.slice(0, 1).toUpperCase()}
         local={"es"}
+        minDate={new Date()}
       />
     </div>
   );
