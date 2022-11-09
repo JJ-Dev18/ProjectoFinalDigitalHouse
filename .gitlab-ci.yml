@@ -20,17 +20,14 @@ build-frontend:
 deploy-frontend:
   stage: deploy
   image: python:latest
-  variables:
-    AWS_ACCESS_KEY_ID: "$AWS_ACCESS_KEY_ID"
-    AWS_SECRET_ACCESS_KEY: "$AWS_SECRET_ACCESS_KEY"
-    AWS_DEFAULT_REGION: "$AWS_DEFAULT_REGION"
   script:
     - echo "Deploying application. FrontEnd.."
     - apt-get update
     - apt-get -y upgrade
-    - export TZ=Europe/Paris
-    - ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
     - apt-get install -y awscli
+    - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+    - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+    - aws configure set region $AWS_DEFAULT_REGION
     - aws s3 sync FrontEnd/build/ s3://0521ptc8n2-g07-fronted-v2 --acl public-read
   rules:
   - changes:
