@@ -13,7 +13,7 @@ const CategoryBlock = () => {
           {Categories.map((category, index) => (
             <li key={index} className="category-card">
           <div className="categories-title">
-            <h2>Buscar por tipo de alojamiento</h2>
+            <h2>Buscar por nombre</h2>
           </div>
               <img src={category.urlImage} alt="image category" />
               <div className="info-card-category">
