@@ -27,7 +27,7 @@ deploy-frontend:
   script:
     - echo "Deploying application. FrontEnd.."
     - apt-get update
-    - apt-get upgrade
+    - apt-get -y upgrade
     - export TZ=Europe/Paris
     - ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
     - apt-get install -y awscli
