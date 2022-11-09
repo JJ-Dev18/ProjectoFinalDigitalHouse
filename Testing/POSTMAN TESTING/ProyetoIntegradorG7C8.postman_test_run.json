@@ -1,0 +1,361 @@
+{
+	"id": "ec9faab5-ccea-489d-9f5b-57fd401907f1",
+	"name": "ProyetoIntegradorG7C8",
+	"timestamp": "2022-11-09T04:13:22.082Z",
+	"collection_id": "21244538-8ff9c79b-3e09-4875-bb1f-63f381875239",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 28,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "e607a4ae-87a0-461e-9eea-0532bd38987b",
+			"name": "getAllCategories",
+			"url": "http://52.14.228.70/DHBooking/categories",
+			"time": 244,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Category Title": true,
+				"Category Description": true,
+				"Category imageUrl": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Category Title": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Category Description": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Category imageUrl": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				244
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Category Title": true,
+					"Category Description": true,
+					"Category imageUrl": true
+				}
+			]
+		},
+		{
+			"id": "14b01765-5d0b-41bf-9562-eff5d57286cd",
+			"name": "getCategoryById",
+			"url": "http://52.14.228.70/DHBooking/categories/3",
+			"time": 186,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Category Title": true,
+				"Category Description": true,
+				"Category imageUrl": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Category Title": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Category Description": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Category imageUrl": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				186
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Category Title": true,
+					"Category Description": true,
+					"Category imageUrl": true
+				}
+			]
+		},
+		{
+			"id": "99486035-d24d-44b7-b0a1-5078728f67c8",
+			"name": "getAllProducts",
+			"url": "http://52.14.228.70/DHBooking/products",
+			"time": 428,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Product Title": true,
+				"Product Description": true,
+				"Product Category Id": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Product Title": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Product Description": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Product Category Id": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				428
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Product Title": true,
+					"Product Description": true,
+					"Product Category Id": true
+				}
+			]
+		},
+		{
+			"id": "7aac7dd9-dca0-4f30-8503-16dd6ede3c76",
+			"name": "getByCategory",
+			"url": "http://52.14.228.70/DHBooking/products/idCategory?idCategory=3",
+			"time": 216,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Product Title": true,
+				"Product Category Title": true,
+				"Product Category Size": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Product Title": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Product Category Title": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Product Category Size": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				216
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Product Title": true,
+					"Product Category Title": true,
+					"Product Category Size": true
+				}
+			]
+		},
+		{
+			"id": "66d39df5-0eea-4394-8ba5-300afed9296a",
+			"name": "getByCity",
+			"url": "http://52.14.228.70/DHBooking/products/idCity?idCity=2",
+			"time": 208,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Product Title": true,
+				"Product City State": true,
+				"Product City Size": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Product Title": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Product City State": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Product City Size": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				208
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Product Title": true,
+					"Product City State": true,
+					"Product City Size": true
+				}
+			]
+		},
+		{
+			"id": "221bd047-9935-4fbc-ae7a-dec7a45bf2b2",
+			"name": "getProductById",
+			"url": "http://52.14.228.70/DHBooking/products/1",
+			"time": 228,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Product Title": true,
+				"Product Description": true,
+				"Product Images Size": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Product Title": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Product Description": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Product Images Size": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				228
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Product Title": true,
+					"Product Description": true,
+					"Product Images Size": true
+				}
+			]
+		},
+		{
+			"id": "44fd6a95-13c1-4e51-b7e3-b5a255b8a2a1",
+			"name": "getAllCities",
+			"url": "http://52.14.228.70/DHBooking/cities",
+			"time": 197,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Cities Name": true,
+				"Cities Country": true,
+				"Cities Size": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Cities Name": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Cities Country": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Cities Size": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				197
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Cities Name": true,
+					"Cities Country": true,
+					"Cities Size": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1707,
+	"collection": {
+		"requests": [
+			{
+				"id": "e607a4ae-87a0-461e-9eea-0532bd38987b",
+				"method": "GET"
+			},
+			{
+				"id": "14b01765-5d0b-41bf-9562-eff5d57286cd",
+				"method": "GET"
+			},
+			{
+				"id": "99486035-d24d-44b7-b0a1-5078728f67c8",
+				"method": "GET"
+			},
+			{
+				"id": "7aac7dd9-dca0-4f30-8503-16dd6ede3c76",
+				"method": "GET"
+			},
+			{
+				"id": "66d39df5-0eea-4394-8ba5-300afed9296a",
+				"method": "GET"
+			},
+			{
+				"id": "221bd047-9935-4fbc-ae7a-dec7a45bf2b2",
+				"method": "GET"
+			},
+			{
+				"id": "44fd6a95-13c1-4e51-b7e3-b5a255b8a2a1",
+				"method": "GET"
+			}
+		]
+	}
+}

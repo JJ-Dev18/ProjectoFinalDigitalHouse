@@ -1,0 +1,385 @@
+{
+	"info": {
+		"_postman_id": "8ff9c79b-3e09-4875-bb1f-63f381875239",
+		"name": "ProyetoIntegradorG7C8",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21244538"
+	},
+	"item": [
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "getAllCategories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Category Title\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].title).to.eql('Hoteles');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Category Description\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].description).to.eql('807.505');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Category imageUrl\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].imageUrl).to.eql('https://cdn.pixabay.com/photo/2015/11/06/11/45/interior-1026452_960_720.jpg');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}categories",
+							"host": [
+								"{{local_url}}categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCategoryById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Category Title\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.title).to.eql('Departamentos');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Category Description\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.description).to.eql('811.105');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Category imageUrl\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.imageUrl).to.eql('https://eston.ca/wp-content/uploads/2017/09/hotel-room-1447201_640.jpg');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}categories/{{id_category}}",
+							"host": [
+								"{{local_url}}categories"
+							],
+							"path": [
+								"{{id_category}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "getAllProducts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product Title\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].title).to.eql('Hermitage Hotel');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product Description\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].description).to.eql('Está situado a solo unas calles de la avenida Alvear, de la avenida Quintana, del parque San Martín y del distrito de Recoleta. En las inmediaciones también hay varios lugares de interés, como la calle Florida, el centro comercial Galerías Pacífico, la zo');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product Category Id\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].category.idCategory).to.eql(1);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}products",
+							"host": [
+								"{{local_url}}products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByCategory",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product Title\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].title).to.eql('Avellaneda Aparts & Suites');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product Category Title\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].category.title).to.eql('Departamentos');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product Category Size\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).to.eql(4);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}products/idCategory?idCategory={{id_category}}",
+							"host": [
+								"{{local_url}}products"
+							],
+							"path": [
+								"idCategory"
+							],
+							"query": [
+								{
+									"key": "idCategory",
+									"value": "{{id_category}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByCity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product Title\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].title).to.eql('Hermitage Hotel');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product City State\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].city.state).to.eql('Buenos Aires');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product City Size\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).to.eql(6);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}products/idCity?idCity={{id_city}}",
+							"host": [
+								"{{local_url}}products"
+							],
+							"path": [
+								"idCity"
+							],
+							"query": [
+								{
+									"key": "idCity",
+									"value": "{{id_city}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProductById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product Title\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.title).to.eql('Hermitage Hotel');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product Description\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.description).to.eql('Está situado a solo unas calles de la avenida Alvear, de la avenida Quintana, del parque San Martín y del distrito de Recoleta. En las inmediaciones también hay varios lugares de interés, como la calle Florida, el centro comercial Galerías Pacífico, la zo');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Product Images Size\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.images.length).to.eql(5);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}products/{{id_product}}",
+							"host": [
+								"{{local_url}}products"
+							],
+							"path": [
+								"{{id_product}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "City",
+			"item": [
+				{
+					"name": "getAllCities",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Cities Name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].name).to.eql('Bogotá');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Cities Country\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].country).to.eql('Colombia');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Cities Size\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).to.eql(6);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}cities",
+							"host": [
+								"{{local_url}}cities"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local_url",
+			"value": "http://52.14.228.70/DHBooking/",
+			"type": "string"
+		},
+		{
+			"key": "id_category",
+			"value": "3",
+			"type": "string"
+		},
+		{
+			"key": "id_product",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "id_city",
+			"value": "2",
+			"type": "string"
+		}
+	]
+}
