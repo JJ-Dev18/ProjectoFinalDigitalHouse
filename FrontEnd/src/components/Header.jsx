@@ -24,23 +24,25 @@ const Header = () => {
 
     const logoutHandler = () => {
         localStorage.removeItem('logged')
-        window.location.href="/"
+        window.location.href = "/"
     }
     console.log(Auth());
     let registeredUser = JSON.parse(localStorage.getItem('user'))
     return (
 
         <header>
-            <Link to="/"><img className='xs-screen logo' src={logo_non_desktop} alt="logo_non_desktop" /> </Link>
-            <Link to="/"><img className='xl-screen logo' src={logo_desktop} alt="logo_desktop" />  </Link>
+            <Link to="/">
+                <img className='xs-screen logo' src={logo_non_desktop} alt="logo_non_desktop" />
+                <img className='xl-screen logo' src={logo_desktop} alt="logo_desktop" />
+            </Link>
             <img className='menu-icon' onClick={clickHandler} src={menu} alt="md-screen menu" />
             {Auth() ?
                 <div className='md-screen avatar'>
-                    <div className='logout' onClick={logoutHandler} > X </div>   
+                    <div className='logout' onClick={logoutHandler} > X </div>
                     <Avatar>{registeredUser.avatar}</Avatar>
                     <div>
                         <span className='welcome'>Hola,</span><br />
-                        <span className='welcome name'>{registeredUser.name + " " +  registeredUser.lastname}</span>
+                        <span className='welcome name'>{registeredUser.name + " " + registeredUser.lastname}</span>
                     </div>
                 </div>
                 :
@@ -52,12 +54,12 @@ const Header = () => {
             {Auth() ?
                 <div className={`xs-screen menu ${showMenu ? `active` : `inactive`}`}>
                     <div className='top'>
-                        <div className='close-menu' onClick={clickHandler} > X </div>   
+                        <div className='close-menu' onClick={clickHandler} > X </div>
                         <div className='div-avatar-mobile'>
                             <Avatar className='avatar-mobile'>{registeredUser.avatar}</Avatar>
                             <div>
                                 <span className='welcome'>Hola,</span><br />
-                                <span className='welcome name'>{registeredUser.name + " " +  registeredUser.lastname}</span>
+                                <span className='welcome name'>{registeredUser.name + " " + registeredUser.lastname}</span>
                             </div>
                         </div>
                     </div>

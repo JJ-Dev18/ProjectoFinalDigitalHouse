@@ -1,6 +1,5 @@
 package Grupo7.DHBooking.Service.impl;
 
-import Grupo7.DHBooking.Entities.Category;
 import Grupo7.DHBooking.Entities.Product;
 import Grupo7.DHBooking.Repository.IProductRepository;
 import Grupo7.DHBooking.Service.IProductService;
@@ -19,6 +18,17 @@ public class ProductServiceImpl implements IProductService {
     public List<Product> getAll() {
         return productRepository.findAll();
     }
+
+    @Override
+    public List<Product> getRandomProducts() {
+        return productRepository.getRandomProducts();
+    }
+
+    @Override
+    public List<Product> getRecommendedProducts() {
+        return productRepository.getRecommendedProducts();
+    }
+
     @Override
     public Product getProductById(Long idProduct) {
         return productRepository.findById(idProduct).get();
