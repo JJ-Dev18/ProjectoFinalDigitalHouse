@@ -16,4 +16,8 @@ public interface IProductService {
     void deleteProduct(Long idProduct);
     List<Product> getAll();
 
+    List<Product> getRandomProducts();
+    List<Product> getRecommendedProducts();
+
+
 }

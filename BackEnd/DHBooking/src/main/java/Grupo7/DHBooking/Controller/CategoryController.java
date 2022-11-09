@@ -22,6 +22,7 @@ public class CategoryController {
     public ResponseEntity<List<Category>> getAllCategories(){
         return new ResponseEntity<>(categoryService.getAll(), HttpStatus.OK);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Category> getById(@PathVariable Long id){
         Optional<Category> categoryFound = Optional.ofNullable(categoryService.getCategoryById(id));
