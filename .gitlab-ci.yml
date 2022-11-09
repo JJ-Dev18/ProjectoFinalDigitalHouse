@@ -26,7 +26,11 @@ deploy-frontend:
     AWS_DEFAULT_REGION: "$AWS_DEFAULT_REGION"
   script:
     - echo "Deploying application. FrontEnd.."
-    - pip install awscli
+    - apt-get update
+    - apt-get upgrade
+    - export TZ=Europe/Paris
+    - ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+    - apt-get install -y awscli
     - aws s3 sync FrontEnd/build/ s3://0521ptc8n2-g07-fronted-v2 --acl public-read
   rules:
   - changes:
