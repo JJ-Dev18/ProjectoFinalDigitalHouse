@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface IProductRepository extends JpaRepository<Product, Long> {
@@ -16,14 +17,4 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
     @Query(value = "select * from products where id_city = :cityId",
             nativeQuery = true)
     List<Product> findByCity (Long cityId);
-
-    @Query(value = "SELECT * FROM products ORDER BY RAND() LIMIT 4;",
-            nativeQuery = true)
-    List<Product> getRandomProducts();
-
-    @Query(value = "SELECT * FROM products LIMIT 4;",
-            nativeQuery = true)
-    List<Product> getRecommendedProducts();
-
-
 }

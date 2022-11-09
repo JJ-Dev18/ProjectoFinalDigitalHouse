@@ -21,16 +21,6 @@ public class ProductController {
     public ResponseEntity<List<Product>> getAllProducts(){
         return new ResponseEntity<>(productService.getAll(), HttpStatus.OK);
     }
-
-    @GetMapping("/random")
-    public ResponseEntity<List<Product>> getRandomProducts(){
-        return new ResponseEntity<>(productService.getRandomProducts(), HttpStatus.OK);
-    }
-
-    @GetMapping("/recommended")
-    public ResponseEntity<List<Product>> getRecommendedProducts(){
-        return new ResponseEntity<>(productService.getRecommendedProducts(), HttpStatus.OK);
-    }
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable Long id){
         Optional<Product> productFound = Optional.ofNullable(productService.getProductById(id));
