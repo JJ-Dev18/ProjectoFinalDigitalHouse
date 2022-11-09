@@ -15,41 +15,44 @@ import baseURL from '../hooks/axiosBase'
 const ProductDetail = ({ modo }) => {
   const params = useParams();
   let url = baseURL + 'products/' + params.productId;
-  const { isLoading, errorMessage, apiData } = useFetch(url);
-  const { width } = useWindowSize();
+  let { isLoading, errorMessage, apiData } = useFetch(url);
+  let { width } = useWindowSize();
 
-  if (isLoading) return (
+  if (!!isLoading) return (
     <div className='product-detail-container'><h2>Cargando...</h2></div>
   )
 
+  if (!!errorMessage) return (
+    <div className='product-detail-container'><p>{errorMessage}</p></div>
+  )
+
   return (
-    <>
-      {errorMessage
-        ? <p>{errorMessage}</p>
-        : <div className='product-detail-container'>
-          <ProductHeader
-            category={apiData.category.title}
-            name={apiData.title}
-            location={apiData.city}
-            rating={apiData.quality} />
-          {
-            width < 1024
-              ? <ProductGallery images={apiData.images} />
-              : <ProductGalleryDesktop images={apiData.images} />
-          }
-          <ProductDescription
-            title={apiData.titleDescription}
-            description={apiData.category.description}
-          />
-          <ProductCharacteristics characteristics={apiData.characteristics} />
-          <ProductReservation />
-          <ProductPolicies
-            normsPolicy={apiData.NormsPolicy}
-            securityPolicy={apiData.SecurityPolicy}
-            cancellationPolicy={apiData.CancellationPolicy}
-          />
-        </div>
-      }
+    <>{!!apiData &&
+      <div className='product-detail-container'>
+        <ProductHeader
+          category={apiData.category.title}
+          name={apiData.title}
+          location={apiData.city}
+          distance={apiData.distance}
+          rating={apiData.quality} />
+        {
+          width > 1024
+            ? <ProductGalleryDesktop images={apiData.images} />
+            : <ProductGallery images={apiData.images} />
+        }
+        <ProductDescription
+          title={apiData.titleDescription}
+          description={apiData.category.description}
+        />
+        <ProductCharacteristics characteristics={apiData.feature} />
+        <ProductReservation />
+        <ProductPolicies
+          normsPolicy={apiData.normPolicy}
+          securityPolicy={apiData.securityPolicy}
+          cancellationPolicy={apiData.cancellationPolity}
+        />
+      </div>
+    }
     </>
   );
 };

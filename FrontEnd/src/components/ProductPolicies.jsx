@@ -11,7 +11,7 @@ const ProductPolicies = ({normsPolicy,securityPolicy,cancellationPolicy}) => {
         <ul className="policies-list">
           <h1>Normas de la casa </h1>
           {normsPolicy.map((prod) => (
-            <li className="policy" key={prod.idPolicy}>
+            <li className="policy" key={prod.idNormPolity}>
               <p>{prod.Description}</p>
             </li>
           ))}
@@ -19,7 +19,7 @@ const ProductPolicies = ({normsPolicy,securityPolicy,cancellationPolicy}) => {
         <ul className="policies-list">
           <h1>Salud y seguridad </h1>
           {securityPolicy.map((prod) => (
-            <li className="policy" key={prod.idPolicy}>
+            <li className="policy" key={prod.idSecurityPolity}>
               <p>{prod.Description}</p>
             </li>
           ))}
@@ -27,7 +27,7 @@ const ProductPolicies = ({normsPolicy,securityPolicy,cancellationPolicy}) => {
         <ul className="policies-list">
           <h1>Política de cancelación </h1>
           {cancellationPolicy.map((prod) => (
-            <li className="policy" key={prod.idPolicy}>
+            <li className="policy" key={prod.idCancellationPolity}>
               <p>{prod.Description}</p>
             </li>
           ))}

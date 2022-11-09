@@ -61,7 +61,7 @@ const Recommended = () => {
                   <p>
                     {product.description} <span>más...</span>
                   </p>
-                  <Link key={index} to={"/product-detail"}> 
+                  <Link key={index} to={"/product-detail/"+1}> 
                   <button className="btn-product">Ver más </button>
                   </Link> 
                 </div>

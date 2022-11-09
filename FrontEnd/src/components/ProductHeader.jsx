@@ -8,7 +8,7 @@ import ProductLocation from './ProductLocation';
 import ProductRating from './ProductRating';
 import './styles/product-header.css';
 
-const ProductHeader = ({ category, name, location, rating }) => {
+const ProductHeader = ({ category, name, location, distance, rating }) => {
   return (
     <div className='product-header-container'>
       <div>
@@ -25,12 +25,12 @@ const ProductHeader = ({ category, name, location, rating }) => {
         </div>
       </div>
       <div>
-        <ProductLocation country={location.country} province={'{provincia}'} city={location.city} distance={'{distancia}'} />
+        <ProductLocation country={location.country} state={location.state} city={location.name} distance={distance} />
         <ProductRating rating={rating} />
       </div>
       <div >
         <button className='back-btn'>
-          <img  src={ShareIcon} alt="share" />
+          <img src={ShareIcon} alt="share" />
         </button>
         <button className='back-btn'>
           <img src={HeartLineIcon} alt="like" />

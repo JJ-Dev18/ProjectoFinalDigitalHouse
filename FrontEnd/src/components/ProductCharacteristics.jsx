@@ -8,8 +8,8 @@ import  './styles/product-characteristics.css'
      <div className="content-characterstics">
        <h1>¿Qué ofrece este lugar?</h1>
        <ul className="characteristics-list">
-         {characteristics.map((charact) => (
-           <li className="characteristic" key={charact.idCharacteristic}>
+         {characteristics.map((charact, i) => (
+           <li key={`charact-${charact.idFeature}`} className="characteristic" >
              <img src={kitchen} alt="" />
              <p>{charact.title}</p>
            </li>
