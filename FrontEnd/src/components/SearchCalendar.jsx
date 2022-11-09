@@ -22,7 +22,6 @@ const SearchCalendar = (props) => {
       const endDateStr   = dates[1].toString().split(' ')[2] + ' de '+ dates[1].toString().split(' ')[1].toLowerCase();
       
       let inputString = '';
-
       startDateStr === endDateStr ? inputString =  startDateStr + '.' : inputString = startDateStr + ' - ' + endDateStr + '.';
       props.setValues("        " + inputString);
       props.clickDateHandler();
