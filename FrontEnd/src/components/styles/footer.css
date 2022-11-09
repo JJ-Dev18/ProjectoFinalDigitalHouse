@@ -1,6 +1,6 @@
 footer {
     height: 58px;
-    width: 100%;
+    width: 100vw;
     background-color: var(--light-blue);
     position: fixed;
     bottom: 0px;
@@ -9,7 +9,6 @@ footer {
     align-items: center;
     justify-content: space-between;
     z-index: 1;
-    padding: 20px;
   }
   
   footer ul {
