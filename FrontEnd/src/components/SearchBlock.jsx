@@ -1,13 +1,9 @@
 import { useState}  from 'react'
 import { FaMapMarkerAlt } from 'react-icons/fa'
 import { IoMdCalendar } from 'react-icons/io'
-// import { BiMap } from 'react-icons/bi'
-// import Cities from '../resources/cities.json'
-import './styles/searchBlock.css'
+import './styles/search-block.css'
 import DropDown from './DropDown'
 import SearchCalendar from './SearchCalendar'
-// import { useGlobalStates } from './Context'
-
 
 
 const SearchBlock = () => {
@@ -21,11 +17,13 @@ const SearchBlock = () => {
 
   const clickCityHandler = () => {
       setDropDown(!dropDown);
+      if (showCalendar) setShowCalendar(!showCalendar);
       console.log(dropDown);
   }
 
   const clickDateHandler = () => {
     setShowCalendar(!showCalendar);
+    if (dropDown) setDropDown(!dropDown);
     console.log(showCalendar);
   }
 
@@ -33,30 +31,54 @@ const SearchBlock = () => {
 
   return (
     <div className="search-block">
-        <h1>Busca ofertas en hoteles, casas y mucho más</h1>
-        <form>
-            <div>
-              <div className="input-container">
-                <div className="input-icon">
-                  <div className="icon"><FaMapMarkerAlt /></div>
-                  <input value={city} className="" id="city" type="text"  onClick={clickCityHandler}  placeholder='          ¿A dónde vamos?'/>
-                </div>
-                <DropDown setValue={setCity} class={`select ${dropDown ? `active` : `inactive` }`}/>
+      <h1>Busca ofertas en hoteles, casas y mucho más</h1>
+      <form>
+        <div>
+          <div className="input-container">
+            <div className="input-icon">
+              <div className="icon">
+                <FaMapMarkerAlt />
               </div>
-            </div>            
-            <div className="input-container">
-              <div className="input-icon">
-                <div className="icon">
-                  <IoMdCalendar />
-                </div>
-                <input value={datesPicked} className="" id="dates" type="text" onClick={clickDateHandler} placeholder='          Check in - Check - out'/>
-              </div>
-              <SearchCalendar setValues={setDatesPicked} class={`select calendar ${showCalendar ? `active` : `inactive` }`} />            
+              <input
+                value={city}
+                className=""
+                id="city"
+                type="text"
+                onClick={clickCityHandler}
+                placeholder="          ¿A dónde vamos?"
+              />
             </div>
-            <button className="form-button">Buscar</button>
-        </form>
+            <DropDown
+              clickCityHandler={clickCityHandler}
+              setValue={setCity}
+              class={`select dropdown ${dropDown ? `active` : `inactive`}`}
+            />
+          </div>
+        </div>
+        <div className="input-container">
+          <div className="input-icon">
+            <div className="icon">
+              <IoMdCalendar />
+            </div>
+            <input
+              value={datesPicked}
+              className=""
+              id="dates"
+              type="text"
+              onClick={clickDateHandler}
+              placeholder="          Check in - Check - out"
+            />
+          </div>
+          <SearchCalendar
+            clickDateHandler={clickDateHandler}
+            setValues={setDatesPicked}
+            class={`select picker ${showCalendar ? `active` : `inactive`}`}
+          />
+        </div>
+        <button className="form-button">Buscar</button>
+      </form>
     </div>
-  )
+  );
 }
 
 export default SearchBlock

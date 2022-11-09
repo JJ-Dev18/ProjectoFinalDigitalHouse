@@ -1,27 +1,38 @@
-.list_categories {
+.list-categories {
   list-style: none;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   position: relative;
-
+  margin: auto;
   
 }
-
-
-.category_block {
+.list-categories li:first-child .categories-title {
+  display: block;
+}
+.category-block {
   background: white;
-  padding: 20px;
+  padding: 20px 0;
   color: #383b58;
   font-weight: 700;
+  margin-top: 30px;
 }
-.categories_title {
+.categories-title {
   /* margin-left : 10px; */
   position: absolute;
-  top:-20px;
+  top: -35px;
   left: 0;
+  display: none;
+  width: 100%;
+
+  /* display: flex; */
+  /* margin-right: auto; */
+  /* margin-left: 310px; */
+}
+.categories-title h2{
+    font-size: 24px !important;
 }
 /* .category_block h2{
   font-size: 24px;
@@ -29,61 +40,69 @@
   margin-left: 10px;
 
 } */
-
-.category_card {
+.content-categories{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+.category-card {
   width:393px;
   height: 312px;
   border-radius: 10px;
   box-shadow: 0px 4px 4px 0px #00000040;
   margin-top: 10px;
   cursor: pointer;
+  position:relative;
   
 
 }
-.category_card img {
+.category-card img {
   border-radius: 10px 10px 0 0;
   /* height: 193px; */
   width: 393px;
   height: 246px;
   
 }
-.info_card_category {
+.info-card-category {
   padding: 11px;
 }
-.category_card h2 {
+.category-card h2 {
   font-size: 20px;
   text-align: left;
   font-weight: 700;
 }
-.category_card p {
+.category-card p {
   opacity: 60%;
   font-size: 14px;
 }
 
 @media screen and (min-width: 768px) {
-  .list_categories {
+  .list-categories {
     flex-direction: row;
-    justify-content: center;
+    /* justify-content: center; */
   }
-  .category_card{
+  .category-card{
     width: 310px;
     height: 246px;
     margin-right: 10px;
   }
-  .category_card img{
+  .category-card img{
     width: 310px;
     height:183px ;
   }
+  .categories-title{
+    width: 420px;
+  }
+  
 }
 
 @media screen and (min-width: 1060px) {
-.category_card{
-
-/* height: 312.3038635253906px;
-width: 392px;
-border-radius: 10px; */
-
-}
+.categories-title{
+    left: 0;
+    /* width: 100vw; */
+  }
 
 
 }
