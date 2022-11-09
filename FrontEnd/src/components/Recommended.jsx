@@ -78,11 +78,10 @@ const Recommended = ({products}) => {
                       <img src={swim} alt="" className="swim" />
                     </div>
                   </div>
-
                   <p>
                     {product.description} <span>más...</span>
                   </p>
-                  <Link key={index} to={"/product-detail"}>
+                  <Link key={index} to={`/product-detail/${product.idProduct}`}>
                     <button className="btn-product">Ver más </button>
                   </Link>
                 </div>
