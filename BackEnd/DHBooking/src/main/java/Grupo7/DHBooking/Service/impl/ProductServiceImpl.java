@@ -31,6 +31,17 @@ public class ProductServiceImpl implements IProductService {
     public Product updateProduct(Product product) {
         return productRepository.save(product);
     }
+
+    @Override
+    public List<Product> getByCategory(Long categoryId) {
+        return productRepository.findByCategory(categoryId);
+    }
+
+    @Override
+    public List<Product> getByCity(Long cityId) {
+        return productRepository.findByCity(cityId);
+    }
+
     @Override
     public void deleteProduct(Long idProduct) {
         productRepository.deleteById(idProduct);
