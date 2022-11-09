@@ -1,28 +1,33 @@
 stages:
 - build
-- test
 - deploy
 
 build-frontend:
   stage: build
+  image: node:latest
   script:
   - echo "Compiling the code..."
-  rules:
-  - changes:
-    - FrontEnd/**/*
-
-test-frontend:
-  stage: test
-  script:
-  - echo "Running unit tests..."
-  rules:
+  - cd FrontEnd
+  - npm install --force
+  - CI=false npm run build
+  artifacts:
+    paths:
+      - FrontEnd/build 
+rules:
   - changes:
     - FrontEnd/**/*
 
 deploy-frontend:
   stage: deploy
+  image: python:latest
+  variables:
+    AWS_ACCESS_KEY_ID: "$AWS_ACCESS_KEY_ID"
+    AWS_SECRET_ACCESS_KEY: "$AWS_SECRET_ACCESS_KEY"
+    AWS_DEFAULT_REGION: "$AWS_DEFAULT_REGION"
   script:
   - echo "Deploying application. FrontEnd.."
+  - pip install awscli
+  - aws s3 sync build/ s3://0521ptc8n2-g07-fronted-v2 --acl public-read
   rules:
   - changes:
     - FrontEnd/**/*
