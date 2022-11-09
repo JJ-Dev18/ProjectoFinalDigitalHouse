@@ -30,6 +30,28 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/idCategory")
+    public ResponseEntity<List<Product>> getByCategory(@RequestParam(required = false) Long idCategory){
+        Optional<List<Product>> productCategory = Optional.ofNullable(productService
+                .getByCategory(idCategory));
+        if (productCategory.isPresent() && !productCategory.get().isEmpty()){
+            return new ResponseEntity<>(productCategory.get(), HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/idCity")
+    public ResponseEntity<List<Product>> getByCity(@RequestParam(required = false) Long idCity){
+        Optional<List<Product>> productCity = Optional.ofNullable(productService
+                .getByCity(idCity));
+        if (productCity.isPresent() && !productCity.get().isEmpty()){
+            return new ResponseEntity<>(productCity.get(), HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
     @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody Product product){
         return new ResponseEntity<>(productService.createProduct(product), HttpStatus.CREATED);
