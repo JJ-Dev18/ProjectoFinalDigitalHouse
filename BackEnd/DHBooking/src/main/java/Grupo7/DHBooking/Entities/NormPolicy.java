@@ -4,6 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
@@ -24,6 +27,8 @@ public class NormPolicy {
     @Column
     private String description;
 
-    @ManyToMany(mappedBy = "normPolicy")
+    @JsonBackReference
+    @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
+    @ManyToMany(mappedBy = "normPolicy",fetch=FetchType.LAZY)
     private List<Product> productList;
 }
