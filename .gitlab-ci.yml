@@ -27,7 +27,7 @@ deploy-frontend:
   script:
     - echo "Deploying application. FrontEnd.."
     - pip install awscli
-    - aws s3 sync build/ s3://0521ptc8n2-g07-fronted-v2 --acl public-read
+    - aws s3 sync FrontEnd/build/ s3://0521ptc8n2-g07-fronted-v2 --acl public-read
   rules:
   - changes:
     - FrontEnd/**/*
