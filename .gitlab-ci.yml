@@ -13,9 +13,9 @@ build-frontend:
   artifacts:
     paths:
       - FrontEnd/build 
-rules:
-  - changes:
-    - FrontEnd/**/*
+  rules:
+    - changes:
+      - FrontEnd/**/*
 
 deploy-frontend:
   stage: deploy
@@ -25,9 +25,9 @@ deploy-frontend:
     AWS_SECRET_ACCESS_KEY: "$AWS_SECRET_ACCESS_KEY"
     AWS_DEFAULT_REGION: "$AWS_DEFAULT_REGION"
   script:
-  - echo "Deploying application. FrontEnd.."
-  - pip install awscli
-  - aws s3 sync build/ s3://0521ptc8n2-g07-fronted-v2 --acl public-read
+    - echo "Deploying application. FrontEnd.."
+    - pip install awscli
+    - aws s3 sync build/ s3://0521ptc8n2-g07-fronted-v2 --acl public-read
   rules:
   - changes:
     - FrontEnd/**/*
