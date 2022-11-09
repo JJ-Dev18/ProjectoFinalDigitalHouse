@@ -9,58 +9,46 @@ import ProductPolicies from "./ProductPolicies";
 import ProductReservation from "./ProductReservation";
 import ProductDescription from "./ProductDescription";
 import useWindowSize from "../utils/useWindowSize";
+import useFetch from '../hooks/useFetch'
+import baseURL from '../hooks/axiosBase'
 
-async function fetchProductDetail(id) {
-  // return await fetch(`API/${id}`).then(data => data.json());
-  return await import('../resources/products.json').then(data => data[0]);
-}
-
-const ProductDetail = () => {
+const ProductDetail = ({ modo }) => {
   const params = useParams();
-  const [product, setProduct] = useState(null);
+  let url = baseURL + 'products/' + params.productId;
+  const { isLoading, errorMessage, apiData } = useFetch(url);
   const { width } = useWindowSize();
 
-  useEffect(
-    () => {
-      try {
-        fetchProductDetail(params.productId)
-          .then(item => {
-            setProduct(item);
-          })
-      } catch (err) {
-        console.error('Error occured when fetching product detail');
-      }
-    }
-    , [params.productId]);
+  if (isLoading) return (
+    <div className='product-detail-container'><h2>Cargando...</h2></div>
+  )
 
   return (
     <>
-      {
-        product == null
-          ? <div className='product-detail-container'><h2>Cargando...</h2></div>
-          : <div className='product-detail-container'>
-            <ProductHeader
-              category={product.category.title}
-              name={product.title}
-              location={product.city}
-              rating={product.quality} />
-            {
-              width < 1024
-                ? <ProductGallery images={product.images} />
-                : <ProductGalleryDesktop images={product.images} />
-            }
-            <ProductDescription
-              title={product.titleDescription}
-              description={product.category.description}
-            />
-            <ProductCharacteristics characteristics={product.characteristics} />
-            <ProductReservation />
-            <ProductPolicies
-              normsPolicy={product.NormsPolicy}
-              securityPolicy={product.SecurityPolicy}
-              cancellationPolicy={product.CancellationPolicy}
-            />
-          </div>
+      {errorMessage
+        ? <p>{errorMessage}</p>
+        : <div className='product-detail-container'>
+          <ProductHeader
+            category={apiData.category.title}
+            name={apiData.title}
+            location={apiData.city}
+            rating={apiData.quality} />
+          {
+            width < 1024
+              ? <ProductGallery images={apiData.images} />
+              : <ProductGalleryDesktop images={apiData.images} />
+          }
+          <ProductDescription
+            title={apiData.titleDescription}
+            description={apiData.category.description}
+          />
+          <ProductCharacteristics characteristics={apiData.characteristics} />
+          <ProductReservation />
+          <ProductPolicies
+            normsPolicy={apiData.NormsPolicy}
+            securityPolicy={apiData.SecurityPolicy}
+            cancellationPolicy={apiData.CancellationPolicy}
+          />
+        </div>
       }
     </>
   );
