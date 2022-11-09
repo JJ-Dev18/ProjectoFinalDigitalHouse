@@ -14,9 +14,9 @@
     align-items: center;
     justify-content: center;
     background-color: var(--semi-dark-gray);
-    width: 100vw;
+    width: 100%;
+    padding: 22px;
 } 
-
 
 .search-block form {
     display: flex;
@@ -32,6 +32,7 @@
     padding-right: 9px;
     width: calc(100vw - 18px);
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .search-block form input {
@@ -42,6 +43,7 @@
     font-weight: 500;
     color: var(--disabled-input-text);
     margin-bottom: 9px;
+    cursor: pointer;
 }
 
 .search-block .form-button {
@@ -53,12 +55,8 @@
     background-color: var(--light-blue);
     color: var(--white);
     border-width: 0px;
+    cursor: pointer;
 }
-
-/* .search-input {
-    display: flex;
-    flex-direction: row;
-}*/
 
 .input-container {
     position: relative;
@@ -78,20 +76,17 @@
     font-size: 20px;
 }
 
-
 .select {
-    background-color: var(--white);
-    width: 395px;
-    height: 254px;
-    color: var(--semi-dark-gray);
     display: none;
     z-index:500;
     position: absolute;
     top: var(--input-height-sm + 10px);
     overflow: scroll;
-    border-radius: 0px 0px 5px 5px;
-    border: 1px solid #F3F1ED;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 1000px;
+}
+
+.select::-webkit-scrollbar{
+    display: none;
 }
 
 .select.active {
@@ -128,6 +123,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 .option-icon {
@@ -165,27 +161,29 @@
 
 
 @media screen and (min-width: 768px) {
-
+    
     .search-block form {
         flex-direction: row;
         width: 100vw;
-        justify-content: center;
-        align-items: center;
+    }
+
+    .search-block h1{
+        margin-bottom: 23px;
     }
 
     .search-block form input {
         width: var(--input-width-md);
         height: 40px;
-        margin-bottom: 0px;
     }
 
     .search-block form button {
-        width: var(--button-width-md);
-        height: var(--button-height-md);
+        width: var(--button-width-md) !important;
+        height: var(--button-height-md) !important;
+        margin-left: 10px;
     }
 
     .input-icon {
-        width: var(--input-width-md);
+        width: var(--input-width-md) ;
         position: relative;
     }
 
@@ -195,14 +193,20 @@
         left: 30px;
     }
    
+    .select.picker {
+        left: -254px;
+    }
+
 }
 
-@media screen and (min-width: 1060px) {
 
+
+@media screen and (min-width: 1060px) {
+    
     .search-block form input {
         width: 422px;
         height: 40px;
-        margin-bottom: 0px;
+      
     }
 
     .search-block form button {
@@ -219,6 +223,10 @@
         position: relative;
         top: 0px;
         left: 30px;
+    }
+
+    .select.picker {
+        left: -100px;
     }
    
 }

@@ -2,37 +2,17 @@ stages:
 - build
 - deploy
 
-build-backend:
+build-frontend:
   stage: build
-  image: maven:latest
+  image: node:latest
   script:
   - echo "Compiling the code..."
-  - cd BackEnd/DHBooking
-  - mvn compile install
+  - cd FrontEnd
+  - npm install --force
+  - CI=false npm run build
   artifacts:
     paths:
-      - BackEnd/DHBooking/target/*.jar
+      - FrontEnd/build 
   rules:
-  - changes:
-    - BackEnd/**/*
-
-deploy-backend:
-  stage: deploy
-  image: alpine:3.11
-  script:
-    - echo "Deploying application. backend.."
-    - apk update && apk add openssh-client bash 
-    - mkdir -p ~/.ssh 
-    - eval $(ssh-agent -s) 
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null 
-    - touch ~/.ssh/config 
-    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config 
-    - ssh-keyscan -H ec2-52-14-228-70.us-east-2.compute.amazonaws.com >> ~/.ssh/known_hosts
-    - scp BackEnd/DHBooking/target/*.jar ubuntu@ec2-52-14-228-70.us-east-2.compute.amazonaws.com:~/.
-    - ssh -t ubuntu@ec2-52-14-228-70.us-east-2.compute.amazonaws.com sudo systemctl daemon-reload
-    - ssh -t ubuntu@ec2-52-14-228-70.us-east-2.compute.amazonaws.com sudo systemctl restart sbapp
-    - ssh -t ubuntu@ec2-52-14-228-70.us-east-2.compute.amazonaws.com sudo systemctl status sbapp
-    - echo "Application OK..."
-  rules:
-  - changes:
-    - BackEnd/**/*
+    - changes:
+      - FrontEnd/**/*
