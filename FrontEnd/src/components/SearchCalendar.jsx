@@ -8,7 +8,7 @@ const SearchCalendar = (props) => {
  
   const windowWidth = window.innerWidth
    
-  const [startDate, setStartDate] = useState(null);
+  const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState(null);
 
 
@@ -24,7 +24,10 @@ const SearchCalendar = (props) => {
       let inputString = '';
       startDateStr === endDateStr ? inputString =  startDateStr + '.' : inputString = startDateStr + ' - ' + endDateStr + '.';
       props.setValues("        " + inputString);
-      //props.clickDateHandler();
+      props.clickDateHandler();
+
+      setStartDate(null);
+      setEndDate(null);
   }
 
   return (
@@ -39,7 +42,7 @@ const SearchCalendar = (props) => {
         selectsRange
         formatWeekDay={dayName => dayName.slice(0, 1).toUpperCase()}
         local={"es"}
-        minDate={new Date()}>
+        >
         <div className='calendar-footer'>
           <button className='calendar-button' >Aplicar</button>
         </div>
