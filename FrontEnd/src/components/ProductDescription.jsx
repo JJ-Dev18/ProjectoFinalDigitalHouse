@@ -1,17 +1,17 @@
 import React from 'react'
 import "./styles/product-description.css";
 
- const ProductDescription = ({title,description}) => {
+const ProductDescription = ({ title, description }) => {
   return (
-  <div className='content-description'>
-    <h1>
-     {title}
-    </h1>
-    <p>
-      {description}
-    </p>
+    <div className='content-description'>
+      <h1>
+        {title}
+      </h1>
+      <p>
+        {description}
+      </p>
     </div>
-    );
+  );
 }
 
 

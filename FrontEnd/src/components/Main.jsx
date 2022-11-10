@@ -26,9 +26,15 @@ const Main = (props) => {
     url: Auth() ? "/products/recommended" : "/products/random",
   });
 
+  useEffect(() => {
+    setproducts(productsApi)
+  }, []);
+
+
    useEffect(() => {
     getProductsByCategory(categorySelected).then(({data}) => setproducts(data))
   }, [categorySelected]);
+
 
    useEffect(() => {
      getProductsByCity(city).then(({ data }) =>
@@ -46,7 +52,7 @@ const Main = (props) => {
         <h1>Loading ....</h1>
       )}
       {!isLoadingProducts ? (
-        <Recommended products={productsApi} />
+        <Recommended products={products} />
       ) : (
         <h1>Loading ....</h1>
       )}

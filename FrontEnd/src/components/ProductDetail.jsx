@@ -9,59 +9,49 @@ import ProductPolicies from "./ProductPolicies";
 import ProductReservation from "./ProductReservation";
 import ProductDescription from "./ProductDescription";
 import useWindowSize from "../utils/useWindowSize";
+import useFetch from '../hooks/useFetch'
 
-async function fetchProductDetail(id) {
-  // return await fetch(`API/${id}`).then(data => data.json());
-  return await import('../resources/products.json').then(data => data[0]);
-}
-
-const ProductDetail = () => {
+const ProductDetail = ({ modo }) => {
   const params = useParams();
-  const [product, setProduct] = useState(null);
-  const { width } = useWindowSize();
+  let { isLoading, error, response } = useFetch({ url: 'products/' + params.productId });
+  let { width } = useWindowSize();
 
-  useEffect(
-    () => {
-      try {
-        fetchProductDetail(params.productId)
-          .then(item => {
-            setProduct(item);
-          })
-      } catch (err) {
-        console.error('Error occured when fetching product detail');
-      }
-    }
-    , [params.productId]);
+  if (!!isLoading) return (
+    <div className='product-detail-container'><h2>Cargando...</h2></div>
+  )
+
+  if (!!error) return (
+    <div className='product-detail-container'><p>{error}</p></div>
+  )
 
   return (
-    <>
-      {
-        product == null
-          ? <div className='product-detail-container'><h2>Cargando...</h2></div>
-          : <div className='product-detail-container'>
-            <ProductHeader
-              category={product.category.title}
-              name={product.title}
-              location={product.city}
-              rating={product.quality} />
-            {
-              width < 1024
-                ? <ProductGallery images={product.images} />
-                : <ProductGalleryDesktop images={product.images} />
-            }
-            <ProductDescription
-              title={product.titleDescription}
-              description={product.category.description}
-            />
-            <ProductCharacteristics characteristics={product.characteristics} />
-            <ProductReservation />
-            <ProductPolicies
-              normsPolicy={product.NormsPolicy}
-              securityPolicy={product.SecurityPolicy}
-              cancellationPolicy={product.CancellationPolicy}
-            />
-          </div>
-      }
+    <>{!!response &&
+      <div className='product-detail-container'>
+      
+        <ProductHeader
+          category={response.category.title}
+          name={response.title}
+          location={response.city}
+          distance={response.distance}
+          rating={response.quality} />
+        {
+          width > 1024
+            ? <ProductGalleryDesktop images={response.images} />
+            : <ProductGallery images={response.images} />
+        }
+        <ProductDescription
+          title={response.titleDescription}
+          description={response.description}
+        />
+        <ProductCharacteristics characteristics={response.feature} />
+        <ProductReservation />
+        <ProductPolicies
+          normsPolicy={response.normPolicy}
+          securityPolicy={response.securityPolicy}
+          cancellationPolicy={response.cancellationPolity}
+        />
+      </div>
+    }
     </>
   );
 };

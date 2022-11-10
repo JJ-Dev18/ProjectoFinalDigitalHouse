@@ -26,7 +26,7 @@ const Header = () => {
         localStorage.removeItem('logged')
         window.location.href = "/"
     }
-    console.log(Auth());
+
     let registeredUser = JSON.parse(localStorage.getItem('user'))
     return (
 

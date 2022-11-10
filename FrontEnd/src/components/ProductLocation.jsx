@@ -1,16 +1,23 @@
 import React from 'react'
 import './styles/product-location.css';
 import PinIcon from '../resources/gps.svg';
+import useWindowSize from '../utils/useWindowSize';
 
-const ProductLocation = ({ city, province, country, distance }) => {
+const ProductLocation = ({ state, city, country, distance }) => {
+  let { width } = useWindowSize();
+
   return (
     <div className='product-location-container'>
       <img className='pin-icon' src={PinIcon} alt="Pin Icon" />
       <div className='product-location'>
-        <span>{province}, </span>
+        <span>{state}, </span>
         <span>{city}, </span>
         <span>{country}. </span>
-        {false && <div>{distance}</div>}
+        {
+          width > 768
+            ? <div>A {distance} m del centro.</div>
+            : ''
+        }
       </div>
     </div>
   )

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+import baseURL, { backendApi } from "./axiosBase";
 
 export default function useFetch({
-  api,
-  method,
+  api = backendApi,
+  method = 'get',
   url,
   data = null,
   config = null,
