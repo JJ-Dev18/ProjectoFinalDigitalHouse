@@ -69,6 +69,20 @@
   border-radius: 50%;
 }
 
+.calendar-footer {
+  width: 100%;
+  text-align: center;
+}
+
+.calendar-button {
+  width: 90%;
+  height: 40px;
+  background-color: var(--light-blue);
+  border-radius: 5px;
+  color: var(--white);
+  border: none;
+  margin-bottom: 5px;
+}
 
 @media screen and (min-width: 768px) {
   .react-datepicker__navigation--previous {
@@ -80,6 +94,33 @@
     right: -50px;
     top: 16px;
   }
+
+  .calendar-footer {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+@media screen and (min-width: 1366px) {
+  .react-datepicker__navigation--previous {
+    left: -50px;
+    top: 16px;
+  }
   
-  
+  .react-datepicker__navigation--next {
+    right: -50px;
+    top: 16px;
+  }
+
+  .calendar-footer {
+    width: 100%;
+    text-align: end;
+  }
+
+  .calendar-button {
+    width: 40%;
+    margin-right: 10px;
+  }
+
 }
