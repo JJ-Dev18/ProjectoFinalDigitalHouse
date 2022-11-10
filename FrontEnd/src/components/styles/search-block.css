@@ -80,7 +80,7 @@
     display: none;
     z-index:500;
     position: absolute;
-    top: var(--input-height-sm + 10px);
+    top: 52px;
     overflow: scroll;
     width: 290px;
 }
