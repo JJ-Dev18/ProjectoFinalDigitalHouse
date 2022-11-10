@@ -1,34 +1,39 @@
-import { useRef } from 'react'
 import { BiMap } from 'react-icons/bi'
 import Cities from '../resources/cities.json'
 import './styles/search-dropdown.css'
 import useFetch from '../hooks/useFetch'
+import { backendApi } from "../hooks/axiosBase";
 
 const DropDown = (props) => {
 
-  const onClickHandler = (e, key) => {
+  const onClickHandler = (e,key) => {
     const inputStr = Cities[key - 1].city + ', ' + Cities[key - 1].country
     console.log(inputStr);
     props.setValue("      " + inputStr);
     props.clickCityHandler()
   }
 
-  const { isLoading, error, response } = useFetch({ url: 'cities' });
+const DropDown = (props) => {
+  
+    const { response: cities, isLoading } = useFetch({
+        api: backendApi,
+        method: "get",
+        url: "/cities",
+    });
 
-  console.log('respuesta ', response);
+    const onClickHandler = (e , key) => {
+        const inputStr = Cities[key-1].city + ', ' + Cities[key-1].country
+        console.log(inputStr);
+        props.setValue("      " + inputStr); 
+        props.clickCityHandler()
+    }
 
-
-  if (isLoading) return <p>Loading data...</p>
-  if (error) return <p>{error}</p>
-
-  return (
+    return (
     <div className={props.class}>
-      <ul>
-
-        {!!response &&
-          response.map(item => (
-            <div onClick={event => onClickHandler(event, item.idCity)} key={item.idCity} className="option">
-              <li>
+        <ul>
+        {isLoading ? <p>...Cargando Ciudades</p> : cities.map( item => (
+            <div onClick={ event => onClickHandler(event, item.idCity)} key={item.idCity} className="option">
+            <li>
                 <div className="option-icon">
                   <BiMap />
                 </div>
@@ -43,6 +48,7 @@ const DropDown = (props) => {
       </ul>
     </div>
   )
+}
 }
 
 export default DropDown

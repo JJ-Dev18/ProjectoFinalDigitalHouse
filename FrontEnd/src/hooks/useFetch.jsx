@@ -5,7 +5,6 @@ export default function useFetch({
   api = backendApi,
   method = 'get',
   url,
-  base = baseURL,
   data = null,
   config = null,
 }) {
@@ -16,7 +15,7 @@ export default function useFetch({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        api[method](base + url, JSON.parse(config), JSON.parse(data))
+        api[method](url, JSON.parse(config), JSON.parse(data))
           .then((res) => {
             setResponse(res.data);
           })

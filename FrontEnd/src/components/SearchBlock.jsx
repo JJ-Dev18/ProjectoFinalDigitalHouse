@@ -6,12 +6,12 @@ import DropDown from './DropDown'
 import SearchCalendar from './SearchCalendar'
 
 
-const SearchBlock = () => {
+const SearchBlock = ({city,setCity}) => {
 
   const [dropDown, setDropDown] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
   
-  const [city, setCity] = useState("");
+  
   const [datesPicked, setDatesPicked] = useState("");
 
 
