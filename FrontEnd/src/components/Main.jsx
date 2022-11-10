@@ -22,24 +22,30 @@ const Main = (props) => {
   const { response: productsApi, isLoading: isLoadingProducts } = useFetch({
     api: backendApi,
     method: "get",
-    // url: Auth() ? "/products" : "/products"
     url: Auth() ? "/products/recommended" : "/products/random",
   });
-
+  
   useEffect(() => {
-    setproducts(productsApi)
-  }, []);
-
+    if (!isLoadingProducts) {
+      setproducts([...productsApi]);
+    }
+  }, [isLoadingProducts]);
+  
+  console.log(products)
 
    useEffect(() => {
-    getProductsByCategory(categorySelected).then(({data}) => setproducts(data))
+    if(categorySelected != 0){
+      getProductsByCategory(categorySelected).then(({data}) => setproducts(data))
+    }
   }, [categorySelected]);
 
 
    useEffect(() => {
-     getProductsByCity(city).then(({ data }) =>
-       setproducts(data)
-     );
+    if(city != ""){
+      getProductsByCity(city).then(({ data }) =>
+        setproducts(data)
+      );
+    }
    }, [city]);
 
 
