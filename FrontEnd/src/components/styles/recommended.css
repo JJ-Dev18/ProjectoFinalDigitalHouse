@@ -122,7 +122,6 @@
 .info-producto p {
   color: var(--dark-gray);
 }
-
 .info-producto h4 {
   opacity: 50%;
   margin-right: 10px;
@@ -134,16 +133,9 @@
   justify-content: space-between;
   height: 100%;
 }
-
 .detail-producto p {
   font-size: 14px;
 }
-
-.detail-producto .description-product {
-  height: 52px;
-  overflow: hidden;
-}
-
 .detail-producto span {
   color: var(--light-blue);
 }
@@ -160,11 +152,9 @@
   cursor: pointer;
 }
 
-.card-product-container {
-  height: 283px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+.detail-producto .description-product {
+  height: 52px;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 768px) {
