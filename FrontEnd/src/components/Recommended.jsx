@@ -78,7 +78,7 @@ const Recommended = ({products}) => {
                       <img src={swim} alt="" className="swim" />
                     </div>
                   </div>
-                  <p>
+                  <p className="description-product">
                     {product.description} <span>más...</span>
                   </p>
                   <Link key={index} to={`/product-detail/${product.idProduct}`}>

@@ -152,6 +152,11 @@
   cursor: pointer;
 }
 
+.detail-producto .description-product {
+  height: 52px;
+  overflow: hidden;
+}
+
 @media screen and (min-width: 768px) {
   .list-recommended {
     flex-direction: row;
