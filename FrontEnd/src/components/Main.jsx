@@ -33,14 +33,14 @@ const Main = (props) => {
   
   console.log(products)
 
-   useEffect(() => {
+  useEffect(() => {
     if(categorySelected != 0){
       getProductsByCategory(categorySelected).then(({data}) => setproducts(data))
     }
   }, [categorySelected]);
 
 
-   useEffect(() => {
+  useEffect(() => {
     if(city != ""){
       getProductsByCity(city).then(({ data }) =>
         setproducts(data)

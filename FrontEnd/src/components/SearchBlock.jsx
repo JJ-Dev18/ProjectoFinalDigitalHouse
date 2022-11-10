@@ -11,9 +11,10 @@ const SearchBlock = ({city,setCity}) => {
   const [dropDown, setDropDown] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
   
-  
+
   const [datesPicked, setDatesPicked] = useState("");
 
+  const [cityInput, setCityInput] = useState("");
 
   const clickCityHandler = () => {
       setDropDown(!dropDown);
@@ -40,7 +41,7 @@ const SearchBlock = ({city,setCity}) => {
                 <FaMapMarkerAlt />
               </div>
               <input
-                value={city}
+                value={cityInput}
                 className=""
                 id="city"
                 type="text"
@@ -50,7 +51,8 @@ const SearchBlock = ({city,setCity}) => {
             </div>
             <DropDown
               clickCityHandler={clickCityHandler}
-              setValue={setCity}
+              setCity={setCity}
+              setCityInput={setCityInput}
               class={`select dropdown ${dropDown ? `active` : `inactive`}`}
             />
           </div>

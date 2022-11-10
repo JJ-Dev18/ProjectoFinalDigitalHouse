@@ -104,9 +104,12 @@
     z-index:500;
 }
 
+
 .select ul {
     z-index:500;
     position: relative;
+    height: 100%;
+    overflow: scroll;
 }
 
 .select ul li {
@@ -193,7 +196,7 @@
     }
    
     .select.picker {
-        left: -354px;
+        left: -254px;
     }
 
 }
