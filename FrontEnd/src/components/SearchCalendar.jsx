@@ -13,22 +13,35 @@ const SearchCalendar = (props) => {
 
 
   const onDateChange = (dates) => {
-
       const [start, end] = dates;
       setStartDate(start);
       setEndDate(end);
-
-      const startDateStr = dates[0].toString().split(' ')[2] + ' de '+ dates[0].toString().split(' ')[1].toLowerCase();
-      const endDateStr   = dates[1].toString().split(' ')[2] + ' de '+ dates[1].toString().split(' ')[1].toLowerCase();
-      
-      let inputString = '';
-      startDateStr === endDateStr ? inputString =  startDateStr + '.' : inputString = startDateStr + ' - ' + endDateStr + '.';
-      props.setValues("        " + inputString);
-      props.clickDateHandler();
-
-      setStartDate(null);
-      setEndDate(null);
   }
+      //     const startDateStr = dates[0].toString().split(' ')[2] + ' de '+ dates[0].toString().split(' ')[1].toLowerCase();
+  //     const endDateStr   = dates[1].toString().split(' ')[2] + ' de '+ dates[1].toString().split(' ')[1].toLowerCase();
+  //     let inputString = '';
+  //     startDateStr === endDateStr ? inputString =  startDateStr + '.' : inputString = startDateStr + ' - ' + endDateStr + '.';
+  //     props.setValues("        " + inputString);
+  //     props.clickDateHandler();
+  //     setStartDate(null);
+  //     setEndDate(null);
+  // }
+  
+
+  const onClik = (e, startDate,endDate) => {
+    e.preventDefault();
+    console.log('hola')
+    console.log(startDate, endDate)
+    const startDateStr = startDate.toString().split(' ')[2] + ' de '+ startDate.toString().split(' ')[1].toLowerCase();
+    const endDateStr   = endDate.toString().split(' ')[2] + ' de '+ endDate.toString().split(' ')[1].toLowerCase();
+    let inputString = '';
+    startDateStr === endDateStr ? inputString =  startDateStr + '.' : inputString = startDateStr + ' - ' + endDateStr + '.';
+    props.setValues("        " + inputString);
+    props.clickDateHandler();
+    setStartDate(null);
+    setEndDate(null);
+  }
+
 
   return (
     <div className={props.class}>
@@ -44,7 +57,7 @@ const SearchCalendar = (props) => {
         local={"es"}
         >
         <div className='calendar-footer'>
-          <button className='calendar-button' >Aplicar</button>
+          <button className='calendar-button'  onClick={ e => onClik(e, startDate, endDate)}>Aplicar</button>
         </div>
         </DatePicker>  
     </div>
