@@ -25,7 +25,7 @@ class Register extends React.Component {
             }
             this.setState({ user })
             localStorage.setItem('user', JSON.stringify(user))
-            window.location.href = "/login"
+            window.location.href = "/"
         }else{
             console.log(this.error)
             this.setState({
