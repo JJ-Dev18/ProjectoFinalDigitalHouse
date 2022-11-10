@@ -82,7 +82,7 @@
     position: absolute;
     top: var(--input-height-sm + 10px);
     overflow: scroll;
-    width: 1000px;
+    width: 290px;
 }
 
 .select::-webkit-scrollbar{
@@ -178,7 +178,7 @@
         height: 40px;
     }
 
-    .search-block form button {
+    .search-block .form-button {
         width: var(--button-width-md) !important;
         height: var(--button-height-md) !important;
         margin-left: 10px;
@@ -194,7 +194,11 @@
         top: 0px;
         left: 30px;
     }
-   
+
+    .select {
+        width: 650px;
+    }
+
     .select.picker {
         left: -254px;
     }
@@ -211,7 +215,7 @@
       
     }
 
-    .search-block form button {
+    .search-block .form-button {
         width: 422px;
         height: var(--button-height-md);
     }
@@ -225,6 +229,10 @@
         position: relative;
         top: 0px;
         left: 30px;
+    }
+
+    .select {
+        width: 770px;
     }
 
     .select.picker {

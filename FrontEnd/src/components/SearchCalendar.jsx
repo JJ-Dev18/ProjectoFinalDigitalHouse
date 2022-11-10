@@ -39,8 +39,11 @@ const SearchCalendar = (props) => {
         selectsRange
         formatWeekDay={dayName => dayName.slice(0, 1).toUpperCase()}
         local={"es"}
-        minDate={new Date()}
-      />
+        minDate={new Date()}>
+        <div className='calendar-footer'>
+          <button className='calendar-button'>Aplicar</button>
+        </div>
+        </DatePicker>  
     </div>
   );
 }
