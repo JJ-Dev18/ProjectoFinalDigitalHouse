@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useState } from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,8 +8,7 @@ import './styles/search-calendar.css'
 const SearchCalendar = (props) => {
  
   const windowWidth = window.innerWidth
-   
-  const [startDate, setStartDate] = useState(null);
+  const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
 
 
@@ -24,22 +24,25 @@ const SearchCalendar = (props) => {
       let inputString = '';
       startDateStr === endDateStr ? inputString =  startDateStr + '.' : inputString = startDateStr + ' - ' + endDateStr + '.';
       props.setValues("        " + inputString);
-      //props.clickDateHandler();
+      props.clickDateHandler();
+
+      setStartDate(null);
+      setEndDate(null);
   }
 
   return (
     <div className={props.class}>
-      <DatePicker 
-        inline
-        className='picker'
+      <DatePicker
+        selected={startDate}
         onChange={onDateChange}
-        monthsShown={windowWidth<768 ? 1 : 2}
         startDate={startDate}
         endDate={endDate}
-        selectsRange
+        selectsRange 
+        inline
+        monthsShown={windowWidth<768 ? 1 : 2}
         formatWeekDay={dayName => dayName.slice(0, 1).toUpperCase()}
         local={"es"}
-        minDate={new Date()}>
+        >
         <div className='calendar-footer'>
           <button className='calendar-button' >Aplicar</button>
         </div>
