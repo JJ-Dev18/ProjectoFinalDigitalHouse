@@ -85,19 +85,17 @@
     }
 
     .react-datepicker__navigation--previous {
-        left: 50px;
-        top: 16px;
-      }
-      
-      .react-datepicker__navigation--next {
-        right: 50px;
-        top: 16px;
-      }
+        left: 15px;
+    }
 
+    .react-datepicker__navigation--next {
+        right: 15px;
+    }
 }
 
 
 @media screen and (min-width: 1060px) {
+ 
     .reservation-body {
         width: 100vw;
         display: flex;
@@ -139,14 +137,35 @@
         font-weight: 700;
         font-size: 12px;
         line-height: 40px;
-      }
+    }
       
-       .react-datepicker__day {
+    .react-datepicker__day {
         width: 40px;
         margin: 5px 5px;
         font-size: 12px;
         line-height: 40px;
         text-align: center;
-      }
+    }
+
+    .react-datepicker__month-container {
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+
+    .react-datepicker__navigation--previous {
+        left: 10px;
+        top: 180px;
+        background-color: var(--light-blue);
+        border-radius: 50%;
+        color: var(--white);
+    }
+      
+    .react-datepicker__navigation--next {
+        right: 10px;
+        top: 180px;
+        background-color: var(--light-blue);
+        border-radius: 50%;
+        color: var(--white);
+    }
     
 }
