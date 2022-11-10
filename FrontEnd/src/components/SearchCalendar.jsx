@@ -24,7 +24,7 @@ const SearchCalendar = (props) => {
       let inputString = '';
       startDateStr === endDateStr ? inputString =  startDateStr + '.' : inputString = startDateStr + ' - ' + endDateStr + '.';
       props.setValues("        " + inputString);
-      props.clickDateHandler();
+      //props.clickDateHandler();
   }
 
   return (
@@ -41,7 +41,7 @@ const SearchCalendar = (props) => {
         local={"es"}
         minDate={new Date()}>
         <div className='calendar-footer'>
-          <button className='calendar-button'>Aplicar</button>
+          <button className='calendar-button' >Aplicar</button>
         </div>
         </DatePicker>  
     </div>
