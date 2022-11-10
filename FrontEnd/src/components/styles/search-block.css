@@ -107,6 +107,7 @@
 .select ul {
     z-index:500;
     position: relative;
+    overflow: scroll;
 }
 
 .select ul li {

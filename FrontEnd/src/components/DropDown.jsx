@@ -4,14 +4,6 @@ import './styles/search-dropdown.css'
 import useFetch from '../hooks/useFetch'
 import { backendApi } from "../hooks/axiosBase";
 
-const DropDown = (props) => {
-
-  const onClickHandler = (e,key) => {
-    const inputStr = Cities[key - 1].city + ', ' + Cities[key - 1].country
-    console.log(inputStr);
-    props.setValue("      " + inputStr);
-    props.clickCityHandler()
-  }
 
 const DropDown = (props) => {
   
@@ -22,12 +14,15 @@ const DropDown = (props) => {
     });
 
     const onClickHandler = (e , key) => {
-        const inputStr = Cities[key-1].city + ', ' + Cities[key-1].country
+        const inputStr = cities[key-1].name + ', ' + cities[key-1].country
         console.log(inputStr);
-        props.setValue("      " + inputStr); 
+        props.setCityInput("      " + inputStr);
+        props.setCity(key); 
         props.clickCityHandler()
     }
 
+    console.log(cities)
+    
     return (
     <div className={props.class}>
         <ul>
@@ -48,7 +43,6 @@ const DropDown = (props) => {
       </ul>
     </div>
   )
-}
 }
 
 export default DropDown
