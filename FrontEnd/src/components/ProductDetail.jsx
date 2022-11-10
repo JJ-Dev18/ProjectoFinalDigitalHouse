@@ -16,6 +16,7 @@ const ProductDetail = ({ modo }) => {
   let { isLoading, error, response } = useFetch({ url: 'products/' + params.productId });
   let { width } = useWindowSize();
 
+
   if (!!isLoading) return (
     <div className='product-detail-container'><h2>Cargando...</h2></div>
   )
@@ -27,7 +28,7 @@ const ProductDetail = ({ modo }) => {
   return (
     <>{!!response &&
       <div className='product-detail-container'>
-      
+        {console.log(response.quality)}
         <ProductHeader
           category={response.category.title}
           name={response.title}
