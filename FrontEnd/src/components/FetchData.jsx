@@ -4,9 +4,9 @@ import baseURL from '../hooks/axiosBase'
 
 const FetchData = ({modo}) => {
     //const url = "http://52.14.228.70/DHBooking/cities";
-    const  { isLoading, errorMessage, apiData }  = useFetch(baseURL+'cities');
+    const  { isLoading, error, response }  = useFetch(baseURL+'cities');
 
-    console.log(apiData);
+    console.log(response);
     if (isLoading) return (
          <div>
              <p>Loading data...</p>
@@ -15,7 +15,7 @@ const FetchData = ({modo}) => {
     return (
         <div className='fetch'>
             <h1>API DATA</h1>
-            {/* {errorMessage ? <p>{errorMessage}</p> : apiData.map( (item) => <p>{item.name}</p>)} */}
+            {/* {error ? <p>{error}</p> : response.map( (item) => <p>{item.name}</p>)} */}
         </div>
     )
 }

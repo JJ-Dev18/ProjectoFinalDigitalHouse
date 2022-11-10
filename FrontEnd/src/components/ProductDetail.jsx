@@ -10,46 +10,45 @@ import ProductReservation from "./ProductReservation";
 import ProductDescription from "./ProductDescription";
 import useWindowSize from "../utils/useWindowSize";
 import useFetch from '../hooks/useFetch'
-import baseURL from '../hooks/axiosBase'
 
 const ProductDetail = ({ modo }) => {
   const params = useParams();
-  let url = baseURL + 'products/' + params.productId;
-  let { isLoading, errorMessage, apiData } = useFetch(url);
+  let { isLoading, error, response } = useFetch({ url: 'products/' + params.productId });
   let { width } = useWindowSize();
 
   if (!!isLoading) return (
     <div className='product-detail-container'><h2>Cargando...</h2></div>
   )
 
-  if (!!errorMessage) return (
-    <div className='product-detail-container'><p>{errorMessage}</p></div>
+  if (!!error) return (
+    <div className='product-detail-container'><p>{error}</p></div>
   )
 
   return (
-    <>{!!apiData &&
+    <>{!!response &&
       <div className='product-detail-container'>
+      
         <ProductHeader
-          category={apiData.category.title}
-          name={apiData.title}
-          location={apiData.city}
-          distance={apiData.distance}
-          rating={apiData.quality} />
+          category={response.category.title}
+          name={response.title}
+          location={response.city}
+          distance={response.distance}
+          rating={response.quality} />
         {
           width > 1024
-            ? <ProductGalleryDesktop images={apiData.images} />
-            : <ProductGallery images={apiData.images} />
+            ? <ProductGalleryDesktop images={response.images} />
+            : <ProductGallery images={response.images} />
         }
         <ProductDescription
-          title={apiData.titleDescription}
-          description={apiData.category.description}
+          title={response.titleDescription}
+          description={response.description}
         />
-        <ProductCharacteristics characteristics={apiData.feature} />
+        <ProductCharacteristics characteristics={response.feature} />
         <ProductReservation />
         <ProductPolicies
-          normsPolicy={apiData.normPolicy}
-          securityPolicy={apiData.securityPolicy}
-          cancellationPolicy={apiData.cancellationPolity}
+          normsPolicy={response.normPolicy}
+          securityPolicy={response.securityPolicy}
+          cancellationPolicy={response.cancellationPolity}
         />
       </div>
     }

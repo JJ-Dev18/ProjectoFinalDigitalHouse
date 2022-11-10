@@ -3,9 +3,6 @@ import { BiMap } from 'react-icons/bi'
 import Cities from '../resources/cities.json'
 import './styles/search-dropdown.css'
 import useFetch from '../hooks/useFetch'
-import baseURL from '../hooks/axiosBase'
-
-
 
 const DropDown = (props) => {
 
@@ -16,22 +13,20 @@ const DropDown = (props) => {
     props.clickCityHandler()
   }
 
-  const { isLoading, errorMessage, apiData } = useFetch(baseURL + 'cities');
-  console.log(apiData);
+  const { isLoading, error, response } = useFetch({ url: 'cities' });
+
+  console.log('respuesta ', response);
 
 
-  if (isLoading) return (
-    <div>
-      {console.log('algooooooooooooo')}
-      <p>Loading data...</p>
-    </div>
-  )
+  if (isLoading) return <p>Loading data...</p>
+  if (error) return <p>{error}</p>
+
   return (
     <div className={props.class}>
       <ul>
 
-        {!!apiData &&
-          apiData.map(item => (
+        {!!response &&
+          response.map(item => (
             <div onClick={event => onClickHandler(event, item.idCity)} key={item.idCity} className="option">
               <li>
                 <div className="option-icon">
