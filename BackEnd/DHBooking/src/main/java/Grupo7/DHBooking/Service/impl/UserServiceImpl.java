@@ -1,11 +1,13 @@
 package Grupo7.DHBooking.Service.impl;
 
+import Grupo7.DHBooking.Entities.DTO.UserDTO;
 import Grupo7.DHBooking.Entities.User;
 import Grupo7.DHBooking.Repository.IUserRepository;
 import Grupo7.DHBooking.Service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -16,27 +18,32 @@ public class UserServiceImpl implements IUserService {
 
 
     @Override
-    public List<User> getAll() {
-        return iUserRepository.findAll();
+    public UserDTO createUser(UserDTO userDTO) throws IOException {
+        return null;
     }
 
     @Override
-    public User getUserById(Long idUser) {
-        return iUserRepository.findById(idUser).get();
+    public UserDTO readUser(Long id) {
+        return null;
     }
 
     @Override
-    public User createUser(User user) {
-        return iUserRepository.save(user);
+    public UserDTO updateUser(UserDTO userDTO) {
+        return null;
     }
 
     @Override
-    public User updateUser(User user) {
-        return iUserRepository.save(user);
+    public void deleteUser(Long id) {
+
     }
 
     @Override
-    public void deleteUser(Long idUser) {
-        iUserRepository.deleteById(idUser);
+    public List<UserDTO> getAll() {
+        return null;
+    }
+
+    @Override
+    public UserDTO verifyCredentials(UserDTO userDTO) {
+        return null;
     }
 }
