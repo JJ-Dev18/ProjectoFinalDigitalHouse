@@ -74,4 +74,9 @@ public class Product {
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
     @JoinColumn(name = "id_feature", insertable = false, updatable = false)
     private List<Feature> feature;
+
+    @OneToMany(fetch=FetchType.LAZY, mappedBy = "product")
+    @JsonManagedReference
+    @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
+    private List<Reservation> reservations;
 }
