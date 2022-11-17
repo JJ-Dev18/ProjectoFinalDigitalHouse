@@ -21,12 +21,44 @@ public class ProductController {
     public ResponseEntity<List<Product>> getAllProducts(){
         return new ResponseEntity<>(productService.getAll(), HttpStatus.OK);
     }
+
+    @GetMapping("/random")
+    public ResponseEntity<List<Product>> getRandomProducts(){
+        return new ResponseEntity<>(productService.getRandomProducts(), HttpStatus.OK);
+    }
+
+    @GetMapping("/recommended")
+    public ResponseEntity<List<Product>> getRecommendedProducts(){
+        return new ResponseEntity<>(productService.getRecommendedProducts(), HttpStatus.OK);
+    }
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable Long id){
         Optional<Product> productFound = Optional.ofNullable(productService.getProductById(id));
         if(productFound.isPresent()){
             return ResponseEntity.ok(productFound.get());
         } else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/idCategory")
+    public ResponseEntity<List<Product>> getByCategory(@RequestParam(required = false) Long idCategory){
+        Optional<List<Product>> productCategory = Optional.ofNullable(productService
+                .getByCategory(idCategory));
+        if (productCategory.isPresent() && !productCategory.get().isEmpty()){
+            return new ResponseEntity<>(productCategory.get(), HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/idCity")
+    public ResponseEntity<List<Product>> getByCity(@RequestParam(required = false) Long idCity){
+        Optional<List<Product>> productCity = Optional.ofNullable(productService
+                .getByCity(idCity));
+        if (productCity.isPresent() && !productCity.get().isEmpty()){
+            return new ResponseEntity<>(productCity.get(), HttpStatus.OK);
+        }else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }

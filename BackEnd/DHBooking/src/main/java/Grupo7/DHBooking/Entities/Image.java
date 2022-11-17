@@ -1,5 +1,7 @@
 package Grupo7.DHBooking.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CollectionId;
@@ -23,7 +25,9 @@ public class Image {
     @Column
     private String url;
 
-    @OneToOne
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JsonBackReference
+    @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
     @JoinColumn(name = "id_product", insertable = false, updatable = false)
     private Product product;
 }

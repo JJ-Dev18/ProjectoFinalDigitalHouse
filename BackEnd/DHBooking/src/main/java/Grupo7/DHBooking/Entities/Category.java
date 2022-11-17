@@ -1,5 +1,7 @@
 package Grupo7.DHBooking.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
@@ -26,6 +28,8 @@ public class Category {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @OneToMany(mappedBy = "category")
+    @JsonBackReference
+    @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
     private List<Product> productList;
 }
