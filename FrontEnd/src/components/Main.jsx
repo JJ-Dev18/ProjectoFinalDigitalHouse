@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./styles/main.css";
-import SearchBlock from "./SearchBlock";
-import CategoryBlock from "./CategoryBlock";
-import Recommended from "./Recommended";
+import SearchBlock from "./Home/SearchBlock";
+import CategoryBlock from "./Home/CategoryBlock";
+import Recommended from "./Home/Recommended";
 import { backendApi } from "../hooks/axiosBase";
 import { useEffect } from "react";
 import useFetch from "../hooks/useFetch";
-import { Auth } from "./Auth";
+import { Auth } from "../utils/Auth";
 import {
   getProductsByCategory,
   getProductsByCity,
@@ -78,7 +78,7 @@ const Main = (props) => {
         <div className="recommended-block">
           <div className="content-recommended">
             <ul className="list-recommended">
-              <SkeletonR/>
+              <SkeletonR />
             </ul>
           </div>
         </div>

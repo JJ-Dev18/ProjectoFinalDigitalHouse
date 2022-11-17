@@ -1,7 +1,7 @@
 import React from 'react'
-import './styles/product-location.css';
-import PinIcon from '../resources/gps.svg';
-import useWindowSize from '../utils/useWindowSize';
+import "../styles/product-detail/product-location.css";
+import PinIcon from '../../resources/gps.svg';
+import useWindowSize from '../../utils/useWindowSize';
 
 const ProductLocation = ({ state, city, country, distance }) => {
   let { width } = useWindowSize();

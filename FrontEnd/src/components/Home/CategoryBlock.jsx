@@ -1,10 +1,7 @@
-import React from 'react'
-import Categories from '../resources/categories.json'
-import img_categoria from '../resources/img_categoria.png'
-import "./styles/category.css";
+import React from "react";
+import "../styles/home/category.css";
 
-const CategoryBlock = ({setcategory,categories}) => {
- 
+const CategoryBlock = ({ setcategory, categories }) => {
   return (
     <div className="category-block">
       {/* <p>Paragrafo</p> */}
@@ -32,6 +29,6 @@ const CategoryBlock = ({setcategory,categories}) => {
       </div>
     </div>
   );
-}
+};
 
 export default CategoryBlock;

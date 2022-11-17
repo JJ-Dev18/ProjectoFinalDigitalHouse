@@ -1,6 +1,6 @@
 import React from 'react';
-import './styles/product-rating.css';
-import StarIcon from "../resources/star.svg";
+import "../styles/product-detail/product-rating.css";
+import StarIcon from "../../resources/star.svg";
 
 const ProductRating = (props) => {
   //let rating = Math.min(Math.max(props.rating, 1), 5); //clamp value
