@@ -9,15 +9,15 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "reservations")
+@Table(name = "bookings")
 @Getter
 @Setter
-public class Reservation {
+public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_reservation")
-    private Long idReservation;
+    @Column(name = "id_booking")
+    private Long idBooking;
 
     @Column(name = "start_hour")
     private Integer startHour;
