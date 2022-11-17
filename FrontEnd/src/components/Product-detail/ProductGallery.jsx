@@ -6,7 +6,7 @@ import 'swiper/css';
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 
-import './styles/product-gallery.css'
+import "../styles/product-detail/product-gallery.css";
 
 const ProductGallery = ({ images }) => {
   return (

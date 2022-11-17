@@ -1,10 +1,10 @@
 import React from "react";
-import "./styles/recommended.css";
-import star from "../resources/star.svg";
-import gps from "../resources/gps.svg";
-import swim from "../resources/swim.svg";
-import wifi from "../resources/wifi.svg";
-import heart from '../resources/heart.svg'
+import "../styles/home/recommended.css";
+import star from "../../resources/star.svg";
+import gps from "../../resources/gps.svg";
+import swim from "../../resources/swim.svg";
+import wifi from "../../resources/wifi.svg";
+import heart from '../../resources/heart.svg'
 import { Link } from 'react-router-dom';
 
 const getRating  = (quality) => {

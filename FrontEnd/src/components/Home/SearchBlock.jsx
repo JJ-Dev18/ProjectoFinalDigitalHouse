@@ -1,34 +1,29 @@
-import { useState}  from 'react'
-import { FaMapMarkerAlt } from 'react-icons/fa'
-import { IoMdCalendar } from 'react-icons/io'
-import './styles/search-block.css'
-import DropDown from './DropDown'
-import SearchCalendar from './SearchCalendar'
+import { useState } from "react";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { IoMdCalendar } from "react-icons/io";
+import "../styles/home/search-block.css";
+import DropDown from "./DropDown";
+import SearchCalendar from "../SearchCalendar";
 
-
-const SearchBlock = ({city,setCity}) => {
-
+const SearchBlock = ({ city, setCity }) => {
   const [dropDown, setDropDown] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
-  
 
   const [datesPicked, setDatesPicked] = useState("");
 
   const [cityInput, setCityInput] = useState("");
 
   const clickCityHandler = () => {
-      setDropDown(!dropDown);
-      if (showCalendar) setShowCalendar(!showCalendar);
-      console.log(dropDown);
-  }
+    setDropDown(!dropDown);
+    if (showCalendar) setShowCalendar(!showCalendar);
+    console.log(dropDown);
+  };
 
   const clickDateHandler = () => {
     setShowCalendar(!showCalendar);
     if (dropDown) setDropDown(!dropDown);
     console.log(showCalendar);
-  }
-
-
+  };
 
   return (
     <div className="search-block">
@@ -81,9 +76,6 @@ const SearchBlock = ({city,setCity}) => {
       </form>
     </div>
   );
-}
+};
 
-export default SearchBlock
-
-
-
+export default SearchBlock;
