@@ -20,8 +20,8 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/product-detail" element={<ProductDetail />} />
           <Route path="/product-detail/:productId" element={<ProductDetail />} />
-          <Route path="/product-detail/:productId/reserva"  />
-        </Routes>
+          <Route path="/product-detail/:productId/reservations"  />
+        </Routes>z
       </Layout>
     </div>
   )
