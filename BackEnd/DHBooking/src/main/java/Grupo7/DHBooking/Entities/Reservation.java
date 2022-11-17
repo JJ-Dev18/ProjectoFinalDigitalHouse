@@ -33,10 +33,13 @@ public class Reservation {
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
     @JoinColumn(name = "id_product", insertable = false, updatable = false)
     private Product product;
-
+    /*
     @ManyToOne
     @JsonBackReference
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
     @JoinColumn(name = "id_user", insertable = false, updatable = false)
     private User user;
-}
+     */
+
+    }
+

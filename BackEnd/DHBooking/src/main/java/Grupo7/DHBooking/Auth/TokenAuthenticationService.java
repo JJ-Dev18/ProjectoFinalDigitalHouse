@@ -1,6 +1,10 @@
 package Grupo7.DHBooking.Auth;
 
+import Grupo7.DHBooking.Entities.DTO.UserAuthDTO;
+import Grupo7.DHBooking.Entities.DTO.UserDTO;
+import Grupo7.DHBooking.Entities.User;
 import Grupo7.DHBooking.Repository.IUserRepository;
+import Grupo7.DHBooking.Service.IUserService;
 import com.google.common.collect.ImmutableMap;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
@@ -39,9 +43,9 @@ public class TokenAuthenticationService implements UserAuthenticationService {
                 .token(token)
                 .idUser(userDTO.getIdUser())
                 .name(userDTO.getName())
-                .userLastName(userDTO.getUserLastName())
+                .lastName(userDTO.getLastName())
                 .email(userDTO.getEmail())
-                .rol(userDTO.getRol())
+                .role(userDTO.getRole())
                 .build();
         return Optional.of(authTokenDto);
     }

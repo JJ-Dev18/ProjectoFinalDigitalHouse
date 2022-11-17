@@ -45,11 +45,12 @@ public class User implements UserDetails {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_role")
     private Role role;
-
+    /*
     @OneToMany(fetch=FetchType.LAZY, mappedBy = "user")
     @JsonManagedReference
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
     private List<Reservation> reservations;
+    */
 
     @Override
     @JsonIgnore

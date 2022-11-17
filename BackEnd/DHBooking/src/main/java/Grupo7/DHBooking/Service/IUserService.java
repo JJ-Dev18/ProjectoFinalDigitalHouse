@@ -16,7 +16,7 @@ public interface IUserService {
 
     public void deleteUser(Long id);
 
-    public List<UserDTO> getAll();
+    public List<UserDTO> listUser();
 
     public UserDTO verifyCredentials(UserDTO userDTO);
 }

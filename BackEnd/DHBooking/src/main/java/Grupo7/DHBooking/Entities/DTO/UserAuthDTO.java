@@ -3,12 +3,13 @@ package Grupo7.DHBooking.Entities.DTO;
 import Grupo7.DHBooking.Entities.Role;
 import lombok.*;
 
-@Getter
 @Setter
+@Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
+public class UserAuthDTO {
+
     private static final long serialVersionUID = 1L;
 
     private Long idUser;
@@ -19,9 +20,8 @@ public class UserDTO {
 
     private String email;
 
-    private String city;
-
-    private String password;
-
     private RoleDTO role;
+
+    private String token;
+
 }

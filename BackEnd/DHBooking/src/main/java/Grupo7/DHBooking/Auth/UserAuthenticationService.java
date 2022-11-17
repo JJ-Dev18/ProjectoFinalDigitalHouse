@@ -1,19 +1,22 @@
 package Grupo7.DHBooking.Auth;
 
-import Grupo7.DHBooking.Entities.UserAuth;
-import org.springframework.security.core.userdetails.User;
+
+
+import Grupo7.DHBooking.Entities.DTO.UserAuthDTO;
+import Grupo7.DHBooking.Entities.DTO.UserDTO;
+import Grupo7.DHBooking.Entities.User;
 
 import java.util.Optional;
 
 public interface UserAuthenticationService {
     /**
-     * Logs in with the given {@code username} and {@code password}.
+     * Logs in with the given {@code email} and {@code password}.
      *
      * @param email
      * @param password
      * @return an {@link Optional} of a user when login succeeds
      */
-    Optional<UserAuth> login(User userDTO, boolean isNew);
+    Optional<UserAuthDTO> login(UserDTO userDTO, boolean isNew);
 
     /**
      * Finds a user by its token.
