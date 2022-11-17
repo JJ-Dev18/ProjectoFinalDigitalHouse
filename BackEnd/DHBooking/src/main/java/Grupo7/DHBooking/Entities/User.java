@@ -42,5 +42,5 @@ public class User {
     @OneToMany(fetch=FetchType.LAZY, mappedBy = "user")
     @JsonManagedReference
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
-    private List<Reservation> reservations;
+    private List<Booking> bookings;
 }

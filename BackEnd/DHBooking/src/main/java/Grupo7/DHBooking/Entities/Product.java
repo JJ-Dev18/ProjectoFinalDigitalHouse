@@ -1,6 +1,5 @@
 package Grupo7.DHBooking.Entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
@@ -78,5 +77,5 @@ public class Product {
     @OneToMany(fetch=FetchType.LAZY, mappedBy = "product")
     @JsonManagedReference
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
-    private List<Reservation> reservations;
+    private List<Booking> bookings;
 }
