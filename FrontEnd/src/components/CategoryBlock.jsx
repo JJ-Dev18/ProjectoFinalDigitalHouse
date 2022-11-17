@@ -19,7 +19,7 @@ const CategoryBlock = ({setcategory,categories}) => {
               }}
             >
               <div className="categories-title">
-                <h2>Buscar por tipo de stazioooooneeee</h2>
+                <h2>Buscar por tipo de CALZONEEE</h2>
               </div>
               <img src={category.imageUrl} alt="image category" />
               <div className="info-card-category">

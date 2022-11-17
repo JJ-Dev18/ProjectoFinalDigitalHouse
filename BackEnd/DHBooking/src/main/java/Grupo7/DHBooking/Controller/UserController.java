@@ -23,7 +23,7 @@ public class UserController {
         return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/idUser/{id}")
     public ResponseEntity<User> getById(@PathVariable Long id){
         Optional<User> userFound = Optional.ofNullable(userService.getUserById(id));
         if(userFound.isPresent()){
