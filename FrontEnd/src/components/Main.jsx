@@ -7,8 +7,11 @@ import { backendApi } from "../hooks/axiosBase";
 import { useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 import { Auth } from "./Auth";
-import { getProductsByCategory, getProductsByCity } from "../utils/requestProductsHome";
-
+import {
+  getProductsByCategory,
+  getProductsByCity,
+} from "../utils/requestProductsHome";
+import { SkeletonC, SkeletonR } from "./Skeleton";
 
 const Main = (props) => {
   const [categorySelected, setcategory] = useState(0);
@@ -24,30 +27,28 @@ const Main = (props) => {
     method: "get",
     url: Auth() ? "/products/recommended" : "/products/random",
   });
-  
+
   useEffect(() => {
     if (!isLoadingProducts) {
       setproducts([...productsApi]);
     }
   }, [isLoadingProducts]);
-  
-  console.log(products)
+
+  console.log(products);
 
   useEffect(() => {
-    if(categorySelected != 0){
-      getProductsByCategory(categorySelected).then(({data}) => setproducts(data))
-    }
-  }, [categorySelected]);
-
-
-  useEffect(() => {
-    if(city != ""){
-      getProductsByCity(city).then(({ data }) =>
+    if (categorySelected != 0) {
+      getProductsByCategory(categorySelected).then(({ data }) =>
         setproducts(data)
       );
     }
-   }, [city]);
+  }, [categorySelected]);
 
+  useEffect(() => {
+    if (city != "") {
+      getProductsByCity(city).then(({ data }) => setproducts(data));
+    }
+  }, [city]);
 
   return (
     <main>
@@ -55,13 +56,40 @@ const Main = (props) => {
       {!isLoading ? (
         <CategoryBlock categories={categories} setcategory={setcategory} />
       ) : (
-        <h1>Loading ....</h1>
+        <div className="category-block">
+          <div className="content-categories">
+            <ul className="list-categories">
+              <SkeletonC />
+            </ul>
+          </div>
+        </div>
       )}
+      {/* <div className="category-block">
+        <div className="content-categories">
+          <ul className="list-categories">
+            <SkeletonC />
+          </ul>
+        </div>
+      </div> */}
+
       {!isLoadingProducts ? (
         <Recommended products={products} />
       ) : (
-        <h1>Loading ....</h1>
+        <div className="recommended-block">
+          <div className="content-recommended">
+            <ul className="list-recommended">
+              <SkeletonR/>
+            </ul>
+          </div>
+        </div>
       )}
+      {/* <div className="recommended-block">
+        <div className="content-recommended">
+          <ul className="list-recommended">
+            <SkeletonR />
+          </ul>
+        </div>
+      </div> */}
     </main>
   );
 };
