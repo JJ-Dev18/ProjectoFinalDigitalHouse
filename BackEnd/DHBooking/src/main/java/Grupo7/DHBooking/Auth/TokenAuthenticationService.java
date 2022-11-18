@@ -46,6 +46,7 @@ public class TokenAuthenticationService implements UserAuthenticationService {
                 .lastName(userDTO.getLastName())
                 .email(userDTO.getEmail())
                 .role(userDTO.getRole())
+                .bookingList(userDTO.getBookingList())
                 .build();
         return Optional.of(authTokenDto);
     }

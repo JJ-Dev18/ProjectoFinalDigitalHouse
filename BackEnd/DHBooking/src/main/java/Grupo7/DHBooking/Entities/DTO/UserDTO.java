@@ -1,7 +1,10 @@
 package Grupo7.DHBooking.Entities.DTO;
 
+import Grupo7.DHBooking.Entities.Booking;
 import Grupo7.DHBooking.Entities.Role;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,4 +27,6 @@ public class UserDTO {
     private String password;
 
     private RoleDTO role;
+
+    private List<Booking> bookingList;
 }

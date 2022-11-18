@@ -3,6 +3,8 @@ package Grupo7.DHBooking.Entities;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Setter
 @Getter
 public class UserAuth {
@@ -18,4 +20,7 @@ public class UserAuth {
     private Role role;
 
     private String token;
+
+    private List<Booking> bookingList;
+
 }
