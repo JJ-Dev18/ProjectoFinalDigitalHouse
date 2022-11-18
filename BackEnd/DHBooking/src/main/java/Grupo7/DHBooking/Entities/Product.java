@@ -76,4 +76,5 @@ public class Product {
     @OneToMany(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_product")
     private List<Booking> bookingList;
+
 }
