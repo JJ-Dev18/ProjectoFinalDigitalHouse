@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -24,10 +25,10 @@ public class Booking {
     private Integer startHour;
 
     @Column(name = "start_date")
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column(name = "end_date")
-    private Date endDate;
+    private LocalDate endDate;
 
     @JsonIncludeProperties(value = {"idProduct", "title"})
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
