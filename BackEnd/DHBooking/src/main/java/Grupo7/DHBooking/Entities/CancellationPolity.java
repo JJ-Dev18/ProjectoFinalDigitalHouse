@@ -5,8 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
@@ -16,7 +15,6 @@ import java.util.List;
 @Table(name = "cancellation_policy")
 @Getter
 @Setter
-
 public class CancellationPolity {
 
     @Id
@@ -27,9 +25,8 @@ public class CancellationPolity {
     @Column
     private String description;
 
-    @JsonBackReference
-    @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
-    @ManyToMany(mappedBy = "cancellationPolity", fetch=FetchType.LAZY)
+    @JsonIgnore
+    @ManyToMany(mappedBy = "cancellationPolity", fetch = FetchType.LAZY)
     private List<Product> productList;
 
 }
