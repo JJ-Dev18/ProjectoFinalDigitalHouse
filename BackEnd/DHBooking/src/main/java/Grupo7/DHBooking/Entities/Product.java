@@ -1,8 +1,8 @@
 package Grupo7.DHBooking.Entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
@@ -33,50 +33,48 @@ public class Product {
 
     @Column
     private String distance;
-
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name = "id_category", insertable = false, updatable = false)
-    @JsonManagedReference
-    @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_category")
     private Category category;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JsonManagedReference
-    @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
-    @JoinColumn(name = "id_city", insertable = false, updatable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_city")
     private City city;
 
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch=FetchType.LAZY)
-    @JsonManagedReference
-    @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
-    @JoinColumn(name = "id_cacelation_policy", insertable = false, updatable = false)
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name = "products_cancellation_polity",
+            joinColumns = {@JoinColumn(name = "product_list_id_product")},
+            inverseJoinColumns = {@JoinColumn(name = "cancellation_polity_id_cacelation_policy")})
     private List<CancellationPolity> cancellationPolity;
 
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch=FetchType.LAZY)
-    @JsonManagedReference
-    @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
-    @JoinColumn(name = "id_norm_policy", insertable = false, updatable = false)
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name = "products_norm_policy",
+            joinColumns = {@JoinColumn(name = "security_policy_id_product")},
+            inverseJoinColumns = {@JoinColumn(name = "norm_policy_id_norm_policy")})
     private List<NormPolicy> normPolicy;
 
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch=FetchType.LAZY)
-    @JsonManagedReference
-    @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
-    @JoinColumn(name = "id_security_policy", insertable = false, updatable = false)
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name = "products_security_policy",
+            joinColumns = {@JoinColumn(name = "product_id_product")},
+            inverseJoinColumns = {@JoinColumn(name = "security_policy_id_security_policy")})
     private List<SecurityPolicy> securityPolicy;
 
-    @OneToMany(fetch=FetchType.LAZY, mappedBy = "product")
-    @JsonManagedReference
-    @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
+    @JsonIncludeProperties(value = {"idImage", "url"})
+    @OneToMany(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "id_product")
     private List<Image> images;
 
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch=FetchType.LAZY)
-    @JsonManagedReference
-    @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
-    @JoinColumn(name = "id_feature", insertable = false, updatable = false)
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name = "products_feature",
+            joinColumns = {@JoinColumn(name = "product_list_id_product")},
+            inverseJoinColumns = {@JoinColumn(name = "feature_id_feature")})
     private List<Feature> feature;
 
-    @OneToMany(fetch=FetchType.LAZY, mappedBy = "product")
-    @JsonManagedReference
-    @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
-    private List<Reservation> reservations;
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "id_product")
+    private List<Booking> bookingList;
+
 }

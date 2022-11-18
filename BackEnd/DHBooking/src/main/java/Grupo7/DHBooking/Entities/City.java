@@ -1,8 +1,7 @@
 package Grupo7.DHBooking.Entities;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,8 +28,7 @@ public class City {
     @Column
     private String country;
 
-    @JsonBackReference
-    @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "city")
+    @JsonIgnore
+    @OneToMany(mappedBy = "city")
     private List<Product> productList;
 }

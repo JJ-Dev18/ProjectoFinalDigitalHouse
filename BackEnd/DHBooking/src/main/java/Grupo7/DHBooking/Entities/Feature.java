@@ -1,7 +1,6 @@
 package Grupo7.DHBooking.Entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,8 +23,7 @@ public class Feature {
     @Column(name = "url_icon")
     private String url;
 
-    @JsonBackReference
-    @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handle"}, allowSetters = true)
-    @ManyToMany(mappedBy = "feature", fetch=FetchType.LAZY)
+    @JsonIgnore
+    @ManyToMany(mappedBy = "feature", fetch = FetchType.LAZY)
     private List<Product> productList;
 }

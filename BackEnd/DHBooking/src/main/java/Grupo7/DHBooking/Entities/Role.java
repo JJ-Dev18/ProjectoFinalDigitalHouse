@@ -1,7 +1,6 @@
 package Grupo7.DHBooking.Entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,9 +21,9 @@ public class Role {
     @Column
     private String name;
 
-    @JsonManagedReference
-    @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "role")
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "id_role")
     private List<User> users;
 
 
