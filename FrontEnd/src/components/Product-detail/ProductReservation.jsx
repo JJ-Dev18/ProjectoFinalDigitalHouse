@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import SearchCalendar from "../SearchCalendar";
 import "../styles/product-detail/product-reservation.css";
 
-const ProductReservation = () => {
+const ProductReservation = ({product}) => {
+  console.log(product)
   return (
     <div className="reservation">
       <div className="reservation-header">
@@ -12,7 +14,13 @@ const ProductReservation = () => {
         <SearchCalendar />
         <div className="reservation-step">
           <p>Agregá tus fechas de viaje para obtener precios exactos</p>
-          <button>Iniciar reserva</button>
+
+          <Link
+            to={`/product-detail/${product.idProduct}/reservations`}
+            state={product}
+          >
+            Iniciar reserva
+          </Link>
         </div>
       </div>
     </div>

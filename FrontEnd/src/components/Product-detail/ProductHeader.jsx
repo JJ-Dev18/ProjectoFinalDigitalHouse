@@ -8,7 +8,7 @@ import ProductLocation from "./ProductLocation";
 import ProductRating from "./ProductRating";
 import "../styles/product-detail/product-header.css";
 
-const ProductHeader = ({ category, name, location, distance, rating }) => {
+const ProductHeader = ({ category, name, location, distance, rating ,pLocation = true}) => {
   return (
     <div className="product-header-container">
       <div>
@@ -24,23 +24,27 @@ const ProductHeader = ({ category, name, location, distance, rating }) => {
           </Link>
         </div>
       </div>
-      <div>
-        <ProductLocation
-          country={location.country}
-          state={location.state}
-          city={location.name}
-          distance={distance}
-        />
-        <ProductRating rating={rating} />
-      </div>
-      <div>
-        <button className="back-btn">
-          <img src={ShareIcon} alt="share" />
-        </button>
-        <button className="back-btn">
-          <img src={HeartLineIcon} alt="like" />
-        </button>
-      </div>
+      {pLocation  && (
+        <>
+          <div>
+            <ProductLocation
+              country={location.country}
+              state={location.state}
+              city={location.name}
+              distance={distance}
+            />
+            <ProductRating rating={rating} />
+          </div>
+          <div>
+            <button className="back-btn">
+              <img src={ShareIcon} alt="share" />
+            </button>
+            <button className="back-btn">
+              <img src={HeartLineIcon} alt="like" />
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };

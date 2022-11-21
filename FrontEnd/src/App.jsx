@@ -6,6 +6,7 @@ import ProductDetail from "./components/ProductDetail";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import Layout from './components/Layout'
+import Booking from "./components/Booking";
 
 const App = () => {
   return (
@@ -20,9 +21,9 @@ const App = () => {
             path="/product-detail/:productId"
             element={<ProductDetail />}
           />
-          <Route path="/product-detail/:productId/reservations" />
+          <Route path="/product-detail/:productId/reservations"  element={<Booking/>}/>
         </Routes>
-        z
+        
       </Layout>
     </div>
   );
