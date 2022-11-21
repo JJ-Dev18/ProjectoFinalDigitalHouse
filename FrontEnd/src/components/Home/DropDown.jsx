@@ -1,8 +1,7 @@
 import { BiMap } from 'react-icons/bi'
-import Cities from '../resources/cities.json'
-import './styles/search-dropdown.css'
-import useFetch from '../hooks/useFetch'
-import { backendApi } from "../hooks/axiosBase";
+import '../styles/home/search-dropdown.css'
+import useFetch from '../../hooks/useFetch'
+import { backendApi } from "../../hooks/axiosBase";
 
 
 const DropDown = (props) => {

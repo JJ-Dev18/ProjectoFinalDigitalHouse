@@ -1,9 +1,11 @@
-import React from 'react'
-import product from '../resources/products.json'
-import "./styles/product-policies.css";
+import React from "react";
+import "../styles/product-detail/product-policies.css";
 
-const ProductPolicies = ({ normsPolicy, securityPolicy, cancellationPolicy }) => {
-
+const ProductPolicies = ({
+  normsPolicy,
+  securityPolicy,
+  cancellationPolicy,
+}) => {
   return (
     <div className="content-policies">
       <h1 className="title-policies">Qué tenés que saber</h1>
@@ -35,8 +37,6 @@ const ProductPolicies = ({ normsPolicy, securityPolicy, cancellationPolicy }) =>
       </div>
     </div>
   );
-}
-
-
+};
 
 export default ProductPolicies;

@@ -3,14 +3,14 @@ import { useState } from 'react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination, Thumbs, FreeMode } from "swiper";
-import CloseIcon from '../resources/close_menu.svg';
+import CloseIcon from '../../resources/close_menu.svg';
 
 import 'swiper/css';
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import "swiper/css/thumbs";
 
-import './styles/product-gallery-desktop.css'
+import "../styles/product-detail/product-gallery-desktop.css";
 
 const ProductGalleryDesktop = ({ images }) => {
   const [isModal, setIsModal] = useState(false);

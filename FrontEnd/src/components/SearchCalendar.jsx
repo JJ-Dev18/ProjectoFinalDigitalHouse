@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useState } from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import './styles/search-calendar.css'
+import './styles/home/search-calendar.css'
 
 
 const SearchCalendar = (props) => {

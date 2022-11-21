@@ -1,13 +1,12 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { Auth } from "./utils/Auth";
+import Main from "./components/Main";
+import ProductDetail from "./components/ProductDetail";
+import Login from "./components/Auth/Login";
+import Register from "./components/Auth/Register";
 import Layout from './components/Layout'
-import Main from './components/Main'
-import Login from './components/Login'
-import Register from './components/Register' 
-import ProductDetail from './components/ProductDetail'
-
-import { Auth } from './components/Auth'
+import SuccessfulBooking from "./components/SuccessfulBooking";
 
 const App = () => {
   return (
@@ -18,13 +17,13 @@ const App = () => {
           <Route path="/" element={<Main />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/product-detail" element={<ProductDetail />} />
-          <Route path="/product-detail/:productId" element={<ProductDetail />} />
-          <Route path="/product-detail/:productId/reserva"  />
+          <Route path="/successful-booking" element={<SuccessfulBooking />} />
+          <Route path="/product-detail/:productId" element={<ProductDetail />}/>
+          <Route path="/product-detail/:productId/bookings" element={<ProductDetail />}/>
         </Routes>
       </Layout>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

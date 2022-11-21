@@ -1,6 +1,6 @@
 import React from 'react'
-import kitchen from '../resources/characteristics/kitchen.svg'
-import  './styles/product-characteristics.css'
+import kitchen from '../../resources/characteristics/kitchen.svg'
+import  '../styles/product-detail/product-characteristics.css'
 
 
  const ProductCharacteristics = ({characteristics}) => {

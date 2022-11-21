@@ -1,10 +1,10 @@
 import React from "react";
-import "./styles/recommended.css";
-import star from "../resources/star.svg";
-import gps from "../resources/gps.svg";
-import swim from "../resources/swim.svg";
-import wifi from "../resources/wifi.svg";
-import heart from '../resources/heart.svg'
+import "../styles/home/recommended.css";
+import star from "../../resources/star.svg";
+import gps from "../../resources/gps.svg";
+import swim from "../../resources/swim.svg";
+import wifi from "../../resources/wifi.svg";
+import heart from '../../resources/heart.svg'
 import { Link } from 'react-router-dom';
 
 const getRating  = (quality) => {
@@ -53,7 +53,9 @@ const Recommended = ({products}) => {
                               key={`star-${i}`}
                               src={star}
                               className={
-                                getRating(product.quality) < i ? "disable" : undefined
+                                getRating(product.quality) < i
+                                  ? "disable"
+                                  : undefined
                               }
                               alt="star icon"
                             />
@@ -63,8 +65,8 @@ const Recommended = ({products}) => {
                     <h2>{product.title}</h2>
                   </div>
                   <div className="content-mediaScore">
-                    <span>{getRating(product.quality)* 2 }</span>
-                    <p> {wordsRating[getRating(product.quality) - 1 ]}</p>
+                    <span>{getRating(product.quality) * 2}</span>
+                    <p> {wordsRating[getRating(product.quality) - 1]}</p>
                   </div>
                 </div>
                 <div className="detail-producto">
@@ -81,6 +83,7 @@ const Recommended = ({products}) => {
                   <p className="description-product">
                     {product.description} <span>más...</span>
                   </p>
+               
                   <Link key={index} to={`/product-detail/${product.idProduct}`}>
                     <button className="btn-product">Ver más </button>
                   </Link>
