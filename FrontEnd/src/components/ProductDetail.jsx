@@ -54,7 +54,7 @@ const ProductDetail = ({ modo }) => {
             description={response.description}
           />
           <ProductCharacteristics characteristics={response.feature} />
-          <ProductReservation />
+          <ProductReservation product={response}/>
           <ProductPolicies
             normsPolicy={response.normPolicy}
             securityPolicy={response.securityPolicy}
