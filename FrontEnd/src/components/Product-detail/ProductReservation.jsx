@@ -1,8 +1,21 @@
 import React from "react";
 import SearchCalendar from "../SearchCalendar";
+import { useNavigate, useParams } from "react-router-dom";
 import "../styles/product-detail/product-reservation.css";
 
+
+
 const ProductReservation = () => {
+  const registeredUser = JSON.parse(localStorage.getItem("logged"));
+  const navigate = useNavigate()
+  const params = useParams();
+
+  console.log(params.productId)
+
+  const bookingRedirection = () => {
+    registeredUser ? navigate(`/product-detail/${params.productId}/bookings`) : navigate("/login?error="+params.productId);
+  }
+
   return (
     <div className="reservation">
       <div className="reservation-header">
@@ -12,7 +25,7 @@ const ProductReservation = () => {
         <SearchCalendar />
         <div className="reservation-step">
           <p>Agregá tus fechas de viaje para obtener precios exactos</p>
-          <button>Iniciar reserva</button>
+          <button onClick={bookingRedirection}>Iniciar reserva</button>
         </div>
       </div>
     </div>
