@@ -36,6 +36,7 @@ const SearchBlock = ({ city, setCity }) => {
                 <FaMapMarkerAlt />
               </div>
               <input
+                readOnly
                 value={cityInput}
                 className=""
                 id="city"
@@ -58,6 +59,7 @@ const SearchBlock = ({ city, setCity }) => {
               <IoMdCalendar />
             </div>
             <input
+              readOnly
               value={datesPicked}
               className=""
               id="dates"
