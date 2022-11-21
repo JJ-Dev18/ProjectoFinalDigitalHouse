@@ -19,7 +19,7 @@ public class BookingController {
 
 
     @GetMapping
-    public ResponseEntity<List<Booking>> getAllCities(){
+    public ResponseEntity<List<Booking>> getAllBookings(){
         return new ResponseEntity<>(bookingService.getAll(), HttpStatus.OK);
     }
 
