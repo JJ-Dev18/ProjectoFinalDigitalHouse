@@ -1,0 +1,49 @@
+.content-hour{
+  height: 163px;
+width: 392px;
+border-radius: 8px;
+color: #383B58;
+border: 1px solid #DFE4EA;
+box-shadow: 0px 4px 4px 0px #00000040;
+padding: 17px;
+
+}
+
+.content-hour h2{
+
+font-size: 14px;
+font-weight: 500;
+line-height: 16px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+
+.content-hour> :nth-child(1) {
+  display: flex;
+  margin-bottom: 24px;
+  /* margin: 24px 0; */
+}
+.content-hour> :nth-child(1) img {
+  margin-right: 17px;
+}
+
+.select-hours label{
+font-size: 12px;
+font-weight: 500;
+line-height: 14px;
+letter-spacing: 0em;
+text-align: left;
+margin-bottom: 8px;
+
+}
+.select-hours  select {
+  height: 40px;
+width: 360px;
+left: 0px;
+top: 0px;
+border-radius: 5px;
+box-shadow: 0px 1px 5px 0px #00000026;
+
+
+}
