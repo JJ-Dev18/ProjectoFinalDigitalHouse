@@ -7,6 +7,7 @@ import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import Layout from './components/Layout'
 import SuccessfulBooking from "./components/SuccessfulBooking";
+import Booking from "./components/Booking";
 
 const App = () => {
   return (
@@ -19,7 +20,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/successful-booking" element={<SuccessfulBooking />} />
           <Route path="/product-detail/:productId" element={<ProductDetail />}/>
-          <Route path="/product-detail/:productId/bookings" element={<ProductDetail />}/>
+          <Route path="/product-detail/:productId/bookings" element={<Booking />}/>
         </Routes>
       </Layout>
     </div>

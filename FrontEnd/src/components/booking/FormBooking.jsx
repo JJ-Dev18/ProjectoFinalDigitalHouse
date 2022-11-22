@@ -3,6 +3,7 @@ import '../styles/booking/form-booking.css'
 export const FormBooking = () => {
   return (
     <form className="content-form">
+      <h1>Completa tus datos</h1>
       <div className="form-control">
         <label htmlFor="nombre">Nombre</label>
         <input type="text" id="nombre" />

@@ -22,3 +22,27 @@ text-align: left;
 
 
 }
+
+.booking-calendar{
+  position: relative;
+  margin-top: 75px;
+}
+.booking-calendar h1{
+  position: absolute;
+  top: -70px;
+  left: -20px;
+}
+
+@media screen and (max-width :768px) {
+  .booking-calendar .react-datepicker{
+  height: 328px;
+width: 394px;
+left: 0px;
+top: 0px;
+border-radius: 5px;
+
+}
+.booking-calendar .react-datepicker__month-container {
+    float: none;
+}
+}

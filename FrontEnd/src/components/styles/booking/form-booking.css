@@ -9,9 +9,15 @@ flex-direction: column;
 align-items: center;
 padding: 18px 0 39px 0;
 justify-content: space-around;
+background-color: white;
+position: relative;
+ margin-top: 55px;
 
-
-
+}
+.content-form h1{
+  position: absolute;
+  top: -60px;
+  left: -20px;
 }
 .content-form input{
   height: 40px;
