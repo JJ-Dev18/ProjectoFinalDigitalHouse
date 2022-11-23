@@ -46,7 +46,7 @@ background: #DFE4EA;
 .form-control label{
 
 font-size: 12px;
-font-weight: 500;
+font-weight: 600;
 line-height: 14px;
 letter-spacing: 0em;
 text-align: left;
@@ -80,4 +80,19 @@ letter-spacing: 0em;
 text-align: left;
 
 }
+}
+
+@media screen and (min-width:1320px){
+  .content-form{
+    height: 217px;
+width: 847px;
+border-radius: 8px;
+
+  }
+  .content-form input{
+    height: 40px;
+width: 388px;
+border-radius: 5px;
+
+  }
 }

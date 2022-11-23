@@ -6,6 +6,7 @@ width: 394px; */
 
 }
 
+
 .react-datepicker__navigation-icon::before {
   width: 8px;
   height: 8px;
@@ -32,6 +33,8 @@ width: 394px; */
 
 .react-datepicker__month-container {
   padding: 6px 16px 0;
+   /* height: 328px;
+width: 394px; */
 }
 
 .react-datepicker__current-month {
@@ -105,7 +108,7 @@ width: 394px; */
 }
 
 
-@media screen and (min-width: 1366px) {
+@media screen and (min-width: 1350px) {
   .react-datepicker__navigation--previous {
     left: -50px;
     top: 16px;
