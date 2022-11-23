@@ -89,3 +89,13 @@ top: -50px;
   }
   
 }
+
+@media screen and (min-width:1320px) {
+  .content-hour{
+    height: 144px;
+width: 847px;
+border-radius: 8px;
+
+  }
+  
+}
