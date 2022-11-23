@@ -6,7 +6,7 @@ import "../styles/product-detail/product-reservation.css";
 
 
 
-const ProductReservation = () => {
+const ProductReservation = ({product}) => {
   const registeredUser = JSON.parse(localStorage.getItem("logged"));
   const navigate = useNavigate()
   const params = useParams();
@@ -14,7 +14,11 @@ const ProductReservation = () => {
   console.log(params.productId)
 
   const bookingRedirection = () => {
-    registeredUser ? navigate(`/product-detail/${params.productId}/bookings`) : navigate("/login?error="+params.productId);
+    registeredUser
+      ? navigate(`/product-detail/${params.productId}/bookings`, {
+          state: product,
+        })
+      : navigate("/login?error=" + params.productId);
   }
 
   return (

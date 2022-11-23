@@ -52,7 +52,7 @@
     margin-bottom: 10px;
 }
 
-.reservation-step a {
+.reservation-step button {
     width: 90%;
     height: 40px;
     background-color: var(--light-blue);
@@ -64,11 +64,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
-.react-datepicker__month-container{
-   /* height: 328px ;
-width: 394px ; */
-}
+
 
 
 
@@ -100,7 +98,7 @@ width: 394px ; */
 }
 
 
-@media screen and (min-width: 1060px) {
+@media screen and (min-width: 1360px) {
  
     .reservation-body {
         width: 100vw;
