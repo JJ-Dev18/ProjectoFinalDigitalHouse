@@ -37,7 +37,12 @@ const DetailBooking = ({rating,img,category, title}) => {
         </div>
         <div className="ubication">
           <img src={gps} alt="icon ubication" />
-          <p>Ubicacion av colon 1643 buenos aires </p>
+          <p>
+            Av. Colón 1643, Buenos Aires, Ciudad Autónoma de Buenos Aires,
+            Argentina 
+            
+            
+          </p>
         </div>
         <div className="check-in">
           <h4>Check in</h4>

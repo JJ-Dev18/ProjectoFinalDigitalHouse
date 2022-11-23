@@ -31,7 +31,9 @@ const SearchCalendar = (props) => {
   const onClik = (e, startDate,endDate) => {
     e.preventDefault();
     console.log('hola')
-    console.log(startDate, endDate)
+    console.log(startDate.toLocaleDateString('es-CO'), "StartDate");
+    console.log(endDate.toLocaleString(), "EndDate");
+
     const startDateStr = startDate.toString().split(' ')[2] + ' de '+ startDate.toString().split(' ')[1].toLowerCase();
     const endDateStr   = endDate.toString().split(' ')[2] + ' de '+ endDate.toString().split(' ')[1].toLowerCase();
     let inputString = '';
@@ -57,14 +59,16 @@ const SearchCalendar = (props) => {
         formatWeekDay={(dayName) => dayName.slice(0, 1).toUpperCase()}
         local={"es"}
       >
-        <div className="calendar-footer">
-          <button
-            className="calendar-button"
-            onClick={(e) => onClik(e, startDate, endDate)}
-          >
-            Aplicar
-          </button>
-        </div>
+        {props.footer && (
+          <div className="calendar-footer">
+            <button
+              className="calendar-button"
+              onClick={(e) => onClik(e, startDate, endDate)}
+            >
+              Aplicar
+            </button>
+          </div>
+        )}
       </DatePicker>
     </div>
   );

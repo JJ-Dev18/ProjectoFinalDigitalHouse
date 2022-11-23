@@ -11,15 +11,24 @@ padding: 18px 0 39px 0;
 justify-content: space-around;
 background-color: white;
 position: relative;
- margin-top: 55px;
+ margin-top: 65px;
+ flex-wrap: wrap;
 
 }
 .content-form h1{
+  font-size: 20px;
+font-weight: 700;
+line-height: 23px;
+letter-spacing: 0em;
+  color: var(--dark-gray);
+
   position: absolute;
-  top: -60px;
-  left: -20px;
+  top: -40px;
+  left: 0;
+
 }
 .content-form input{
+opacity: 40%;
   height: 40px;
 width: 360px;
 left: 0px;
@@ -43,4 +52,32 @@ letter-spacing: 0em;
 text-align: left;
 color: var(--dark-gray);
 
+}
+
+@media screen and (min-width: 768px) {
+
+.content-form{
+height: 227px;
+width: 708px;
+left: 0px;
+top: 0px;
+border-radius: 8px;
+padding:24px 20px 24px 20px ;
+}
+.content-form input{
+  height: 40px;
+width: 320px;
+left: 0px;
+top: 21px;
+border-radius: 5px;
+}
+.content-form h1{
+
+font-size: 24px;
+font-weight: 700;
+line-height: 28px;
+letter-spacing: 0em;
+text-align: left;
+
+}
 }
