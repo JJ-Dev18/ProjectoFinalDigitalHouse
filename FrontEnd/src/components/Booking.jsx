@@ -1,3 +1,4 @@
+import { ImageList, Tooltip } from '@material-ui/core';
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom';
 import DetailBooking from './booking/DetailBooking';
@@ -9,10 +10,10 @@ import SearchCalendar from './SearchCalendar';
 import './styles/booking/booking.css'
 
  const Booking = () => {
-  const {state } = useLocation()
-  console.log(state )
+  const {state} = useLocation()
+  console.log(state)
   return (
-    <div style={{ marginBottom: "58px" }}>
+    <div style={{ marginBottom: "58px", backgroundColor: "#DFE4EA" }}>
       <div className="product-detail-container">
         <ProductHeader
           category={state.category.title}
@@ -24,18 +25,22 @@ import './styles/booking/booking.css'
         />
       </div>
       <div className="content-booking">
-        <h1>Completa tus datos</h1>
         <FormBooking />
-        <h1>Tu Horario de llegada</h1>
-        <HourBooking />
-        <h1>Seleccioná tu fecha de reserva</h1>
         <SearchCalendar
-          // clickDateHandler={clickDateHandler}
-          // setValues={setDatesPicked}
-          // class={`select picker }`}
+          booking={true}
+        // clickDateHandler={clickDateHandler}
+        // setValues={setDatesPicked}
+          class="booking-calendar"
+        />
+        <HourBooking />
+
+        <DetailBooking
+          rating={state.quality}
+          img={state.images[0].url}
+          category={state.category.title}
+          title={state.title}
         />
       </div>
-      <DetailBooking rating={5}/>
       <ProductPolicies
         normsPolicy={state.normPolicy}
         securityPolicy={state.securityPolicy}

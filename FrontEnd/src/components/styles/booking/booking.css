@@ -8,17 +8,91 @@
 
 }
 
-.content-booking h1{
-font-size: 20px;
+
+.booking-calendar{
+  position: relative;
+  margin-top: 75px;
+}
+.booking-calendar h1{
+   font-size: 20px;
 font-weight: 700;
 line-height: 23px;
 letter-spacing: 0em;
-text-align: left;
   color: var(--dark-gray);
-  width: 100%;
-  margin-bottom: 15px;
-  margin-left: 25px;
-  margin-top: 30px;
+  position: absolute;
+  top: -40px;
+  left: 0;
+}
+.booking-calendar .react-datepicker__current-month{
+  margin: 0;
+font-size: 14px;
+font-weight: 600;
+line-height: 16px;
+letter-spacing: 0em;
+text-align: center;
 
+}
+.booking-calendar .react-datepicker__day-names, .react-datepicker__week{
+  margin: 10px;
+}
+@media screen and (max-width :767px) {
+  .booking-calendar .react-datepicker{
+  height: 328px;
+width: 394px;
+left: 0px;
+top: 0px;
+border-radius: 5px;
 
+}
+.booking-calendar .react-datepicker__month-container {
+    float: none;
+}
+}
+@media  screen and (min-width: 768px) {
+  .booking-calendar{
+    margin-top: 94px;
+  }
+    .booking-calendar .react-datepicker{
+ height: 312px;
+width: 707px;
+left: 0px;
+top: 0px;
+border-radius: 5px;
+align-items: center;
+display: flex;
+justify-content: center;
+}
+.booking-calendar h1{
+
+font-size: 24px;
+font-weight: 700;
+line-height: 28px;
+letter-spacing: 0em;
+text-align: left;
+top: -50px;
+
+}
+.booking-calendar .react-datepicker__day-names, .react-datepicker__week{
+  margin:5px;
+}
+.booking-calendar .react-datepicker> div:nth-child(4) {
+    border-right: 1px solid #A8A8A8;
+;
+}
+}
+
+@media screen and (min-width :1050px ) {
+  .booking-calendar .react-datepicker {
+    display: flex;
+    height: 312px;
+width: 707px;
+left: 0px;
+top: 0px;
+border-radius: 5px;
+justify-content: center;
+  }
+
+  .booking-calendar .react-datepicker__month-container {
+    width: 100%;
+}
 }

@@ -4,6 +4,7 @@ import check from '../../resources/check.svg'
  const HourBooking = () => {
   return (
     <div className="content-hour">
+      <h1>Tu Horario de llegada</h1>
       <div>
         <img src={check} alt="icon check" />
         <h2>
