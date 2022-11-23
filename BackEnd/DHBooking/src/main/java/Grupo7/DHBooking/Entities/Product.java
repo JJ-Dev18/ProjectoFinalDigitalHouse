@@ -77,4 +77,7 @@ public class Product {
     @JoinColumn(name = "id_product")
     private List<Booking> bookingList;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_location")
+    private Location location;
 }

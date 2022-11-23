@@ -1,7 +1,9 @@
 package Grupo7.DHBooking.Service;
 
 import Grupo7.DHBooking.Entities.Booking;
+import Grupo7.DHBooking.Entities.Product;
 
+import java.text.ParseException;
 import java.util.List;
 
 public interface IBookingService {
@@ -10,4 +12,7 @@ public interface IBookingService {
     Booking updateBooking(Booking booking);
     void deleteBooking(Long idBooking);
     List<Booking> getAll();
+    List<Product> getListOfProductsBetweenDatesAndCity(String startDate, String endDate, Long cityId) throws ParseException;
+
+
 }
