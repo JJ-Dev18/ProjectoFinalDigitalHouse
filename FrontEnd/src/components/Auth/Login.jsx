@@ -30,6 +30,8 @@ const Login = () => {
             .then((response) => {
                 console.log(response);
                 handleAuth(response.data)
+                sessionStorage.setItem("auth", true);
+                sessionStorage.setItem("userAuth", JSON.stringify(response.data));
                 let path;
                 idBooking ? path = `/product-detail/${idBooking}/bookings` :
                 path = `/`;
