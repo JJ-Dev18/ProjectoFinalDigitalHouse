@@ -16,4 +16,12 @@ export const getProductsByCity = async (city) => {
   return resp;
 };
 
+export const getProductsByCityAndDate = async (cityId,startDate,endDate) => {
+  const resp = await backendApi.post(`/bookings/listAvailableProducts`,{
+    startDate,
+    endDate,
+    cityId
+  });
+  return resp;
+}
 
