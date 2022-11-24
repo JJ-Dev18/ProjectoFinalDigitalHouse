@@ -1,4 +1,4 @@
-import React , {useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import '../styles/auth/register.css'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
@@ -10,7 +10,7 @@ const Register = () => {
 
     const [error, setError] = useState(false)
     const [password, setPassword] = useState("");
-    const {handleAuth} = useContext(AuthContext);
+    const { handleAuth } = useContext(AuthContext);
     let navigate = useNavigate()
 
     let errorRegistro;
@@ -30,9 +30,10 @@ const Register = () => {
                 .then((response) => {
                     console.log(response);
                     handleAuth(response.data)
+                    sessionStorage.setItem("auth", true);
+                    sessionStorage.setItem("userAuth", JSON.stringify(response.data));
                 })
                 .catch((e) => setError(e));
-            localStorage.setItem('user', JSON.stringify(data))
             navigate(`/`);
         } else {
 
@@ -41,62 +42,62 @@ const Register = () => {
         }
     }
 
-if (error !== false) {
-    if (password < 6) {
-        errorRegistro = <span className="error">La contraseña ingresada tiene menos de 6 caracteres</span>
+    if (error !== false) {
+        if (password < 6) {
+            errorRegistro = <span className="error">La contraseña ingresada tiene menos de 6 caracteres</span>
+        } else {
+            errorRegistro = <span className="error">las contraseñas no coinciden</span>
+        }
+
     } else {
-        errorRegistro = <span className="error">las contraseñas no coinciden</span>
+        errorRegistro = <p></p>
     }
 
-} else {
-    errorRegistro = <p></p>
-}
 
-
-return (
-    <div className="register">
-        <p className="heading-1 color-principal">Crear Cuenta</p>
-        <form className="form-register" onSubmit={(event) => handleSubmit(event)}>
-            <div className="row">
-                <div className="col-2">
-                    <label className="text-2 color-second" htmlFor="name">
-                        Nombre
-                    </label>
-                    <input className="nombre" id="name" type="text" />
+    return (
+        <div className="register">
+            <p className="heading-1 color-principal">Crear Cuenta</p>
+            <form className="form-register" onSubmit={(event) => handleSubmit(event)}>
+                <div className="row">
+                    <div className="col-2">
+                        <label className="text-2 color-second" htmlFor="name">
+                            Nombre
+                        </label>
+                        <input className="nombre" id="name" type="text" />
+                    </div>
+                    <div className="col-2">
+                        <label className="text-2 color-second" htmlFor="lastname">
+                            Apellido
+                        </label>
+                        <input className="apellido" id="lastname" type="text" />
+                    </div>
                 </div>
-                <div className="col-2">
-                    <label className="text-2 color-second" htmlFor="lastname">
-                        Apellido
+                <div className="col">
+                    <label className="text-2 color-second" htmlFor="user">
+                        Correo electrónico
                     </label>
-                    <input className="apellido" id="lastname" type="text" />
+                    <input className="" id="user" type="email" required />
                 </div>
-            </div>
-            <div className="col">
-                <label className="text-2 color-second" htmlFor="user">
-                    Correo electrónico
-                </label>
-                <input className="" id="user" type="email" required />
-            </div>
-            <div className="col">
-                <label className="text-2 color-second" htmlFor="password">
-                    Contraseña
-                </label>
-                <input className="" id="password" type="password" />
-            </div>
-            <div className="col">
-                <label className="text-2 color-second" htmlFor="passwordConfirm">
-                    Confirmar Contraseña
-                </label>
-                <input className="" id="passwordConfirm" type="password" />
-            </div>
-            <div className="div-error">{errorRegistro}</div>
-            <div className="row-2">
-                <input type="submit" value="Crear cuenta" />
-                <p className="color-second">¿Ya tienes una cuenta? <Link to="/login"> Iniciar sesión</Link></p>
-            </div>
-        </form>
-    </div>
-);
+                <div className="col">
+                    <label className="text-2 color-second" htmlFor="password">
+                        Contraseña
+                    </label>
+                    <input className="" id="password" type="password" />
+                </div>
+                <div className="col">
+                    <label className="text-2 color-second" htmlFor="passwordConfirm">
+                        Confirmar Contraseña
+                    </label>
+                    <input className="" id="passwordConfirm" type="password" />
+                </div>
+                <div className="div-error">{errorRegistro}</div>
+                <div className="row-2">
+                    <input type="submit" value="Crear cuenta" />
+                    <p className="color-second">¿Ya tienes una cuenta? <Link to="/login"> Iniciar sesión</Link></p>
+                </div>
+            </form>
+        </div>
+    );
 }
 
 export default Register;
