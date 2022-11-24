@@ -4,25 +4,49 @@ import { IoMdCalendar } from "react-icons/io";
 import "../styles/home/search-block.css";
 import DropDown from "./DropDown";
 import SearchCalendar from "../SearchCalendar";
+import {
+  getProductsByCity,
+  getProductsByCityAndDate,
+} from "../../utils/requestProductsHome";
 
-const SearchBlock = ({ city, setCity }) => {
+const SearchBlock = ({ city, setCity, setproducts }) => {
   const [dropDown, setDropDown] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
-
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(null);
   const [datesPicked, setDatesPicked] = useState("");
-
   const [cityInput, setCityInput] = useState("");
 
   const clickCityHandler = () => {
     setDropDown(!dropDown);
     if (showCalendar) setShowCalendar(!showCalendar);
-    console.log(dropDown);
   };
-
+  console.log(datesPicked, "datespicked");
   const clickDateHandler = () => {
     setShowCalendar(!showCalendar);
     if (dropDown) setDropDown(!dropDown);
-    console.log(showCalendar);
+  };
+
+  const searchProducts = (e) => {
+    e.preventDefault();
+    if (endDate && city != "") {
+      getProductsByCityAndDate(
+        city,
+        startDate.toLocaleDateString(),
+        endDate.toLocaleDateString()
+      ).then((resp) => {
+        setproducts(resp.data);
+        setStartDate(null);
+        setEndDate(null);
+      });
+    }
+    if (!endDate && city != "") {
+      getProductsByCity(city).then((resp) => {
+        setproducts(resp.data);
+        setStartDate(null);
+        setEndDate(null);
+      });
+    }
   };
 
   return (
@@ -69,13 +93,19 @@ const SearchBlock = ({ city, setCity }) => {
             />
           </div>
           <SearchCalendar
+            setStartDate={setStartDate}
+            setEndDate={setEndDate}
+            startDate={startDate}
+            endDate={endDate}
             footer={true}
             clickDateHandler={clickDateHandler}
             setValues={setDatesPicked}
             class={`select picker ${showCalendar ? `active` : `inactive`}`}
           />
         </div>
-        <button className="form-button">Buscar</button>
+        <button className="form-button" onClick={searchProducts}>
+          Buscar
+        </button>
       </form>
     </div>
   );

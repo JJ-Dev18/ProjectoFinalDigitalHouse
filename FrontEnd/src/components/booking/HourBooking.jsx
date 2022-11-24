@@ -1,7 +1,33 @@
-import React from 'react'
-import '../styles/booking/hour-booking.css'
-import check from '../../resources/check.svg'
- const HourBooking = () => {
+import React from "react";
+import "../styles/booking/hour-booking.css";
+import check from "../../resources/check.svg";
+const HourBooking = () => {
+  const hours = [
+    "01:00 AM",
+    "02:00 AM",
+    "03:00 AM",
+    "04:00 AM",
+    "05:00 AM",
+    "06:00 AM",
+    "07:00 AM",
+    "08:00 AM",
+    "09:00 AM",
+    "10:00 AM",
+    "11:00 AM",
+    "12:00 AM",
+    "01:00 PM",
+    "02:00 PM",
+    "03:00 PM",
+    "04:00 PM",
+    "05:00 PM",
+    "06:00 PM",
+    "07:00 PM",
+    "08:00 PM",
+    "09:00 PM",
+    "10:00 PM",
+    "11:00 PM",
+    "12:00 PM",
+  ];
   return (
     <div className="content-hour">
       <h1>Tu Horario de llegada</h1>
@@ -14,10 +40,14 @@ import check from '../../resources/check.svg'
       </div>
       <div className="select-hours">
         <label htmlFor="hora">Indicá tu horario estimado de llegada</label>
-        <select id="hora" placeholder="Seleccionar hora de llegada"></select>
+        <select id="hora" placeholder="Seleccionar hora de llegada">
+          { hours.map((hour,index) => (
+            <option value={hour} key={index}>{hour}</option>
+          ))}
+        </select>
       </div>
     </div>
   );
-}
+};
 
 export default HourBooking;

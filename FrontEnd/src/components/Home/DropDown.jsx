@@ -20,7 +20,7 @@ const DropDown = (props) => {
         props.clickCityHandler()
     }
 
-    console.log(cities)
+   
     
     return (
     <div className={props.class}>

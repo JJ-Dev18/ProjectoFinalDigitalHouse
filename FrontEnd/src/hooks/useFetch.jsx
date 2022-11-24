@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import baseURL, { backendApi } from "./axiosBase";
+import { backendApi } from "./axiosBase";
 
 export default function useFetch({
   api = backendApi,
   method = 'get',
   url,
-  data = null,
   config = null,
 }) {
   const [response, setResponse] = useState(null);
@@ -15,7 +14,7 @@ export default function useFetch({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        api[method](url, JSON.parse(config), JSON.parse(data))
+        api[method](url, JSON.parse(config))
           .then((res) => {
             setResponse(res.data);
           })
@@ -26,9 +25,8 @@ export default function useFetch({
         setError(err);
       }
     };
-
     fetchData();
-  }, [api, method, url, data, config]);
+  }, [api, method, url, config]);
 
   return { response, error, isLoading };
 }

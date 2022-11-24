@@ -2,8 +2,10 @@ import React from 'react'
 import StarIcon from '../../resources/star.svg'
 import gps from '../../resources/gps.svg'
 import  '../styles/booking/detail-booking.css'
+import { useNavigate } from 'react-router-dom'
 
-const DetailBooking = ({rating,img,category, title}) => {
+const DetailBooking = ({rating,img,category, title,location,checkin,checkout}) => {
+   const navigate = useNavigate()
    let stars = Math.floor(rating / 2); //clamp value
    const wordsRating = [
      "Muy malo",
@@ -12,6 +14,10 @@ const DetailBooking = ({rating,img,category, title}) => {
      "Muy Bueno",
      "Excelente",
    ];
+
+   const confirmBooking = ()=> {
+    navigate(`/successful-booking`);
+   }
   return (
     <div className="content-detail">
       <h2>Detalle de la reserva</h2>
@@ -37,22 +43,17 @@ const DetailBooking = ({rating,img,category, title}) => {
         </div>
         <div className="ubication">
           <img src={gps} alt="icon ubication" />
-          <p>
-            Av. Colón 1643, Buenos Aires, Ciudad Autónoma de Buenos Aires,
-            Argentina 
-            
-            
-          </p>
+          <p>{location}</p>
         </div>
         <div className="check-in">
           <h4>Check in</h4>
-          <p>___/___/____</p>
+          <p>{checkin}</p>
         </div>
         <div className="check-in">
           <h4>Check out</h4>
-          <p>___/___/____</p>
+          <p>{checkout}</p>
         </div>
-        <button>Confirmar reserva</button>
+        <button onClick={confirmBooking}>Confirmar reserva</button>
       </div>
     </div>
   );

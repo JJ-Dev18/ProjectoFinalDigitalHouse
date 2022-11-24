@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import logo_non_desktop from "../../resources/logo_non_desktop.svg";
 import logo_desktop from "../../resources/logo_desktop.svg";
 import menu from "../../resources/menu.svg";
@@ -10,10 +10,11 @@ import "../styles/layout/header.css";
 import { Link } from "react-router-dom";
 import { Auth } from "../../utils/Auth";
 import Avatar from "@material-ui/core/Avatar";
+import AuthContext from "../../context/AuthContext";
 
 const Header = () => {
   let menuItems = ["Crear Cuenta", "Iniciar Sesión"];
-
+  const {auth, handleAuth , userAuth} = useContext(AuthContext)
   let [showMenu, setShowMenu] = useState(false);
 
   const clickHandler = () => {
@@ -22,11 +23,10 @@ const Header = () => {
   };
 
   const logoutHandler = () => {
-    localStorage.removeItem("logged");
-    window.location.href = "/";
+    handleAuth()
   };
 
-  let registeredUser = JSON.parse(localStorage.getItem("user"));
+  console.log(userAuth);
   return (
     <header>
       <Link to="/">
@@ -43,18 +43,18 @@ const Header = () => {
         src={menu}
         alt="md-screen menu"
       />
-      {Auth() ? (
+      {auth ? (
         <div className="md-screen avatar">
           <div className="logout" onClick={logoutHandler}>
             {" "}
             X{" "}
           </div>
-          <Avatar>{registeredUser.avatar}</Avatar>
+          <Avatar>{userAuth.name.charAt(0) + userAuth.lastName.charAt(0) }</Avatar>
           <div>
             <span className="welcome">Hola,</span>
             <br />
             <span className="welcome name">
-              {registeredUser.name + " " + registeredUser.lastname}
+              {userAuth.name + " " + userAuth.lastName}
             </span>
           </div>
         </div>
@@ -68,7 +68,7 @@ const Header = () => {
           </button>
         </div>
       )}
-      {Auth() ? (
+      {auth ? (
         <div className={`xs-screen menu ${showMenu ? `active` : `inactive`}`}>
           <div className="top">
             <div className="close-menu" onClick={clickHandler}>
@@ -76,12 +76,12 @@ const Header = () => {
               X{" "}
             </div>
             <div className="div-avatar-mobile">
-              <Avatar className="avatar-mobile">{registeredUser.avatar}</Avatar>
+              <Avatar className="avatar-mobile">{userAuth.name.charAt(0) + userAuth.lastName.charAt(0) }</Avatar>
               <div>
                 <span className="welcome">Hola,</span>
                 <br />
                 <span className="welcome name">
-                  {registeredUser.name + " " + registeredUser.lastname}
+                  {userAuth.name + " " + userAuth.lastName}
                 </span>
               </div>
             </div>
