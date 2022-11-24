@@ -4,20 +4,28 @@ import gps from '../../resources/gps.svg'
 import  '../styles/booking/detail-booking.css'
 import { useNavigate } from 'react-router-dom'
 
-const DetailBooking = ({rating,img,category, title,location,checkin,checkout}) => {
-   const navigate = useNavigate()
-   let stars = Math.floor(rating / 2); //clamp value
-   const wordsRating = [
-     "Muy malo",
-     "Regular",
-     "Bueno",
-     "Muy Bueno",
-     "Excelente",
-   ];
+const DetailBooking = ({
+  rating,
+  img,
+  category,
+  title,
+  address,
+  checkin,
+  checkout,
+}) => {
+  const navigate = useNavigate();
+  let stars = Math.floor(rating / 2); //clamp value
+  const wordsRating = [
+    "Muy malo",
+    "Regular",
+    "Bueno",
+    "Muy Bueno",
+    "Excelente",
+  ];
 
-   const confirmBooking = ()=> {
+  const confirmBooking = () => {
     navigate(`/successful-booking`);
-   }
+  };
   return (
     <div className="content-detail">
       <h2>Detalle de la reserva</h2>
@@ -43,7 +51,7 @@ const DetailBooking = ({rating,img,category, title,location,checkin,checkout}) =
         </div>
         <div className="ubication">
           <img src={gps} alt="icon ubication" />
-          <p>{location}</p>
+          <p>{address}</p>
         </div>
         <div className="check-in">
           <h4>Check in</h4>
@@ -57,6 +65,6 @@ const DetailBooking = ({rating,img,category, title,location,checkin,checkout}) =
       </div>
     </div>
   );
-}
+};
 
 export default DetailBooking;
