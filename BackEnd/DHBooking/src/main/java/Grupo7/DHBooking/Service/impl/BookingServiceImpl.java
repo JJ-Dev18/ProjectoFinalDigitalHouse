@@ -91,7 +91,7 @@ public class BookingServiceImpl implements IBookingService {
 
         DateTimeFormatter queryFormat;
 
-        if(day < 10 && month < 10){
+        if(day < 10 || month < 10){
             queryFormat = DateTimeFormatter.ofPattern("M/d/yyyy", Locale.US);
         } else {
             queryFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy", Locale.US);
