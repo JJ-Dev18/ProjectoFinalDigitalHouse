@@ -85,7 +85,7 @@ public class BookingServiceImpl implements IBookingService {
     }
 
     private LocalDate parseDocumentDateFormat(String date) throws ParseException {
-        DateTimeFormatter queryFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy", Locale.US);
+        DateTimeFormatter queryFormat = DateTimeFormatter.ofPattern("M/dd/yyyy", Locale.US);
         LocalDate queryDate = LocalDate.parse(date, queryFormat);
 
         DateTimeFormatter sqlDateForm = DateTimeFormatter.ofPattern("yyyy-MM-dd");
