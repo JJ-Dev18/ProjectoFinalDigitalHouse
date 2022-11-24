@@ -8,14 +8,20 @@ import './styles/home/search-calendar.css'
 const SearchCalendar = (props) => {
  
   const windowWidth = window.innerWidth
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(null);
+ 
 
-  console.log(props)
   const onDateChange = (dates) => {
+      
       const [start, end] = dates;
-      setStartDate(start);
-      setEndDate(end);
+      props.setStartDate(start);
+      props.setEndDate(end);
+      if(props.booking){
+        props.setcheckin(start.toLocaleDateString())
+        if(end){
+          props.setcheckout(end.toLocaleDateString())
+        }else props.setcheckout("___/___/____");
+      }
+      
   }
       //     const startDateStr = dates[0].toString().split(' ')[2] + ' de '+ dates[0].toString().split(' ')[1].toLowerCase();
   //     const endDateStr   = dates[1].toString().split(' ')[2] + ' de '+ dates[1].toString().split(' ')[1].toLowerCase();
@@ -30,18 +36,15 @@ const SearchCalendar = (props) => {
 
   const onClik = (e, startDate,endDate) => {
     e.preventDefault();
-    console.log('hola')
-    console.log(startDate.toLocaleDateString('es-CO'), "StartDate");
-    console.log(endDate.toLocaleString(), "EndDate");
-
-    const startDateStr = startDate.toString().split(' ')[2] + ' de '+ startDate.toString().split(' ')[1].toLowerCase();
-    const endDateStr   = endDate.toString().split(' ')[2] + ' de '+ endDate.toString().split(' ')[1].toLowerCase();
+    
+    const startDateStr = props.startDate.toString().split(' ')[2] + ' de '+ props.startDate.toString().split(' ')[1].toLowerCase();
+    const endDateStr   = props.endDate.toString().split(' ')[2] + ' de '+ props.endDate.toString().split(' ')[1].toLowerCase();
     let inputString = '';
     startDateStr === endDateStr ? inputString =  startDateStr + '.' : inputString = startDateStr + ' - ' + endDateStr + '.';
     props.setValues("        " + inputString);
     props.clickDateHandler();
-    setStartDate(null);
-    setEndDate(null);
+    // props.setStartDate(null);
+    // props.setEndDate(null);
   }
 
 
@@ -49,10 +52,10 @@ const SearchCalendar = (props) => {
     <div className={props.class}>
       {props.booking && <h1>Seleccioná tu fecha de reserva</h1>}
       <DatePicker
-        selected={startDate}
+        selected={props.startDate}
         onChange={onDateChange}
-        startDate={startDate}
-        endDate={endDate}
+        startDate={props.startDate}
+        endDate={props.endDate}
         selectsRange
         inline
         monthsShown={windowWidth < 768 ? 1 : 2}
@@ -63,7 +66,7 @@ const SearchCalendar = (props) => {
           <div className="calendar-footer">
             <button
               className="calendar-button"
-              onClick={(e) => onClik(e, startDate, endDate)}
+              onClick={(e) => onClik(e, props.startDate, props.endDate)}
             >
               Aplicar
             </button>

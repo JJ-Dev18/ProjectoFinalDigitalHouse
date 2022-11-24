@@ -44,15 +44,9 @@ const Main = (props) => {
     }
   }, [categorySelected]);
 
-  useEffect(() => {
-    if (city != "") {
-      getProductsByCity(city).then(({ data }) => setproducts(data));
-    }
-  }, [city]);
-
   return (
     <main>
-      <SearchBlock city={city} setCity={setCity} />
+      <SearchBlock city={city} setCity={setCity} setproducts={setproducts}/>
       {!isLoading ? (
         <CategoryBlock categories={categories} setcategory={setcategory} />
       ) : (
