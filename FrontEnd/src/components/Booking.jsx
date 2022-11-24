@@ -1,5 +1,6 @@
 import { ImageList, Tooltip } from "@material-ui/core";
 import React from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import DetailBooking from "./booking/DetailBooking";
 import { FormBooking } from "./booking/FormBooking";
@@ -10,8 +11,10 @@ import SearchCalendar from "./SearchCalendar";
 import "./styles/booking/booking.css";
 
 const Booking = () => {
+  const [checkin, setcheckin] = useState("___/___/____");
+  const [checkout, setcheckout] = useState("___/___/____");
   const { state } = useLocation();
-  console.log(state);
+  const location = `${state.location.address}, ${state.city.name}, ${state.city.state}, ${state.city.country}`
   return (
     <div style={{ marginBottom: "58px", backgroundColor: "#DFE4EA" }}>
       <div className="product-detail-container">
@@ -30,6 +33,8 @@ const Booking = () => {
             <FormBooking />
             <SearchCalendar
               booking={true}
+              setcheckin={setcheckin}
+              setcheckout={setcheckout}
               // clickDateHandler={clickDateHandler}
               // setValues={setDatesPicked}
               class="booking-calendar"
@@ -42,6 +47,9 @@ const Booking = () => {
             img={state.images[0].url}
             category={state.category.title}
             title={state.title}
+            location={location}
+            checkin={checkin}
+            checkout={checkout}
           />
       </div>
         </div>
