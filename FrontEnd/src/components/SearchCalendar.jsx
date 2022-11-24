@@ -11,7 +11,7 @@ const SearchCalendar = (props) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
 
-
+  console.log(props)
   const onDateChange = (dates) => {
       const [start, end] = dates;
       setStartDate(start);
@@ -31,7 +31,9 @@ const SearchCalendar = (props) => {
   const onClik = (e, startDate,endDate) => {
     e.preventDefault();
     console.log('hola')
-    console.log(startDate, endDate)
+    console.log(startDate.toLocaleDateString('es-CO'), "StartDate");
+    console.log(endDate.toLocaleString(), "EndDate");
+
     const startDateStr = startDate.toString().split(' ')[2] + ' de '+ startDate.toString().split(' ')[1].toLowerCase();
     const endDateStr   = endDate.toString().split(' ')[2] + ' de '+ endDate.toString().split(' ')[1].toLowerCase();
     let inputString = '';
@@ -45,21 +47,29 @@ const SearchCalendar = (props) => {
 
   return (
     <div className={props.class}>
+      {props.booking && <h1>Seleccioná tu fecha de reserva</h1>}
       <DatePicker
         selected={startDate}
         onChange={onDateChange}
         startDate={startDate}
         endDate={endDate}
-        selectsRange 
+        selectsRange
         inline
-        monthsShown={windowWidth<768 ? 1 : 2}
-        formatWeekDay={dayName => dayName.slice(0, 1).toUpperCase()}
+        monthsShown={windowWidth < 768 ? 1 : 2}
+        formatWeekDay={(dayName) => dayName.slice(0, 1).toUpperCase()}
         local={"es"}
-        >
-        <div className='calendar-footer'>
-          <button className='calendar-button'  onClick={ e => onClik(e, startDate, endDate)}>Aplicar</button>
-        </div>
-        </DatePicker>  
+      >
+        {props.footer && (
+          <div className="calendar-footer">
+            <button
+              className="calendar-button"
+              onClick={(e) => onClik(e, startDate, endDate)}
+            >
+              Aplicar
+            </button>
+          </div>
+        )}
+      </DatePicker>
     </div>
   );
 }

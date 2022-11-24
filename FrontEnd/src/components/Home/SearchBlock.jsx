@@ -69,6 +69,7 @@ const SearchBlock = ({ city, setCity }) => {
             />
           </div>
           <SearchCalendar
+            footer={true}
             clickDateHandler={clickDateHandler}
             setValues={setDatesPicked}
             class={`select picker ${showCalendar ? `active` : `inactive`}`}

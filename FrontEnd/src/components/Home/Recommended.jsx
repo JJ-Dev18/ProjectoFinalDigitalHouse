@@ -44,7 +44,7 @@ const Recommended = ({products}) => {
                 <div className="info-producto">
                   <div>
                     <div className="content-category">
-                      <h4>{product.category.title}</h4>
+                      <h4>{product.category.title.toUpperCase()}</h4>
                       {Array(5)
                         .fill("")
                         .map((_, i) => {
@@ -83,7 +83,7 @@ const Recommended = ({products}) => {
                   <p className="description-product">
                     {product.description} <span>más...</span>
                   </p>
-               
+
                   <Link key={index} to={`/product-detail/${product.idProduct}`}>
                     <button className="btn-product">Ver más </button>
                   </Link>
