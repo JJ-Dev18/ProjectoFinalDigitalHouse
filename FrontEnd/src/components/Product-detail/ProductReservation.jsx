@@ -1,20 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import SearchCalendar from "../SearchCalendar";
 import { useNavigate, useParams } from "react-router-dom";
 import "../styles/product-detail/product-reservation.css";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 
 
 
 const ProductReservation = () => {
-  const registeredUser = JSON.parse(localStorage.getItem("logged"));
+  const {auth} = useContext(AuthContext)
   const navigate = useNavigate()
   const params = useParams();
 
   console.log(params.productId)
 
   const bookingRedirection = () => {
-    registeredUser ? navigate(`/product-detail/${params.productId}/bookings`) : navigate("/login?error="+params.productId);
+    auth ? navigate(`/product-detail/${params.productId}/bookings`) : navigate("/login?error="+params.productId);
   }
 
   return (
