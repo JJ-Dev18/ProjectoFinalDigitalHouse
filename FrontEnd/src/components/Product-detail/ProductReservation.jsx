@@ -7,7 +7,7 @@ import AuthContext from "../../context/AuthContext";
 
 
 
-const ProductReservation = () => {
+const ProductReservation = ({product}) => {
   const {auth} = useContext(AuthContext)
   const navigate = useNavigate()
   const params = useParams();
@@ -15,7 +15,11 @@ const ProductReservation = () => {
   console.log(params.productId)
 
   const bookingRedirection = () => {
-    auth ? navigate(`/product-detail/${params.productId}/bookings`) : navigate("/login?error="+params.productId);
+    auth
+      ? navigate(`/product-detail/${params.productId}/bookings`, {
+          state: product,
+        })
+      : navigate("/login?error=" + params.productId, { state: product });
   }
 
   return (

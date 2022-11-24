@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import "../styles/auth/login.css";
-import { Link, useNavigate, withRouter } from "react-router-dom";
+import { Link, useLocation, useNavigate, withRouter } from "react-router-dom";
 import LoginBooking from "./LoginBooking";
 import baseURL, { backendApi } from "../../hooks/axiosBase";
 import AuthContext from "../../context/AuthContext";
@@ -11,8 +11,8 @@ const Login = () => {
   const {handleAuth} = useContext(AuthContext)
   const [error, setError] = useState("")
   let navigate = useNavigate()
-
-  
+  const location = useLocation()
+  console.log(location)
   const handleSubmit = (e) => {
     e.preventDefault();
     let user = document.getElementById("username").value;
@@ -30,13 +30,15 @@ const Login = () => {
             .then((response) => {
                 console.log(response);
                 handleAuth(response.data)
+                sessionStorage.setItem("auth", true);
+                sessionStorage.setItem("userAuth", JSON.stringify(response.data));
+                let path;
+                idBooking ? path = `/product-detail/${idBooking}/bookings` :
+                path = `/`;
+                navigate(path,{state : location ? location.state : null});
             })
             .catch((e) => setError(e));
-            let path;
-            idBooking ? path = `/product-detail/${idBooking}/bookings` :
-        path = `/`;
       
-      navigate(path);
     } catch (error) {
       console.log(error)
     }

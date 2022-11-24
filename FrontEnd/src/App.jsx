@@ -8,6 +8,7 @@ import Register from "./components/Auth/Register";
 import Layout from './components/Layout'
 import SuccessfulBooking from "./components/SuccessfulBooking";
 import { AuthProvider } from "./context/AuthContext";
+import Booking from "./components/Booking";
 
 const App = () => {
   return (
@@ -20,7 +21,7 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/successful-booking" element={<SuccessfulBooking />} />
             <Route path="/product-detail/:productId" element={<ProductDetail />} />
-            <Route path="/product-detail/:productId/bookings" element={<ProductDetail />} />
+            <Route path="/product-detail/:productId/bookings" element={<Booking />} />
           </Routes>
         </Layout>
       </AuthProvider>

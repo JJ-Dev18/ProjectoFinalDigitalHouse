@@ -24,9 +24,13 @@ const Header = () => {
 
   const logoutHandler = () => {
     handleAuth()
+    sessionStorage.removeItem("auth")
+    sessionStorage.removeItem("userAuth")
   };
 
   console.log(userAuth);
+  console.log(auth)
+  console.log(sessionStorage.getItem("auth"))
   return (
     <header>
       <Link to="/">

@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/booking/hour-booking.css";
 import check from "../../resources/check.svg";
-const HourBooking = () => {
+const HourBooking = ({hora,handleInputChange}) => {
   const hours = [
     "01:00 AM",
     "02:00 AM",
@@ -40,7 +40,7 @@ const HourBooking = () => {
       </div>
       <div className="select-hours">
         <label htmlFor="hora">Indicá tu horario estimado de llegada</label>
-        <select id="hora" placeholder="Seleccionar hora de llegada">
+        <select id="hora" name="hora" placeholder="Seleccionar hora de llegada" value={hora}  onChange={handleInputChange}>
           { hours.map((hour,index) => (
             <option value={hour} key={index}>{hour}</option>
           ))}
