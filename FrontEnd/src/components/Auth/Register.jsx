@@ -1,6 +1,6 @@
 import React , {useContext, useState} from "react";
 import '../styles/auth/register.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import baseURL from "../../hooks/axiosBase";
 import AuthContext from "../../context/AuthContext";
@@ -11,6 +11,7 @@ const Register = () => {
     const [error, setError] = useState(false)
     const [password, setPassword] = useState("");
     const {handleAuth} = useContext(AuthContext);
+    let navigate = useNavigate()
 
     let errorRegistro;
     const handleSubmit = (e) => {
@@ -32,7 +33,7 @@ const Register = () => {
                 })
                 .catch((e) => setError(e));
             localStorage.setItem('user', JSON.stringify(data))
-            window.location.href = "/"
+            navigate(`/`);
         } else {
 
             setError(true)
