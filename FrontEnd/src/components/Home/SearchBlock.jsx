@@ -32,8 +32,8 @@ const SearchBlock = ({ city, setCity, setproducts }) => {
     if (endDate && city != "") {
       getProductsByCityAndDate(
         city,
-        startDate.toLocaleDateString(),
-        endDate.toLocaleDateString()
+        startDate.toLocaleDateString("en-US"),
+        endDate.toLocaleDateString("en-US")
       ).then((resp) => {
         setproducts(resp.data);
         setStartDate(null);

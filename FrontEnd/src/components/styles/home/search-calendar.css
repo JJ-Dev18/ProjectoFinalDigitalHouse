@@ -87,6 +87,7 @@ width: 394px; */
   border-radius: 5px;
   color: var(--white);
   border: none;
+  cursor: pointer;
   margin-bottom: 5px;
 }
 
