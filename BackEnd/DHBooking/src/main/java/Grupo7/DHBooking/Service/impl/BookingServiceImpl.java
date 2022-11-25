@@ -52,26 +52,47 @@ public class BookingServiceImpl implements IBookingService {
     @Override
     public List<Product> getListOfProductsBetweenDatesAndCity(String startDate, String endDate, Long cityId) throws ParseException {
         List<Product> listProductsAvailable = new ArrayList<Product>();
-
-        List<Product> listProductByCity = productService.getByCity(cityId);
+        List<Product> listProduct;
+        if(cityId!=null) {
+            listProduct = productService.getByCity(cityId);
+        }else{
+            listProduct = productService.getAll();
+        }
 
         LocalDate formattedStartDate = parseDocumentDateFormat(startDate);
         LocalDate formattedEndDate = parseDocumentDateFormat(endDate);
 
-        for (Product cityProduct : listProductByCity) {
-            List<Booking> listBookingByProductId = bookingRepository.findBookingsByProductId(cityProduct.getIdProduct());
-            Boolean state = true;
-            for (Booking booking : listBookingByProductId) {
-                if (!validateDatesBetweenRange(formattedStartDate, formattedEndDate, booking.getStartDate(), booking.getEndDate())) {
-                    state = false;
-                    break;
+
+
+        if(cityId!=null){
+            for (Product cityProduct : listProduct) {
+                List<Booking> listBookingByProductId = bookingRepository.findBookingsByProductId(cityProduct.getIdProduct());
+                Boolean state = true;
+                for (Booking booking : listBookingByProductId) {
+                    if (!validateDatesBetweenRange(formattedStartDate, formattedEndDate, booking.getStartDate(), booking.getEndDate())) {
+                        state = false;
+                        break;
+                    }
+                }
+                if(state){
+                    listProductsAvailable.add(cityProduct);
                 }
             }
-            if(state){
-                listProductsAvailable.add(cityProduct);
+        }else{
+            for (Product cityProduct : listProduct) {
+                List<Booking> listBookingByProductId = bookingRepository.findBookingsByProductId(cityProduct.getIdProduct());
+                Boolean state = true;
+                for (Booking booking : listBookingByProductId) {
+                    if (!validateDatesBetweenRange(formattedStartDate, formattedEndDate, booking.getStartDate(), booking.getEndDate())) {
+                        state = false;
+                        break;
+                    }
+                }
+                if(state){
+                    listProductsAvailable.add(cityProduct);
+                }
             }
         }
-
         return listProductsAvailable;
     }
 

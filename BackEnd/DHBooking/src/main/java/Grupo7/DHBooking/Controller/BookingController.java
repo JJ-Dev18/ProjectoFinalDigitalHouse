@@ -37,7 +37,10 @@ public class BookingController {
 
     @PostMapping("/listAvailableProducts")
     public ResponseEntity<List<Product>> listAvailableProducts(@RequestBody Map<String, String> json) throws ParseException {
-        Optional<List<Product>> listAvailableProducts = Optional.ofNullable(bookingService.getListOfProductsBetweenDatesAndCity(json.get("startDate"), json.get("endDate"), Long.valueOf(json.get("cityId"))));
+        Optional<List<Product>> listAvailableProducts = Optional.ofNullable(
+                bookingService.getListOfProductsBetweenDatesAndCity(json.get("startDate"), json.get("endDate"),
+                        json.get("cityId") != null ? Long.valueOf(json.get("cityId")) : null));
+
         if(listAvailableProducts.isPresent()){
             return ResponseEntity.ok(listAvailableProducts.get());
         } else{
