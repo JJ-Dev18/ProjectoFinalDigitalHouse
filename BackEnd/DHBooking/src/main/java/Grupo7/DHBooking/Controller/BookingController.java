@@ -37,7 +37,19 @@ public class BookingController {
 
     @PostMapping("/listAvailableProducts")
     public ResponseEntity<List<Product>> listAvailableProducts(@RequestBody Map<String, String> json) throws ParseException {
-        Optional<List<Product>> listAvailableProducts = Optional.ofNullable(bookingService.getListOfProductsBetweenDatesAndCity(json.get("startDate"), json.get("endDate"), Long.valueOf(json.get("cityId"))));
+        System.out.println(json);
+        String cityId = json.get("cityId");
+        System.out.println(cityId);
+        Optional<List<Product>> listAvailableProducts;
+        if (cityId!=null) {
+            System.out.println("Estoy en endpoint listAvailableProducts con ciudad");
+           listAvailableProducts = Optional.ofNullable(bookingService.getListOfProductsBetweenDatesAndCity(json.get("startDate"), json.get("endDate"), Long.valueOf(json.get("cityId"))));
+        }else {
+            System.out.println("Estoy en endpoint listAvailableProducts sin ciudad");
+            listAvailableProducts = Optional.ofNullable(bookingService.getListOfProductsBetweenDatesAndCity(json.get("startDate"), json.get("endDate"), null));
+        }
+
+        //Optional<List<Product>> listAvailableProducts = Optional.ofNullable(bookingService.getListOfProductsBetweenDatesAndCity(json.get("startDate"), json.get("endDate"), Long.valueOf(json.get("cityId"))));
         if(listAvailableProducts.isPresent()){
             return ResponseEntity.ok(listAvailableProducts.get());
         } else{
