@@ -8,15 +8,14 @@ import { useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 import { Auth } from "../utils/Auth";
 import {
-  getProductsByCategory,
-  getProductsByCity,
+  getProductsByCategory
 } from "../utils/requestProductsHome";
 import { SkeletonC, SkeletonR } from "./Skeleton";
 
 const Main = (props) => {
   const [categorySelected, setcategory] = useState(0);
   const [products, setproducts] = useState([]);
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState(null);
   const { response: categories, isLoading } = useFetch({
     api: backendApi,
     method: "get",
