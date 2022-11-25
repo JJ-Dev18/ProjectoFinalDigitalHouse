@@ -10,6 +10,8 @@ import ProductReservation from "./Product-detail/ProductReservation";
 import ProductDescription from "./Product-detail/ProductDescription";
 import useWindowSize from "../utils/useWindowSize";
 import useFetch from "../hooks/useFetch";
+import ProductMap from "./Product-detail/ProductMap";
+import credentials from "../utils/credentials"
 
 const ProductDetail = ({ modo }) => {
   const params = useParams();
@@ -55,6 +57,12 @@ const ProductDetail = ({ modo }) => {
           />
           <ProductCharacteristics characteristics={response.feature} />
           <ProductReservation product={response}/>
+          <ProductMap  
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&key=${credentials.mapsKey}`} 
+            containerElement={<div style={{height: '400px'}}/>}
+            mapElement={<div style={{height: '100%'}}/>}
+            loadingElement={<p>Cargando</p>}
+          />
           <ProductPolicies
             normsPolicy={response.normPolicy}
             securityPolicy={response.securityPolicy}

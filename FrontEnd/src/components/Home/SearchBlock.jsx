@@ -6,7 +6,7 @@ import DropDown from "./DropDown";
 import SearchCalendar from "../SearchCalendar";
 import {
   getProductsByCity,
-  getProductsByCityAndDate,
+  getProductsByCityAndDate
 } from "../../utils/requestProductsHome";
 
 const SearchBlock = ({ city, setCity, setproducts }) => {
@@ -28,12 +28,13 @@ const SearchBlock = ({ city, setCity, setproducts }) => {
   };
 
   const searchProducts = (e) => {
+    console.log(city)
     e.preventDefault();
-    if (endDate && city != "") {
+    if (endDate) {
       getProductsByCityAndDate(
         city,
-        startDate.toLocaleDateString(),
-        endDate.toLocaleDateString()
+        startDate.toLocaleDateString("en-US"),
+        endDate.toLocaleDateString("en-US")
       ).then((resp) => {
         setproducts(resp.data);
         setStartDate(null);
