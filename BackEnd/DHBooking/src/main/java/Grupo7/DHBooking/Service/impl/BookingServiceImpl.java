@@ -51,6 +51,7 @@ public class BookingServiceImpl implements IBookingService {
 
     @Override
     public List<Product> getListOfProductsBetweenDatesAndCity(String startDate, String endDate, Long cityId) throws ParseException {
+        System.out.println("Entré en getListOfProductsBetweenDatesAndCity");
         List<Product> listProductsAvailable = new ArrayList<Product>();
         List<Product> listProduct;
         if(cityId!=null) {
@@ -93,6 +94,7 @@ public class BookingServiceImpl implements IBookingService {
                 }
             }
         }
+        System.out.println(listProductsAvailable);
         return listProductsAvailable;
     }
 
