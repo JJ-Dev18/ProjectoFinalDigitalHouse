@@ -1,6 +1,7 @@
 package Grupo7.DHBooking.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,4 +26,5 @@ public class Location {
 
     @Column(name = "address")
     private String address;
+
 }
