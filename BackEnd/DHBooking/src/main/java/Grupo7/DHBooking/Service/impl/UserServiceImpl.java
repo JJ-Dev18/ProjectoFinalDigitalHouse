@@ -29,10 +29,14 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public UserDTO createUser(UserDTO userDTO) throws IOException {
-        User userResponse = userRepository.save(mapper.map(userDTO, User.class));
-        if (userResponse!= null){
-            UserDTO userDTO1 = mapper.map(userResponse, UserDTO.class);
-            return userDTO1;
+        Optional<User> userValidation = userRepository.findByEmail(userDTO.getEmail());
+
+        if(!userValidation.isPresent()){
+            User userResponse = userRepository.save(mapper.map(userDTO, User.class));
+            if (userResponse!= null){
+                UserDTO userDTO1 = mapper.map(userResponse, UserDTO.class);
+                return userDTO1;
+            }
         }
 
         return null;

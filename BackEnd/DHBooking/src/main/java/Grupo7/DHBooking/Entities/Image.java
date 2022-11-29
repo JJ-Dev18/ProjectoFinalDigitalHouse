@@ -3,7 +3,6 @@ package Grupo7.DHBooking.Entities;
 import com.fasterxml.jackson.annotation.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.CollectionId;
 
 import javax.persistence.*;
 

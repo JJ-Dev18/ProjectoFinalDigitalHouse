@@ -62,7 +62,7 @@ public class Product {
     private List<SecurityPolicy> securityPolicy;
 
     @JsonIncludeProperties(value = {"idImage", "url"})
-    @OneToMany(cascade = CascadeType.MERGE)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_product")
     private List<Image> images;
 
@@ -77,7 +77,8 @@ public class Product {
     @JoinColumn(name = "id_product")
     private List<Booking> bookingList;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnoreProperties ({"hibernateLazyInitializer", "handler"})
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_location")
     private Location location;
 }

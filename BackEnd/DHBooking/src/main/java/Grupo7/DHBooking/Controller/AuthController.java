@@ -35,7 +35,6 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<UserAuthDTO> addUser(@RequestBody UserDTO userDTO) throws IOException {
-
         Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
         String hash = argon2.hash(1,1024, 1, userDTO.getPassword());
         userDTO.setPassword(hash);
