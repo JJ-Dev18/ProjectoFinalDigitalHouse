@@ -1,8 +1,10 @@
-import React from 'react'
+import React,{useState} from 'react'
 import StarIcon from '../../resources/star.svg'
 import gps from '../../resources/gps.svg'
 import  '../styles/booking/detail-booking.css'
 import { useNavigate } from 'react-router-dom'
+import baseURL from '../../hooks/axiosBase'
+import axios from 'axios'
 
 const DetailBooking = ({
   rating,
@@ -12,7 +14,9 @@ const DetailBooking = ({
   address,
   checkin,
   checkout,
+  dataBooking,token
 }) => {
+  console.log(dataBooking)
   const navigate = useNavigate();
   let stars = Math.floor(rating / 2); //clamp value
   const wordsRating = [
@@ -22,10 +26,28 @@ const DetailBooking = ({
     "Muy Bueno",
     "Excelente",
   ];
+  const [error, setError] = useState("");
 
   const confirmBooking = () => {
-    navigate(`/successful-booking`);
+     try {
+       let urlPost = baseURL + "bookings";
+       axios
+         .post(urlPost, dataBooking, {
+           headers: {
+             Authorization: `Bearer ${token}`,
+           },
+         })
+         .then((response) => {
+           console.log(response);
+           navigate(`/successful-booking`);
+         })
+         .catch((e) => setError(e));
+     } catch (error) {
+       console.log(error);
+     }
   };
+
+
   return (
     <div className="content-detail">
       <h2>Detalle de la reserva</h2>
