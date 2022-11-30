@@ -1,7 +1,9 @@
 import { ImageList, Tooltip } from "@material-ui/core";
 import React from "react";
+import { useContext } from "react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 import { useForm } from "../hooks/useForm";
 import DetailBooking from "./booking/DetailBooking";
 import { FormBooking } from "./booking/FormBooking";
@@ -12,11 +14,15 @@ import SearchCalendar from "./SearchCalendar";
 import "./styles/booking/booking.css";
 
 const Booking = () => {
+  const {userAuth} = useContext(AuthContext);
   const [checkin, setcheckin] = useState("___/___/____");
   const [checkout, setcheckout] = useState("___/___/____");
    const [startDate, setStartDate] = useState(new Date());
    const [endDate, setEndDate] = useState(null);
   const { state } = useLocation();
+
+  console.log(userAuth)
+
   const address = `${state.location.address}, ${state.city.name}, ${state.city.state}, ${state.city.country}`
   const [formValues, handleInputChange, reset] = useForm({
     nombre: "",
@@ -28,7 +34,17 @@ const Booking = () => {
 
   const { nombre , apellido, correo, ciudad, hora} = formValues
   console.log(nombre,apellido,ciudad,correo)
-  console.log("hora",hora)
+  const dataBooking = {
+    startHour: hora,
+    startDate: "2022-11-17",
+    endDate: "2022-11-27",
+    product: {
+      idProduct: userAuth.idUser,
+    },
+    user: {
+      idUser: state.idProduct,
+    },
+  };
   return (
     <div style={{ marginBottom: "58px", backgroundColor: "#DFE4EA" }}>
       <div className="product-detail-container">
@@ -74,6 +90,9 @@ const Booking = () => {
             address={address}
             checkin={checkin}
             checkout={checkout}
+            dataBooking={dataBooking}
+            token={userAuth.token}
+            
           />
         </div>
       </div>
