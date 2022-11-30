@@ -4,11 +4,16 @@ import { useNavigate, useParams } from "react-router-dom";
 import "../styles/product-detail/product-reservation.css";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
+import DatesProvider from "../../context/DatesProvider";
 
 
 
 const ProductReservation = ({product}) => {
   const {auth} = useContext(AuthContext)
+  const { range , setRange } = useContext(DatesProvider);
+  console.log(range)
+
+
   const navigate = useNavigate()
   const params = useParams();
 

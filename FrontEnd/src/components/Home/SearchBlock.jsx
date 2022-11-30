@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useContext } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { IoMdCalendar } from "react-icons/io";
 import "../styles/home/search-block.css";
@@ -8,6 +8,7 @@ import {
   getProductsByCity,
   getProductsByCityAndDate
 } from "../../utils/requestProductsHome";
+import DatesProvider from "../../context/DatesProvider";
 
 const SearchBlock = ({ city, setCity, setproducts }) => {
   const [dropDown, setDropDown] = useState(false);
@@ -16,6 +17,14 @@ const SearchBlock = ({ city, setCity, setproducts }) => {
   const [endDate, setEndDate] = useState(null);
   const [datesPicked, setDatesPicked] = useState("");
   const [cityInput, setCityInput] = useState("");
+  // const [loading, setLoading] = useState(false);
+
+  const { range , setRange } = useContext(DatesProvider);
+  console.log('range')
+  console.log(range)
+
+
+  
 
   const clickCityHandler = () => {
     setDropDown(!dropDown);
@@ -28,24 +37,29 @@ const SearchBlock = ({ city, setCity, setproducts }) => {
   };
 
   const searchProducts = (e) => {
-    console.log(city)
     e.preventDefault();
     if (endDate) {
+      // setLoading(true);
+      setRange([startDate, endDate])
       getProductsByCityAndDate(
         city,
         startDate.toLocaleDateString("en-US"),
         endDate.toLocaleDateString("en-US")
       ).then((resp) => {
+        // setLoading(false);
         setproducts(resp.data);
-        setStartDate(null);
-        setEndDate(null);
+        console.log(range);
+        // setStartDate(null);
+        // setEndDate(null);
+        // setLoading(false);
       });
     }
     if (!endDate && city != "") {
       getProductsByCity(city).then((resp) => {
         setproducts(resp.data);
-        setStartDate(null);
-        setEndDate(null);
+        // setStartDate(null);
+        // setEndDate(null);
+        // setLoading(false);
       });
     }
   };

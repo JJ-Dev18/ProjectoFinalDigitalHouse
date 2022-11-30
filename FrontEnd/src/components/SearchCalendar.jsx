@@ -1,20 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect , useContext } from 'react';
 import { useState } from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './styles/home/search-calendar.css'
+import DatesProvider from '../context/DatesProvider';
 
 
 const SearchCalendar = (props) => {
  
-  const windowWidth = window.innerWidth
- 
+  const windowWidth = window.innerWidth;
+
+  console.log(props)
+  const { range , setRange } = useContext(DatesProvider);
+
+  console.log('soy range dentro de calendario')
+  console.log(range)
 
   const onDateChange = (dates) => {
       
       const [start, end] = dates;
       props.setStartDate(start);
       props.setEndDate(end);
+      setRange([start,end]);
+      //setDatesRange([start, end])
       if(props.booking){
         props.setcheckin(start.toLocaleDateString())
         if(end){
@@ -37,8 +45,10 @@ const SearchCalendar = (props) => {
   const onClik = (e, startDate,endDate) => {
     e.preventDefault();
     
-    const startDateStr = props.startDate.toString().split(' ')[2] + ' de '+ props.startDate.toString().split(' ')[1].toLowerCase();
-    const endDateStr   = props.endDate.toString().split(' ')[2] + ' de '+ props.endDate.toString().split(' ')[1].toLowerCase();
+    // const startDateStr = props.startDate.toString().split(' ')[2] + ' de '+ props.startDate.toString().split(' ')[1].toLowerCase();
+    // const endDateStr   = props.endDate.toString().split(' ')[2] + ' de '+ props.endDate.toString().split(' ')[1].toLowerCase();
+    const startDateStr = range[0].toString().split(' ')[2] + ' de '+ range[0].toString().split(' ')[1].toLowerCase();
+    const endDateStr   = range[1].toString().split(' ')[2] + ' de '+ range[1].toString().split(' ')[1].toLowerCase();
     let inputString = '';
     startDateStr === endDateStr ? inputString =  startDateStr + '.' : inputString = startDateStr + ' - ' + endDateStr + '.';
     props.setValues("        " + inputString);
@@ -52,10 +62,10 @@ const SearchCalendar = (props) => {
     <div className={props.class}>
       {props.booking && <h1>Seleccioná tu fecha de reserva</h1>}
       <DatePicker
-        selected={props.startDate}
+        selected={range[0]}
         onChange={onDateChange}
-        startDate={props.startDate}
-        endDate={props.endDate}
+        startDate={range[0]}
+        endDate={range[1]}
         selectsRange
         inline
         monthsShown={windowWidth < 768 ? 1 : 2}

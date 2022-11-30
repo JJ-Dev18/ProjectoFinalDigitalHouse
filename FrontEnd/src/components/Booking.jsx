@@ -12,14 +12,17 @@ import ProductHeader from "./Product-detail/ProductHeader";
 import ProductPolicies from "./Product-detail/ProductPolicies";
 import SearchCalendar from "./SearchCalendar";
 import "./styles/booking/booking.css";
+import DatesProvider from "../context/DatesProvider";
 
 const Booking = () => {
   const {userAuth} = useContext(AuthContext);
   const [checkin, setcheckin] = useState("___/___/____");
   const [checkout, setcheckout] = useState("___/___/____");
-   const [startDate, setStartDate] = useState(new Date());
-   const [endDate, setEndDate] = useState(null);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(null);
   const { state } = useLocation();
+  const { range, setRange } = useContext(DatesProvider)
+
 
   console.log(userAuth)
 
@@ -35,9 +38,9 @@ const Booking = () => {
   const { nombre , apellido, correo, ciudad, hora} = formValues
   console.log(nombre,apellido,ciudad,correo)
   const dataBooking = {
-    startHour: hora,
-    startDate: "2022-11-17",
-    endDate: "2022-11-27",
+    hora,
+    startDate: range[0].toLocaleDateString("en-US"),
+    endDate: range[1].toLocaleDateString("en-US"),
     product: {
       idProduct: userAuth.idUser,
     },
