@@ -16,35 +16,32 @@ import BookingContext from "../context/BookingContext";
 
 const Booking = () => {
   const { userAuth } = useContext(AuthContext);
+  const {range,city} = useContext(BookingContext);
   const [checkin, setcheckin] = useState("___/___/____");
   const [checkout, setcheckout] = useState("___/___/____");
   const { state } = useLocation();
-  const {range} = useContext(BookingContext);
 
-  console.log(range, "range booking");
+  console.log(userAuth, "range booking");
 
   const address = `${state.location.address}, ${state.city.name}, ${state.city.state}, ${state.city.country}`;
   const [formValues, handleInputChange, reset] = useForm({
-    nombre: "",
-    apellido: "",
-    correo: "",
-    ciudad: "",
-    hora: "",
+    name: userAuth.name,
+    lastName: userAuth.lastName,
+    email: userAuth.email,
+    ciudad: city,
+    hour: "",
   });
 
-  const { nombre, apellido, correo, ciudad, hora } = formValues;
+  const { name, lastName, email, ciudad, hour } = formValues;
   
   const dataBooking = {
-    hora,
+    startHour: parseInt(hour.split(":")[0]),
     startDate: range[0]?.toLocaleDateString("en-US"),
     endDate: range[1]?.toLocaleDateString("en-US"),
-    product: {
-      idProduct: userAuth.idUser,
-    },
-    user: {
-      idUser: state.idProduct,
-    },
+    idProduct: userAuth.idUser,
+    idUser: state.idProduct,
   };
+  
   return (
     <div style={{ marginBottom: "58px", backgroundColor: "#DFE4EA" }}>
       <div className="product-detail-container">
@@ -61,10 +58,10 @@ const Booking = () => {
         <div className="booking">
           <div>
             <FormBooking
-              nombre={nombre}
-              apellido={apellido}
-              correo={correo}
-              ciudad={ciudad}
+              name={name}
+              lastName={lastName}
+              email={email}
+              city={ciudad}
               handleInputChange={handleInputChange}
             />
             <SearchCalendar
@@ -75,7 +72,7 @@ const Booking = () => {
               // setValues={setDatesPicked}
               class="booking-calendar"
             />
-            <HourBooking hora={hora} handleInputChange={handleInputChange} />
+            <HourBooking hour={hour} handleInputChange={handleInputChange} />
           </div>
 
           <DetailBooking
@@ -84,8 +81,8 @@ const Booking = () => {
             category={state.category.title}
             title={state.title}
             address={address}
-            checkin={checkin}
-            checkout={checkout}
+            checkin={range[0]?.toLocaleDateString("en-US")}
+            checkout={range[1]?.toLocaleDateString("en-US")}
             dataBooking={dataBooking}
             token={userAuth.token}
           />

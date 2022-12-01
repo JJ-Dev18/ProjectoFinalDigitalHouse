@@ -10,16 +10,16 @@ import {
 } from "../../utils/requestProductsHome";
 import BookingContext from "../../context/BookingContext";
 
-const SearchBlock = ({ city, setCity, setproducts }) => {
+const SearchBlock = ({ setproducts }) => {
   const [dropDown, setDropDown] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
   const [datesPicked, setDatesPicked] = useState("");
   const [cityInput, setCityInput] = useState("");
   // const [loading, setLoading] = useState(false);
 
-  const { range, setRange } = useContext(BookingContext);
-  console.log("range");
-  console.log(range);
+
+  const { range, setRange ,city, setCity} = useContext(BookingContext);
+  console.log(city,"cityyy")
 
   const clickCityHandler = () => {
     setDropDown(!dropDown);
@@ -44,17 +44,13 @@ const SearchBlock = ({ city, setCity, setproducts }) => {
         // setLoading(false);
         setproducts(resp.data);
         console.log(range);
-        // setStartDate(null);
-        // setEndDate(null);
-        // setLoading(false);
+       
       });
     }
     if (!range[1] && city != "") {
       getProductsByCity(city).then((resp) => {
         setproducts(resp.data);
-        // setStartDate(null);
-        // setEndDate(null);
-        // setLoading(false);
+       
       });
     }
   };
