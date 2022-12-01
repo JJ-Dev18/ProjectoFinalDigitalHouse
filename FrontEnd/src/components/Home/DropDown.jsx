@@ -9,7 +9,7 @@ import BookingContext from '../../context/BookingContext';
 const DropDown = (props) => {
     
     const {city, setCity} = useContext(BookingContext)
-    console.log(city,"city en dropdown ")
+   
     const { response: cities, isLoading } = useFetch({
         api: backendApi,
         method: "get",
@@ -18,7 +18,7 @@ const DropDown = (props) => {
 
     const onClickHandler = (e , key) => {
         const inputStr = cities[key-1].name + ', ' + cities[key-1].country
-        console.log(inputStr);
+       
         props.setCityInput("      " + inputStr);
         setCity(key); 
         props.clickCityHandler()

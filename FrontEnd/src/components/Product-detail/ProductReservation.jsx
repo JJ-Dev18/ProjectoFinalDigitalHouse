@@ -9,13 +9,12 @@ import DatesProvider from "../../context/BookingContext";
 const ProductReservation = ({ product }) => {
   const { auth } = useContext(AuthContext);
   const { range, setRange } = useContext(DatesProvider);
-  console.log(range);
+ 
 
   const navigate = useNavigate();
   const params = useParams();
 
-  console.log(params.productId);
-
+ 
   const bookingRedirection = () => {
     auth
       ? navigate(`/product-detail/${params.productId}/bookings`, {
