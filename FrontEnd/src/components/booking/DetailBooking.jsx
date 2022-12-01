@@ -12,11 +12,11 @@ const DetailBooking = ({
   category,
   title,
   address,
-  checkin,
+  checkin ,
   checkout,
-  dataBooking,token
+  dataBooking,
+  token,
 }) => {
-  console.log(dataBooking)
   const navigate = useNavigate();
   let stars = Math.floor(rating / 2); //clamp value
   const wordsRating = [
@@ -27,26 +27,25 @@ const DetailBooking = ({
     "Excelente",
   ];
   const [error, setError] = useState("");
-
+  console.log(dataBooking);
   const confirmBooking = () => {
-     try {
-       let urlPost = baseURL + "bookings";
-       axios
-         .post(urlPost, dataBooking, {
-           headers: {
-             Authorization: `Bearer ${token}`,
-           },
-         })
-         .then((response) => {
-           console.log(response);
-           navigate(`/successful-booking`);
-         })
-         .catch((e) => setError(e));
-     } catch (error) {
-       console.log(error);
-     }
+    try {
+      let urlPost = baseURL + "bookings";
+      axios
+        .post(urlPost, dataBooking, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          console.log(response);
+          navigate(`/successful-booking`);
+        })
+        .catch((e) => setError(e));
+    } catch (error) {
+      console.log(error);
+    }
   };
-
 
   return (
     <div className="content-detail">
@@ -77,11 +76,11 @@ const DetailBooking = ({
         </div>
         <div className="check-in">
           <h4>Check in</h4>
-          <p>{checkin}</p>
+          <p>{!checkin ? "___/___/____" : checkin}</p>
         </div>
         <div className="check-in">
           <h4>Check out</h4>
-          <p>{checkout}</p>
+          <p>{!checkout ? "___/___/____" : checkout}</p>
         </div>
         <button onClick={confirmBooking}>Confirmar reserva</button>
       </div>
