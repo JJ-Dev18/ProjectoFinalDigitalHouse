@@ -38,8 +38,8 @@ const Booking = () => {
     startHour: parseInt(hour.split(":")[0]),
     startDate: range[0]?.toLocaleDateString("en-US"),
     endDate: range[1]?.toLocaleDateString("en-US"),
-    idProduct: userAuth.idUser,
-    idUser: state.idProduct,
+    idProduct: state.idProduct,
+    idUser: userAuth.idUser,
   };
   
   return (
