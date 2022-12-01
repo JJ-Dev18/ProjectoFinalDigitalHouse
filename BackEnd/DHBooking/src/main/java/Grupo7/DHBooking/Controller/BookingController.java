@@ -2,13 +2,16 @@ package Grupo7.DHBooking.Controller;
 
 import Grupo7.DHBooking.Entities.Booking;
 import Grupo7.DHBooking.Entities.Product;
+import Grupo7.DHBooking.Entities.User;
 import Grupo7.DHBooking.Service.IBookingService;
+import Grupo7.DHBooking.Util.DateParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -58,9 +61,32 @@ public class BookingController {
     }
 
     @PostMapping
-    public ResponseEntity<Booking> createBooking(@RequestBody Booking booking){
+    public ResponseEntity<Booking> createBooking(@RequestBody  Map<String, String> json) throws ParseException {
+        System.out.println("Estoy queriendo almacenar una reserva");
+        System.out.println(json);
+
+        LocalDate startDate =  DateParser.parseDateFormat(json.get("startDate"));
+        LocalDate endDate = DateParser.parseDateFormat(json.get("endDate"));
+        Integer startHour = Integer.valueOf(json.get("startHour"));
+        Long idProduct = Long.valueOf(json.get("idProduct"));
+        Long idUser = Long.valueOf(json.get("idUser"));
+
+        Booking booking = new Booking();
+        booking.setStartHour(startHour);
+        booking.setStartDate(startDate);
+        booking.setEndDate(endDate);
+
+        Product product = new Product();
+        product.setIdProduct(idProduct);
+        booking.setProduct(product);
+
+        User user = new User();
+        user.setIdUser(idUser);
+        booking.setUser(user);
+
         return new ResponseEntity<>(bookingService.createBooking(booking), HttpStatus.CREATED);
     }
+
 
     @PutMapping
     public ResponseEntity<Booking> updateBooking(@RequestBody Booking booking){
