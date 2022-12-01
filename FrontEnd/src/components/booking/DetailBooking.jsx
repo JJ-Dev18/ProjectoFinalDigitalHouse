@@ -16,7 +16,6 @@ const DetailBooking = ({
   checkout,
   dataBooking,token
 }) => {
-  console.log(dataBooking)
   const navigate = useNavigate();
   let stars = Math.floor(rating / 2); //clamp value
   const wordsRating = [

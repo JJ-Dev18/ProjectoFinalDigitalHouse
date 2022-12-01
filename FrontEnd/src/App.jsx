@@ -9,13 +9,13 @@ import Layout from './components/Layout'
 import SuccessfulBooking from "./components/SuccessfulBooking";
 import { AuthProvider } from "./context/AuthContext";
 import Booking from "./components/Booking";
-import { DatesProvider } from "./context/DatesProvider";
+import {BookingProvider} from "./context/BookingContext";
 
 const App = () => {
   return (
     <div>
       <AuthProvider>
-        <DatesProvider>
+        <BookingProvider>
         <Layout>
           <Routes>
             <Route path="/" element={<Main />} />
@@ -26,7 +26,7 @@ const App = () => {
             <Route path="/product-detail/:productId/bookings" element={<Booking />} />
           </Routes>
         </Layout>
-        </DatesProvider>
+        </BookingProvider>
       </AuthProvider>
     </div>
   );

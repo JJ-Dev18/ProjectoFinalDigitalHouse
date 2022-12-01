@@ -12,35 +12,32 @@ import ProductHeader from "./Product-detail/ProductHeader";
 import ProductPolicies from "./Product-detail/ProductPolicies";
 import SearchCalendar from "./SearchCalendar";
 import "./styles/booking/booking.css";
-import DatesProvider from "../context/DatesProvider";
+import BookingContext from "../context/BookingContext";
 
 const Booking = () => {
-  const {userAuth} = useContext(AuthContext);
+  const { userAuth } = useContext(AuthContext);
   const [checkin, setcheckin] = useState("___/___/____");
   const [checkout, setcheckout] = useState("___/___/____");
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(null);
   const { state } = useLocation();
-  const { range, setRange } = useContext(DatesProvider)
+  const {range} = useContext(BookingContext);
 
+  console.log(range, "range booking");
 
-  console.log(userAuth)
-
-  const address = `${state.location.address}, ${state.city.name}, ${state.city.state}, ${state.city.country}`
+  const address = `${state.location.address}, ${state.city.name}, ${state.city.state}, ${state.city.country}`;
   const [formValues, handleInputChange, reset] = useForm({
     nombre: "",
-    apellido : "",
-    correo : "",
+    apellido: "",
+    correo: "",
     ciudad: "",
     hora: "",
   });
 
-  const { nombre , apellido, correo, ciudad, hora} = formValues
-  console.log(nombre,apellido,ciudad,correo)
+  const { nombre, apellido, correo, ciudad, hora } = formValues;
+  
   const dataBooking = {
     hora,
-    startDate: range[0].toLocaleDateString("en-US"),
-    endDate: range[1].toLocaleDateString("en-US"),
+    startDate: range[0]?.toLocaleDateString("en-US"),
+    endDate: range[1]?.toLocaleDateString("en-US"),
     product: {
       idProduct: userAuth.idUser,
     },
@@ -74,10 +71,6 @@ const Booking = () => {
               booking={true}
               setcheckin={setcheckin}
               setcheckout={setcheckout}
-              setStartDate={setStartDate}
-              setEndDate={setEndDate}
-              startDate={startDate}
-              endDate={endDate}
               // clickDateHandler={clickDateHandler}
               // setValues={setDatesPicked}
               class="booking-calendar"
@@ -95,7 +88,6 @@ const Booking = () => {
             checkout={checkout}
             dataBooking={dataBooking}
             token={userAuth.token}
-            
           />
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { useState , useContext } from "react";
+import { useState, useContext } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { IoMdCalendar } from "react-icons/io";
 import "../styles/home/search-block.css";
@@ -6,31 +6,25 @@ import DropDown from "./DropDown";
 import SearchCalendar from "../SearchCalendar";
 import {
   getProductsByCity,
-  getProductsByCityAndDate
+  getProductsByCityAndDate,
 } from "../../utils/requestProductsHome";
-import DatesProvider from "../../context/DatesProvider";
+import BookingContext from "../../context/BookingContext";
 
 const SearchBlock = ({ city, setCity, setproducts }) => {
   const [dropDown, setDropDown] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(null);
   const [datesPicked, setDatesPicked] = useState("");
   const [cityInput, setCityInput] = useState("");
   // const [loading, setLoading] = useState(false);
 
-  const { range , setRange } = useContext(DatesProvider);
-  console.log('range')
-  console.log(range)
-
-
-  
+  const { range, setRange } = useContext(BookingContext);
+  console.log("range");
+  console.log(range);
 
   const clickCityHandler = () => {
     setDropDown(!dropDown);
     if (showCalendar) setShowCalendar(!showCalendar);
   };
-  console.log(datesPicked, "datespicked");
   const clickDateHandler = () => {
     setShowCalendar(!showCalendar);
     if (dropDown) setDropDown(!dropDown);
@@ -38,13 +32,14 @@ const SearchBlock = ({ city, setCity, setproducts }) => {
 
   const searchProducts = (e) => {
     e.preventDefault();
-    if (endDate) {
+    if (range[1]) {
       // setLoading(true);
-      setRange([startDate, endDate])
+      // setRange([startDate, endDate]);
+
       getProductsByCityAndDate(
         city,
-        startDate.toLocaleDateString("en-US"),
-        endDate.toLocaleDateString("en-US")
+        range[0].toLocaleDateString("en-US"),
+        range[1].toLocaleDateString("en-US")
       ).then((resp) => {
         // setLoading(false);
         setproducts(resp.data);
@@ -54,7 +49,7 @@ const SearchBlock = ({ city, setCity, setproducts }) => {
         // setLoading(false);
       });
     }
-    if (!endDate && city != "") {
+    if (!range[1] && city != "") {
       getProductsByCity(city).then((resp) => {
         setproducts(resp.data);
         // setStartDate(null);
@@ -108,10 +103,6 @@ const SearchBlock = ({ city, setCity, setproducts }) => {
             />
           </div>
           <SearchCalendar
-            setStartDate={setStartDate}
-            setEndDate={setEndDate}
-            startDate={startDate}
-            endDate={endDate}
             footer={true}
             clickDateHandler={clickDateHandler}
             setValues={setDatesPicked}
