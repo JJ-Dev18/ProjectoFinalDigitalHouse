@@ -5,7 +5,7 @@ const BookingContext = React.createContext({})
 
 export function BookingProvider ({children}) {
   const [range, setRange] = useState([null, null]);
-  const [city, setCity] = useState("")
+  const [city, setCity] = useState(null)
   return <BookingContext.Provider value={{range, setRange,city,setCity}}>
     {children}
   </BookingContext.Provider>
