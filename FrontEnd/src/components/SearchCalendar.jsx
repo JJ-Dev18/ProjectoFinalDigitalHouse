@@ -7,11 +7,8 @@ import BookingContext  from "../context/BookingContext";
 
 const SearchCalendar = (props) => {
   const windowWidth = window.innerWidth;
-
-  console.log(props);
   const { range, setRange } = useContext(BookingContext);
 
-  console.log("soy range dentro de calendario", range);
 
   const onDateChange = (dates) => {
     const [start, end] = dates;

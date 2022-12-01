@@ -37,7 +37,7 @@ const ProductDetail = ({ modo }) => {
     <>
       {!!response && (
         <div className="product-detail-container">
-          {console.log(response.quality)}
+         
           <ProductHeader
             category={response.category.title}
             name={response.title}

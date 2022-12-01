@@ -21,7 +21,7 @@ const Booking = () => {
   const [checkout, setcheckout] = useState("___/___/____");
   const { state } = useLocation();
 
-  console.log(userAuth, "range booking");
+  
 
   const address = `${state.location.address}, ${state.city.name}, ${state.city.state}, ${state.city.country}`;
   const [formValues, handleInputChange, reset] = useForm({

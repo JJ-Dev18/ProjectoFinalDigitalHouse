@@ -27,7 +27,7 @@ const DetailBooking = ({
     "Excelente",
   ];
   const [error, setError] = useState("");
-  console.log(dataBooking);
+
   const confirmBooking = () => {
     try {
       let urlPost = baseURL + "bookings";
@@ -38,7 +38,7 @@ const DetailBooking = ({
           },
         })
         .then((response) => {
-          console.log(response);
+         
           navigate(`/successful-booking`);
         })
         .catch((e) => setError(e));
