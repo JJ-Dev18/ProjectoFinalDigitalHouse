@@ -8,7 +8,6 @@ import Grupo7.DHBooking.Service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.DateFormatter;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -107,7 +106,7 @@ public class BookingServiceImpl implements IBookingService {
         }
     }
 
-    private LocalDate parseDocumentDateFormat(String date) throws ParseException {
+    public LocalDate parseDocumentDateFormat(String date) throws ParseException {
         String[] separatedString = date.split("/");
         Integer day = Integer.parseInt(separatedString[0]);
         Integer month = Integer.parseInt(separatedString[1]);
