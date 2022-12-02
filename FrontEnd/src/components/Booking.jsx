@@ -1,7 +1,9 @@
 import { ImageList, Tooltip } from "@material-ui/core";
 import React from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 import { useForm } from "../hooks/useForm";
 import DetailBooking from "./booking/DetailBooking";
 import { FormBooking } from "./booking/FormBooking";
@@ -10,25 +12,42 @@ import ProductHeader from "./Product-detail/ProductHeader";
 import ProductPolicies from "./Product-detail/ProductPolicies";
 import SearchCalendar from "./SearchCalendar";
 import "./styles/booking/booking.css";
+import BookingContext from "../context/BookingContext";
+import { getBookingsByProductId } from "../utils/bookings";
 
 const Booking = () => {
+  const { userAuth } = useContext(AuthContext);
+  const {range,city} = useContext(BookingContext);
   const [checkin, setcheckin] = useState("___/___/____");
   const [checkout, setcheckout] = useState("___/___/____");
-   const [startDate, setStartDate] = useState(new Date());
-   const [endDate, setEndDate] = useState(null);
   const { state } = useLocation();
-  const address = `${state.location.address}, ${state.city.name}, ${state.city.state}, ${state.city.country}`
+  const [productBookings , setProductBookings] = useState([]);
+
+  useEffect(() => {
+    setProductBookings(getBookingsByProductId(state.idProduct));
+  }, [state.idProduct]);
+
+  console.log(productBookings);
+
+  const address = `${state.location.address}, ${state.city.name}, ${state.city.state}, ${state.city.country}`;
   const [formValues, handleInputChange, reset] = useForm({
-    nombre: "",
-    apellido : "",
-    correo : "",
-    ciudad: "",
-    hora: "",
+    name: userAuth.name,
+    lastName: userAuth.lastName,
+    email: userAuth.email,
+    ciudad: city,
+    hour: "",
   });
 
-  const { nombre , apellido, correo, ciudad, hora} = formValues
-  console.log(nombre,apellido,ciudad,correo)
-  console.log("hora",hora)
+  const { name, lastName, email, ciudad, hour } = formValues;
+  
+  const dataBooking = {
+    startHour: parseInt(hour.split(":")[0]),
+    startDate: range[0]?.toLocaleDateString("en-US"),
+    endDate: range[1]?.toLocaleDateString("en-US"),
+    idProduct: state.idProduct,
+    idUser: userAuth.idUser,
+  };
+  
   return (
     <div style={{ marginBottom: "58px", backgroundColor: "#DFE4EA" }}>
       <div className="product-detail-container">
@@ -45,25 +64,21 @@ const Booking = () => {
         <div className="booking">
           <div>
             <FormBooking
-              nombre={nombre}
-              apellido={apellido}
-              correo={correo}
-              ciudad={ciudad}
+              name={name}
+              lastName={lastName}
+              email={email}
+              city={ciudad}
               handleInputChange={handleInputChange}
             />
             <SearchCalendar
               booking={true}
               setcheckin={setcheckin}
               setcheckout={setcheckout}
-              setStartDate={setStartDate}
-              setEndDate={setEndDate}
-              startDate={startDate}
-              endDate={endDate}
               // clickDateHandler={clickDateHandler}
               // setValues={setDatesPicked}
               class="booking-calendar"
             />
-            <HourBooking hora={hora} handleInputChange={handleInputChange} />
+            <HourBooking hour={hour} handleInputChange={handleInputChange} />
           </div>
 
           <DetailBooking
@@ -72,8 +87,10 @@ const Booking = () => {
             category={state.category.title}
             title={state.title}
             address={address}
-            checkin={checkin}
-            checkout={checkout}
+            checkin={range[0]?.toLocaleDateString("en-US")}
+            checkout={range[1]?.toLocaleDateString("en-US")}
+            dataBooking={dataBooking}
+            token={userAuth.token}
           />
         </div>
       </div>

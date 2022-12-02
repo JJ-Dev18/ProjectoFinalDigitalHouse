@@ -17,11 +17,24 @@ export const getProductsByCity = async (city) => {
 };
 
 export const getProductsByCityAndDate = async (cityId,startDate,endDate) => {
+ 
   const resp = await backendApi.post(`/bookings/listAvailableProducts`,{
     startDate,
     endDate,
     cityId
   });
+  console.log(resp);
   return resp;
+};
+
+
+export const getProductsRandom = async () => {
+  const resp = await backendApi.get('/products/random');
+  return resp;
+  
 }
 
+export const getProductsRecommended= async () => {
+  const resp = await backendApi.get("/products/recommended");
+  return resp;
+};

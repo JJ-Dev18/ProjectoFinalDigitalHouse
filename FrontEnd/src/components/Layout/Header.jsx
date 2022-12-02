@@ -7,7 +7,7 @@ import facebook_dark from "../../resources/facebook-dark.svg";
 import instagram_dark from "../../resources/instagram-dark.svg";
 import linkedin_dark from "../../resources/linkedin-dark.svg";
 import "../styles/layout/header.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Auth } from "../../utils/Auth";
 import Avatar from "@material-ui/core/Avatar";
 import AuthContext from "../../context/AuthContext";
@@ -16,21 +16,20 @@ const Header = () => {
   let menuItems = ["Crear Cuenta", "Iniciar Sesión"];
   const {auth, handleAuth , userAuth} = useContext(AuthContext)
   let [showMenu, setShowMenu] = useState(false);
-
+  const navigate = useNavigate()
   const clickHandler = () => {
     setShowMenu(!showMenu);
-    console.log(showMenu);
+   
   };
 
   const logoutHandler = () => {
     handleAuth()
     sessionStorage.removeItem("auth")
     sessionStorage.removeItem("userAuth")
+    navigate("/")
   };
 
-  console.log(userAuth);
-  console.log(auth)
-  console.log(sessionStorage.getItem("auth"))
+  
   return (
     <header>
       <Link to="/">

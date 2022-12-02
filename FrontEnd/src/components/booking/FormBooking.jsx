@@ -1,7 +1,11 @@
 import React from 'react'
+import useFetch from '../../hooks/useFetch';
 import '../styles/booking/form-booking.css'
-export const FormBooking = ({nombre,apellido,correo,ciudad,handleInputChange}) => {
-
+export const FormBooking = ({name,lastName,email,city,handleInputChange}) => {
+  const { response: cities, isLoading } = useFetch({
+    method: "get",
+    url: "/cities",
+  });
 
   return (
     <form className="content-form">
@@ -10,9 +14,9 @@ export const FormBooking = ({nombre,apellido,correo,ciudad,handleInputChange}) =
         <label htmlFor="nombre">Nombre</label>
         <input
           type="text"
-          id="nombre"
-          name="nombre"
-          value={nombre}
+          id="name"
+          name="name"
+          value={name}
           onChange={handleInputChange}
         />
       </div>
@@ -20,10 +24,10 @@ export const FormBooking = ({nombre,apellido,correo,ciudad,handleInputChange}) =
         <label htmlFor="apellido">Apellido</label>
         <input
           type="text"
-          id="apellido"
+          id="lastName"
           placeholder=""
-          name="apellido"
-          value={apellido}
+          name="lastName"
+          value={lastName}
           onChange={handleInputChange}
         />
       </div>
@@ -31,22 +35,26 @@ export const FormBooking = ({nombre,apellido,correo,ciudad,handleInputChange}) =
         <label htmlFor="correo">Correo Electronico</label>
         <input
           type="text"
-          id="correo"
-          name="correo"
-          value={correo}
+          id="email"
+          name="email"
+          value={email}
           onChange={handleInputChange}
         />
       </div>
       <div className="form-control">
         <label htmlFor="ciudad">Ciudad</label>
-        <input
-          type="text"
-          id="ciudad"
-          placeholder="Ciudad"
-          name="ciudad"
-          value={ciudad}
-          onChange={handleInputChange}
-        />
+        <select id="city" name="city" value={city} onChange={handleInputChange}>
+          {!isLoading &&
+            cities.map((city, index) => (
+              <option
+                value={city.idCity}
+                key={city.idCity}
+                // defaultValue={city.idCity === city}
+              >
+                {city.name}
+              </option>
+            ))}
+        </select>
       </div>
     </form>
   );

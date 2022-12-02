@@ -1,8 +1,10 @@
-import React from 'react'
+import React,{useState} from 'react'
 import StarIcon from '../../resources/star.svg'
 import gps from '../../resources/gps.svg'
 import  '../styles/booking/detail-booking.css'
 import { useNavigate } from 'react-router-dom'
+import baseURL from '../../hooks/axiosBase'
+import axios from 'axios'
 
 const DetailBooking = ({
   rating,
@@ -10,8 +12,10 @@ const DetailBooking = ({
   category,
   title,
   address,
-  checkin,
+  checkin ,
   checkout,
+  dataBooking,
+  token,
 }) => {
   const navigate = useNavigate();
   let stars = Math.floor(rating / 2); //clamp value
@@ -22,10 +26,27 @@ const DetailBooking = ({
     "Muy Bueno",
     "Excelente",
   ];
+  const [error, setError] = useState("");
 
   const confirmBooking = () => {
-    navigate(`/successful-booking`);
+    try {
+      let urlPost = baseURL + "bookings";
+      axios
+        .post(urlPost, dataBooking, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+         
+          navigate(`/successful-booking`);
+        })
+        .catch((e) => setError(e));
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   return (
     <div className="content-detail">
       <h2>Detalle de la reserva</h2>
@@ -55,11 +76,11 @@ const DetailBooking = ({
         </div>
         <div className="check-in">
           <h4>Check in</h4>
-          <p>{checkin}</p>
+          <p>{!checkin ? "___/___/____" : checkin}</p>
         </div>
         <div className="check-in">
           <h4>Check out</h4>
-          <p>{checkout}</p>
+          <p>{!checkout ? "___/___/____" : checkout}</p>
         </div>
         <button onClick={confirmBooking}>Confirmar reserva</button>
       </div>
