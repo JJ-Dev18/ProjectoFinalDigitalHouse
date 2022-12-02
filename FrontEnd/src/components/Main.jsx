@@ -11,6 +11,7 @@ import {
 } from "../utils/requestProductsHome";
 import { SkeletonC, SkeletonR } from "./Skeleton";
 import AuthContext from "../context/AuthContext";
+import UserBookings from "./User/UserBookings";
 
 const Main = (props) => {
   const { auth, handleAuth, userAuth } = useContext(AuthContext);
@@ -46,6 +47,7 @@ const Main = (props) => {
 
   return (
     <main>
+      {/* <UserBookings /> */}
       <SearchBlock city={city} setCity={setCity} setproducts={setproducts} setIsLoadingProducts={setIsLoadingProducts}/>
       {!isLoading ? (
         <CategoryBlock categories={categories} setcategory={setcategory} />
