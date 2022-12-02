@@ -14,6 +14,7 @@ import SearchCalendar from "./SearchCalendar";
 import "./styles/booking/booking.css";
 import BookingContext from "../context/BookingContext";
 import { getBookingsByProductId } from "../utils/bookings";
+import Loading from "./Loading"
 
 const Booking = () => {
   const { userAuth } = useContext(AuthContext);
@@ -21,13 +22,28 @@ const Booking = () => {
   const [checkin, setcheckin] = useState("___/___/____");
   const [checkout, setcheckout] = useState("___/___/____");
   const { state } = useLocation();
-  const [productBookings , setProductBookings] = useState([]);
+  const [forbiddenDates , setForbiddenDates] = useState([]);
+  const [ isLoadingDates, setIsLoadingDates] = useState(true)
+  const [forbiddenDatesFormat, setForbiddenDatesFormat] = useState([])
 
   useEffect(() => {
-    setProductBookings(getBookingsByProductId(state.idProduct));
-  }, [state.idProduct]);
+    const forbidden = []
+    getBookingsByProductId(state.idProduct).then(res => setForbiddenDates(res.data));
+    !isLoadingDates&&forbiddenDates.map(item => forbidden.push( new Date(item)) )
+    !isLoadingDates&&setForbiddenDatesFormat(forbidden)
+    setIsLoadingDates(false)
+  }, [state.idProduct, isLoadingDates]);
 
-  console.log(productBookings);
+
+  !isLoadingDates&&console.log(forbiddenDatesFormat);
+
+  // const forbiddenDatesFormat = []
+  // !isLoadingDates&&forbiddenDates.map(item => forbiddenDatesFormat.push( new Date(item)))
+
+  // console.log('prohibidos')
+  // !isLoadingDates&&console.log(forbiddenDatesFormat);
+
+  // !isLoadingDates&&setForbiddenDates(forbiddenDatesFormat)
 
   const address = `${state.location.address}, ${state.city.name}, ${state.city.state}, ${state.city.country}`;
   const [formValues, handleInputChange, reset] = useForm({
@@ -70,6 +86,7 @@ const Booking = () => {
               city={ciudad}
               handleInputChange={handleInputChange}
             />
+            {!isLoadingDates ?
             <SearchCalendar
               booking={true}
               setcheckin={setcheckin}
@@ -77,7 +94,8 @@ const Booking = () => {
               // clickDateHandler={clickDateHandler}
               // setValues={setDatesPicked}
               class="booking-calendar"
-            />
+              forbiddenDates={forbiddenDatesFormat} 
+            /> : <Loading />}
             <HourBooking hour={hour} handleInputChange={handleInputChange} />
           </div>
 
