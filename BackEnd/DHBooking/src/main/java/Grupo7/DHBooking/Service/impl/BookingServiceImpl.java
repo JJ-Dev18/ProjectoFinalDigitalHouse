@@ -5,6 +5,7 @@ import Grupo7.DHBooking.Entities.Product;
 import Grupo7.DHBooking.Repository.IBookingRepository;
 import Grupo7.DHBooking.Service.IBookingService;
 import Grupo7.DHBooking.Service.IProductService;
+import Grupo7.DHBooking.Util.DateParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,25 +56,15 @@ public class BookingServiceImpl implements IBookingService {
         List<Booking> listBookings;
         listBookings = productService.getProductById(productId).getBookingList();
 
-        LocalDate formattedStartDate = parseDocumentDateFormat(startDate);
-        LocalDate formattedEndDate = parseDocumentDateFormat(endDate);
+        LocalDate formattedStartDate = DateParser.parseDateFormat(startDate);
+        LocalDate formattedEndDate = DateParser.parseDateFormat(endDate);
 
-        Boolean state = true;
         for (Booking booking : listBookings) {
-            if (!validateDatesBetweenRange(formattedStartDate, formattedEndDate, booking.getStartDate(), booking.getEndDate())) {
-                state = false;
-                break;
-            }
+            if (!validateDatesBetweenRange(formattedStartDate, formattedEndDate, booking.getStartDate(), booking.getEndDate()))
+                return false;
         }
-
-        if (state){
-            return true;
-        }else {
-            return false;
-        }
+        return true;
     }
-
-
 
     @Override
     public List<Product> getListOfProductsBetweenDatesAndCity(String startDate, String endDate, Long cityId) throws ParseException {
@@ -86,10 +77,8 @@ public class BookingServiceImpl implements IBookingService {
             listProduct = productService.getAll();
         }
 
-        LocalDate formattedStartDate = parseDocumentDateFormat(startDate);
-        LocalDate formattedEndDate = parseDocumentDateFormat(endDate);
-
-
+        LocalDate formattedStartDate = DateParser.parseDateFormat(startDate);
+        LocalDate formattedEndDate = DateParser.parseDateFormat(endDate);
 
         if(cityId!=null){
             for (Product cityProduct : listProduct) {
@@ -131,27 +120,5 @@ public class BookingServiceImpl implements IBookingService {
         } else {
             return Boolean.TRUE;
         }
-    }
-
-    public LocalDate parseDocumentDateFormat(String date) throws ParseException {
-        String[] separatedString = date.split("/");
-        Integer day = Integer.parseInt(separatedString[0]);
-        Integer month = Integer.parseInt(separatedString[1]);
-
-        DateTimeFormatter queryFormat;
-
-        if(day < 10 || month < 10){
-            queryFormat = DateTimeFormatter.ofPattern("M/d/yyyy", Locale.US);
-        } else {
-            queryFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy", Locale.US);
-        }
-
-        LocalDate queryDate = LocalDate.parse(date, queryFormat);
-        DateTimeFormatter sqlDateForm = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String stringSQLDate = queryDate.format(sqlDateForm);
-
-        LocalDate SQLDate = LocalDate.parse(stringSQLDate, sqlDateForm);
-
-        return SQLDate;
     }
 }
