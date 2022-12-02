@@ -9,12 +9,17 @@ import Grupo7.DHBooking.Util.DateParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
+
+
 
 @Service
 public class BookingServiceImpl implements IBookingService {
@@ -112,6 +117,26 @@ public class BookingServiceImpl implements IBookingService {
         System.out.println(listProductsAvailable);
         return listProductsAvailable;
     }
+
+    @Override
+    public List getBookingsByProductId(Long idProduct) {
+        List forbiddenDates = new ArrayList();
+        List<Booking> productBookings = bookingRepository.findBookingsByProductId(idProduct);
+        for(Booking booking: productBookings) {
+            LocalDate startDate = booking.getStartDate();
+            LocalDate endDate = booking.getEndDate().plusDays(1);
+            List<LocalDate> listOfDates = startDate.datesUntil(endDate).collect(Collectors.toList());
+
+            for(LocalDate forbiddenDate: listOfDates) {
+                System.out.println(forbiddenDate);
+                forbiddenDates.add( forbiddenDate );
+            }
+        }
+        return (List) forbiddenDates.stream().distinct().collect(Collectors.toList());
+    }
+
+
+
 
     private Boolean validateDatesBetweenRange(LocalDate queryStartDate, LocalDate queryEndDate, LocalDate bddStartDate, LocalDate bddEndDate) {
         if (((queryStartDate.compareTo(bddStartDate) >= 0 && queryStartDate.compareTo(bddEndDate) <= 0) || (queryEndDate.compareTo(bddStartDate) >= 0 && queryEndDate.compareTo(bddEndDate) <= 0)) ||
