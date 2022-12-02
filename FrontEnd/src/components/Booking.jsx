@@ -1,6 +1,6 @@
 import { ImageList, Tooltip } from "@material-ui/core";
 import React from "react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
@@ -13,6 +13,7 @@ import ProductPolicies from "./Product-detail/ProductPolicies";
 import SearchCalendar from "./SearchCalendar";
 import "./styles/booking/booking.css";
 import BookingContext from "../context/BookingContext";
+import { getBookingsByProductId } from "../utils/bookings";
 
 const Booking = () => {
   const { userAuth } = useContext(AuthContext);
@@ -20,8 +21,13 @@ const Booking = () => {
   const [checkin, setcheckin] = useState("___/___/____");
   const [checkout, setcheckout] = useState("___/___/____");
   const { state } = useLocation();
+  const [productBookings , setProductBookings] = useState([]);
 
-  
+  useEffect(() => {
+    setProductBookings(getBookingsByProductId(state.idProduct));
+  }, [state.idProduct]);
+
+  console.log(productBookings);
 
   const address = `${state.location.address}, ${state.city.name}, ${state.city.state}, ${state.city.country}`;
   const [formValues, handleInputChange, reset] = useForm({
