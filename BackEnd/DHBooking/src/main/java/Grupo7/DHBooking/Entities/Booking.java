@@ -39,4 +39,10 @@ public class Booking {
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user")
     private User user;
+
+
+    public String toString()
+    {
+        return idBooking + " " + startHour + " " + startDate ;
+    }
 }
