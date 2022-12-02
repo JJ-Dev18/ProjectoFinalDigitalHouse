@@ -13,6 +13,10 @@ public interface IBookingService {
     void deleteBooking(Long idBooking);
     List<Booking> getAll();
     List<Product> getListOfProductsBetweenDatesAndCity(String startDate, String endDate, Long cityId) throws ParseException;
+    Boolean availableProduct(String startDate, String endDate, Long productId) throws ParseException;
+    List<Booking> getBookingsByProductId(Long idProduct);
+
+
 
 
 }
