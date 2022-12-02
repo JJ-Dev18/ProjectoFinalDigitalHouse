@@ -4,23 +4,24 @@ import { useNavigate, useParams } from "react-router-dom";
 import "../styles/product-detail/product-reservation.css";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
+import DatesProvider from "../../context/BookingContext";
 
+const ProductReservation = ({ product }) => {
+  const { auth } = useContext(AuthContext);
+  const { range, setRange } = useContext(DatesProvider);
+ 
 
-
-const ProductReservation = ({product}) => {
-  const {auth} = useContext(AuthContext)
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const params = useParams();
 
-  console.log(params.productId)
-
+ 
   const bookingRedirection = () => {
     auth
       ? navigate(`/product-detail/${params.productId}/bookings`, {
           state: product,
         })
       : navigate("/login?error=" + params.productId, { state: product });
-  }
+  };
 
   return (
     <div className="reservation">

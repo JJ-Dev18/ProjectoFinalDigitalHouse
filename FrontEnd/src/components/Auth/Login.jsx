@@ -12,7 +12,7 @@ const Login = () => {
   const [error, setError] = useState("")
   let navigate = useNavigate()
   const location = useLocation()
-  console.log(location)
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let user = document.getElementById("username").value;
@@ -28,7 +28,7 @@ const Login = () => {
       let urlPost = baseURL + 'auth/login'
       axios.post(urlPost, data)
             .then((response) => {
-                console.log(response);
+            
                 handleAuth(response.data)
                 sessionStorage.setItem("auth", true);
                 sessionStorage.setItem("userAuth", JSON.stringify(response.data));

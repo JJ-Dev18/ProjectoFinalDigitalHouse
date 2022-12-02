@@ -28,7 +28,7 @@ const Register = () => {
             let urlPost = baseURL + 'auth/register'
             axios.post(urlPost, data)
                 .then((response) => {
-                    console.log(response);
+                  
                     handleAuth(response.data)
                     sessionStorage.setItem("auth", true);
                     sessionStorage.setItem("userAuth", JSON.stringify(response.data));

@@ -11,6 +11,7 @@ import ProductDescription from "./Product-detail/ProductDescription";
 import useWindowSize from "../utils/useWindowSize";
 import useFetch from "../hooks/useFetch";
 
+
 const ProductDetail = ({ modo }) => {
   const params = useParams();
   let { isLoading, error, response } = useFetch({
@@ -36,7 +37,7 @@ const ProductDetail = ({ modo }) => {
     <>
       {!!response && (
         <div className="product-detail-container">
-          {console.log(response.quality)}
+         
           <ProductHeader
             category={response.category.title}
             name={response.title}
@@ -55,6 +56,7 @@ const ProductDetail = ({ modo }) => {
           />
           <ProductCharacteristics characteristics={response.feature} />
           <ProductReservation product={response}/>
+         
           <ProductPolicies
             normsPolicy={response.normPolicy}
             securityPolicy={response.securityPolicy}
