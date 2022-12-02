@@ -15,4 +15,4 @@ public interface IBookingRepository extends JpaRepository<Booking, Long> {
             nativeQuery = true)
     List<Booking> findBookingsByProductId (Long productId);
 
-    }
+}

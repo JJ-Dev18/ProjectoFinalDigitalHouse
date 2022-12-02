@@ -4,6 +4,7 @@ import Grupo7.DHBooking.Entities.Booking;
 import Grupo7.DHBooking.Entities.Product;
 import Grupo7.DHBooking.Entities.User;
 import Grupo7.DHBooking.Service.IBookingService;
+import Grupo7.DHBooking.Service.IProductService;
 import Grupo7.DHBooking.Util.DateParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,9 @@ public class BookingController {
     @Autowired
     private IBookingService bookingService;
 
+    @Autowired
+    private IProductService productService;
+
     @GetMapping
     public ResponseEntity<List<Booking>> getAllBookings(){
         return new ResponseEntity<>(bookingService.getAll(), HttpStatus.OK);
@@ -31,9 +35,21 @@ public class BookingController {
     @GetMapping("/{id}")
     public ResponseEntity<Booking> getBookingById(@PathVariable Long id){
         Optional<Booking> bookingFound = Optional.ofNullable(bookingService.getBookingById(id));
-        if(bookingFound.isPresent()){
+        if(bookingFound.isPresent()) {
             return ResponseEntity.ok(bookingFound.get());
-        } else{
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/idProduct")
+    public ResponseEntity<List> getAllBookingsByProduct(@RequestParam(required = false) Long idProduct) {
+        System.out.println("Me estan pidiendo las reservas por id de producto");
+        System.out.println(idProduct);
+        Optional<Product> productFound = Optional.ofNullable(productService.getProductById(idProduct));
+        if (productFound.isPresent()) {
+            return ResponseEntity.ok(bookingService.getBookingsByProductId(idProduct));
+        } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
