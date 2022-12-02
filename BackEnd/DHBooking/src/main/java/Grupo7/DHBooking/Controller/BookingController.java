@@ -62,6 +62,7 @@ public class BookingController {
 
     @PostMapping
     public ResponseEntity<Booking> createBooking(@RequestBody  Map<String, String> json) throws ParseException {
+
         System.out.println("Estoy queriendo almacenar una reserva");
         System.out.println(json);
 
@@ -71,20 +72,24 @@ public class BookingController {
         Long idProduct = Long.valueOf(json.get("idProduct"));
         Long idUser = Long.valueOf(json.get("idUser"));
 
-        Booking booking = new Booking();
-        booking.setStartHour(startHour);
-        booking.setStartDate(startDate);
-        booking.setEndDate(endDate);
+        if (bookingService.availableProduct(json.get("startDate"), json.get("startDate"), idProduct  )){
 
-        Product product = new Product();
-        product.setIdProduct(idProduct);
-        booking.setProduct(product);
+            Booking booking = new Booking();
+            booking.setStartHour(startHour);
+            booking.setStartDate(startDate);
+            booking.setEndDate(endDate);
 
-        User user = new User();
-        user.setIdUser(idUser);
-        booking.setUser(user);
+            Product product = new Product();
+            product.setIdProduct(idProduct);
+            booking.setProduct(product);
 
-        return new ResponseEntity<>(bookingService.createBooking(booking), HttpStatus.CREATED);
+            User user = new User();
+            user.setIdUser(idUser);
+            booking.setUser(user);
+
+            return new ResponseEntity<>(bookingService.createBooking(booking), HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
 

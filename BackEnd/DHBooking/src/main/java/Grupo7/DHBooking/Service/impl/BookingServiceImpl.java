@@ -49,6 +49,33 @@ public class BookingServiceImpl implements IBookingService {
     }
 
     @Override
+    public Boolean availableProduct(String startDate, String endDate, Long productId) throws ParseException {
+        System.out.println("Entré en getListOfProductsBetweenDatesAndCity");
+
+        List<Booking> listBookings;
+        listBookings = productService.getProductById(productId).getBookingList();
+
+        LocalDate formattedStartDate = parseDocumentDateFormat(startDate);
+        LocalDate formattedEndDate = parseDocumentDateFormat(endDate);
+
+        Boolean state = true;
+        for (Booking booking : listBookings) {
+            if (!validateDatesBetweenRange(formattedStartDate, formattedEndDate, booking.getStartDate(), booking.getEndDate())) {
+                state = false;
+                break;
+            }
+        }
+
+        if (state){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
+
+    @Override
     public List<Product> getListOfProductsBetweenDatesAndCity(String startDate, String endDate, Long cityId) throws ParseException {
         System.out.println("Entré en getListOfProductsBetweenDatesAndCity");
         List<Product> listProductsAvailable = new ArrayList<Product>();
