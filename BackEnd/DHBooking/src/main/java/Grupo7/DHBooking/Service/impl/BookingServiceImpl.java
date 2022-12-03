@@ -56,24 +56,33 @@ public class BookingServiceImpl implements IBookingService {
 
     @Override
     public Boolean availableProduct(String startDate, String endDate, Long productId) throws ParseException {
-        System.out.println("Entré en getListOfProductsBetweenDatesAndCity");
-
+        
         List<Booking> listBookings;
         listBookings = productService.getProductById(productId).getBookingList();
 
         LocalDate formattedStartDate = DateParser.parseDateFormat(startDate);
         LocalDate formattedEndDate = DateParser.parseDateFormat(endDate);
 
+
+        Boolean state = true;
         for (Booking booking : listBookings) {
-            if (!validateDatesBetweenRange(formattedStartDate, formattedEndDate, booking.getStartDate(), booking.getEndDate()))
-                return false;
+            if (!validateDatesBetweenRange(formattedStartDate, formattedEndDate, booking.getStartDate(), booking.getEndDate())) {
+                state = false;
+                break;
+            }
         }
-        return true;
+
+        if (state) {
+            return true;
+        } else {
+            return false;
+        }
+
+
     }
 
     @Override
     public List<Product> getListOfProductsBetweenDatesAndCity(String startDate, String endDate, Long cityId) throws ParseException {
-        System.out.println("Entré en getListOfProductsBetweenDatesAndCity");
         List<Product> listProductsAvailable = new ArrayList<Product>();
         List<Product> listProduct;
         if(cityId!=null) {
@@ -136,12 +145,13 @@ public class BookingServiceImpl implements IBookingService {
     }
 
 
-
-
     private Boolean validateDatesBetweenRange(LocalDate queryStartDate, LocalDate queryEndDate, LocalDate bddStartDate, LocalDate bddEndDate) {
-        if (((queryStartDate.compareTo(bddStartDate) >= 0 && queryStartDate.compareTo(bddEndDate) <= 0) || (queryEndDate.compareTo(bddStartDate) >= 0 && queryEndDate.compareTo(bddEndDate) <= 0)) ||
-                ((bddStartDate.compareTo(queryStartDate) >= 0 && bddStartDate.compareTo(queryEndDate) <= 0) || (bddEndDate.compareTo(queryStartDate) >= 0 && bddEndDate.compareTo(queryEndDate) <= 0))) {
+        if (((queryStartDate.compareTo(bddStartDate) >= 0 && queryStartDate.compareTo(bddEndDate) <= 0)
+                || (queryEndDate.compareTo(bddStartDate) >= 0 && queryEndDate.compareTo(bddEndDate) <= 0))) {
             return Boolean.FALSE;
+        } else if (((bddStartDate.compareTo(queryStartDate) >= 0 && bddStartDate.compareTo(queryEndDate) <= 0)
+                || (bddEndDate.compareTo(queryStartDate) >= 0 && bddEndDate.compareTo(queryEndDate) <= 0)))  {
+                return Boolean.FALSE;
         } else {
             return Boolean.TRUE;
         }
