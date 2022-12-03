@@ -1,5 +1,6 @@
 import "./styles/successful-booking.css"
 import success from "../resources/success-icon.svg"
+import { Link } from "react-router-dom";
 
 const SuccessfulBooking = () => {
   return (
@@ -7,7 +8,9 @@ const SuccessfulBooking = () => {
        <img src={success}></img>
        <p>¡Muchas gracias!</p>
        <span>Su reserva se ha realizado con éxito</span>
-       <button>OK</button>
+       <Link to="/bookings/bookings/my-bookings">
+        <button>OK</button>
+       </Link>
     </div>
   )
 }
