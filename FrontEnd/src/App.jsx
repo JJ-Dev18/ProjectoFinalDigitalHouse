@@ -10,6 +10,7 @@ import SuccessfulBooking from "./components/SuccessfulBooking";
 import { AuthProvider } from "./context/AuthContext";
 import Booking from "./components/Booking";
 import {BookingProvider} from "./context/BookingContext";
+import UserBookings from "./components/User/UserBookings";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/successful-booking" element={<SuccessfulBooking />} />
             <Route path="/product-detail/:productId" element={<ProductDetail />} />
             <Route path="/product-detail/:productId/bookings" element={<Booking />} />
+            <Route path="/bookings/bookings/my-bookings" element={<UserBookings />} />
           </Routes>
         </Layout>
         </BookingProvider>

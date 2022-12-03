@@ -35,10 +35,19 @@ header button {
   border-width: 1px;
   margin-right: 10px;
   background-color: inherit;
+  cursor: pointer;
 }
+
 header a{
   color: var(--light-blue);
 }
+
+
+header button:hover a {
+  color: var(--dark-gray);
+}
+
+
 
 .menu {
   position: absolute;
