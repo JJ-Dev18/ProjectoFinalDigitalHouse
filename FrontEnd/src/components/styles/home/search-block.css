@@ -58,6 +58,11 @@
     cursor: pointer;
 }
 
+.search-block .form-button:hover {
+    background-color: var(--hover-button-over-dark);
+    color: var(--dark-gray);
+}
+
 .input-container {
     position: relative;
 }
