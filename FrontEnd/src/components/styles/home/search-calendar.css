@@ -91,6 +91,14 @@ width: 394px; */
   margin-bottom: 5px;
 }
 
+.react-datepicker__day--disabled {
+  text-decoration: line-through;
+}
+
+.react-datepicker__day--excluded{
+  text-decoration: line-through;
+}
+
 @media screen and (min-width: 768px) {
   .react-datepicker__navigation--previous {
     left: -50px;
