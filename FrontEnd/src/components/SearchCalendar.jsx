@@ -5,10 +5,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./styles/home/search-calendar.css";
 import BookingContext  from "../context/BookingContext";
 
+
 const SearchCalendar = (props) => {
   const windowWidth = window.innerWidth;
   const { range, setRange } = useContext(BookingContext);
 
+  props.forbiddenDates&&console.log(props.forbiddenDates)
 
   const onDateChange = (dates) => {
     const [start, end] = dates;
@@ -56,6 +58,9 @@ const SearchCalendar = (props) => {
         monthsShown={windowWidth < 768 ? 1 : 2}
         formatWeekDay={(dayName) => dayName.slice(0, 1).toUpperCase()}
         local={"es"}
+        minDate={new Date}
+        excludeDates={props.forbiddenDates ? props.forbiddenDates : [] }
+        // excludeDates={[new Date(), new Date("2022-12-07"),new Date("2022-12-08")]}
       >
         {props.footer && (
           <div className="calendar-footer">

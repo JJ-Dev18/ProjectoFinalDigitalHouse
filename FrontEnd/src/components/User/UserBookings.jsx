@@ -2,6 +2,9 @@ import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import "../styles/user/user.css"
 import { Link } from 'react-router-dom';
+import { RiLoginCircleFill } from "react-icons/ri";
+import { RiLogoutCircleFill } from "react-icons/ri";
+import { TbClock2 } from "react-icons/tb";
 
 const UserBookings = () => {
 
@@ -19,9 +22,9 @@ const UserBookings = () => {
                 <h3>{item.product.title}</h3>
                 </div>
                 <div className="card-body">
-                    <p>Check-in: {item.startDate}</p>
-                    <p>Ingreso: {item.startHour}</p>
-                    <p>Check-out:{item.endDate}</p>
+                    <p className="card-body-item"> <span> <RiLoginCircleFill className="card-body-item-icon in" />  Check-in: </span> {item.startDate}</p>
+                    <p className="card-body-item"> <span> <TbClock2 className="card-body-item-icon"  /> Ingreso: </span> {item.startHour} Hs</p>
+                    <p className="card-body-item"> <span> <RiLogoutCircleFill className="card-body-item-icon out"  /> Check-out: </span> {item.endDate}</p>
                 </div>
                 <div className="card-footer">
                 <Link key={item.product.idProduct} to={`/product-detail/${item.product.idProduct}`}>
