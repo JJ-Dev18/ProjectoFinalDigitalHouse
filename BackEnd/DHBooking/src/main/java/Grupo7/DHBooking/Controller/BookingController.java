@@ -88,7 +88,7 @@ public class BookingController {
         Long idProduct = Long.valueOf(json.get("idProduct"));
         Long idUser = Long.valueOf(json.get("idUser"));
 
-        if (bookingService.availableProduct(json.get("startDate"), json.get("startDate"), idProduct  )){
+        if (bookingService.availableProduct(json.get("startDate"), json.get("endDate"), idProduct  )){
 
             Booking booking = new Booking();
             booking.setStartHour(startHour);
