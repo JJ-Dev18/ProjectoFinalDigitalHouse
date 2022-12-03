@@ -13,7 +13,7 @@ import Avatar from "@material-ui/core/Avatar";
 import AuthContext from "../../context/AuthContext";
 
 const Header = () => {
-  let menuItems = ["Crear Cuenta", "Iniciar Sesión"];
+  let menuItems = ["Crear Cuenta", "Iniciar Sesión", "Mis Reservas"];
   const {auth, handleAuth , userAuth} = useContext(AuthContext)
   let [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate()
@@ -48,6 +48,9 @@ const Header = () => {
       />
       {auth ? (
         <div className="md-screen avatar">
+          <button>
+            <Link to="/bookings/bookings/my-bookings">{menuItems[2]}</Link>
+          </button>
           <div className="logout" onClick={logoutHandler}>
             {" "}
             X{" "}

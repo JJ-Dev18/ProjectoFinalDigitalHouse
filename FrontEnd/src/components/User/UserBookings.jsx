@@ -10,9 +10,6 @@ const UserBookings = () => {
 
     const { userAuth } = useContext(AuthContext);
 
-    console.log('mis reservas')
-    console.log(userAuth.bookingList[0]);
-
     return (
     <div className="user-bookings">
         <h1>Mis reservas</h1>
