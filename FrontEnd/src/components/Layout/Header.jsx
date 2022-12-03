@@ -92,11 +92,15 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <div className="list">
-            <span>
-              ¿Deseas <a onClick={logoutHandler}>cerrar sesión</a>?
-            </span>
-          </div>
+          <ul className="list">
+            <li>
+              <Link to="/bookings/bookings/my-bookings">{menuItems[2]}</Link>
+            </li>
+            <hr />
+            <li>
+              <span> ¿Deseas <a onClick={logoutHandler}>cerrar sesión</a>? </span>
+            </li>
+          </ul>          
           <div className="social">
             <ul>
               <li>
