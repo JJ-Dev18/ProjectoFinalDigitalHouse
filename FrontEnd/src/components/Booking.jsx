@@ -34,7 +34,8 @@ const Booking = () => {
         setIsLoadingDates(false)
     });
     } else {
-      forbiddenDates.map(item => forbidden.push( new Date(item)) )
+      forbiddenDates.map(item => forbidden.push( new Date(new Date(item).setDate(new Date(item).getDate() + 1))) )
+
       setForbiddenDatesFormat(forbidden) 
     }
   }, [state.idProduct, isLoadingDates]);
