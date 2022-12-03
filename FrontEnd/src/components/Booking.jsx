@@ -28,10 +28,15 @@ const Booking = () => {
 
   useEffect(() => {
     const forbidden = []
-    getBookingsByProductId(state.idProduct).then(res => setForbiddenDates(res.data));
-    !isLoadingDates&&forbiddenDates.map(item => forbidden.push( new Date(item)) )
-    !isLoadingDates&&setForbiddenDatesFormat(forbidden)
-    setIsLoadingDates(false)
+    if(isLoadingDates){
+      getBookingsByProductId(state.idProduct).then(res => { 
+        setForbiddenDates(res.data)
+        setIsLoadingDates(false)
+    });
+    } else {
+      forbiddenDates.map(item => forbidden.push( new Date(item)) )
+      setForbiddenDatesFormat(forbidden) 
+    }
   }, [state.idProduct, isLoadingDates]);
 
 
