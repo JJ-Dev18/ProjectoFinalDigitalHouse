@@ -1,10 +1,12 @@
 package Grupo7.DHBooking.Controller;
 
 import Grupo7.DHBooking.Entities.Booking;
+import Grupo7.DHBooking.Entities.DTO.UserDTO;
 import Grupo7.DHBooking.Entities.Product;
 import Grupo7.DHBooking.Entities.User;
 import Grupo7.DHBooking.Service.IBookingService;
 import Grupo7.DHBooking.Service.IProductService;
+import Grupo7.DHBooking.Service.IUserService;
 import Grupo7.DHBooking.Util.DateParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +29,9 @@ public class BookingController {
     @Autowired
     private IProductService productService;
 
+    @Autowired
+    IUserService userService;
+
     @GetMapping
     public ResponseEntity<List<Booking>> getAllBookings(){
         return new ResponseEntity<>(bookingService.getAll(), HttpStatus.OK);
@@ -37,6 +42,18 @@ public class BookingController {
         Optional<Booking> bookingFound = Optional.ofNullable(bookingService.getBookingById(id));
         if(bookingFound.isPresent()) {
             return ResponseEntity.ok(bookingFound.get());
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/my-bookings/{idUser}")
+    public ResponseEntity<List<Booking>> getBookingsByUserId(@PathVariable Long idUser){
+        Optional<UserDTO> userFound = Optional.ofNullable(userService.readUser(idUser));
+        System.out.println("Quiero obtener reservas por usuario");
+        if(userFound.isPresent()) {
+            System.out.println("idUser: " + idUser);
+            return ResponseEntity.ok(bookingService.getBookingsByUserId(idUser));
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

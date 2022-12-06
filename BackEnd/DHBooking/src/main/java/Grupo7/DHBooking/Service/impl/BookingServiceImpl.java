@@ -56,7 +56,7 @@ public class BookingServiceImpl implements IBookingService {
 
     @Override
     public Boolean availableProduct(String startDate, String endDate, Long productId) throws ParseException {
-        
+
         List<Booking> listBookings;
         listBookings = productService.getProductById(productId).getBookingList();
 
@@ -144,6 +144,11 @@ public class BookingServiceImpl implements IBookingService {
         return (List) forbiddenDates.stream().distinct().collect(Collectors.toList());
     }
 
+
+    public List<Booking> getBookingsByUserId(Long idUser) {
+        List<Booking> userBookings = bookingRepository.findBookingsByUserId(idUser);
+        return userBookings;
+    }
 
     private Boolean validateDatesBetweenRange(LocalDate queryStartDate, LocalDate queryEndDate, LocalDate bddStartDate, LocalDate bddEndDate) {
         if (((queryStartDate.compareTo(bddStartDate) >= 0 && queryStartDate.compareTo(bddEndDate) <= 0)
