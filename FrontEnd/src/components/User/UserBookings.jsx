@@ -5,15 +5,33 @@ import { Link } from 'react-router-dom';
 import { RiLoginCircleFill } from "react-icons/ri";
 import { RiLogoutCircleFill } from "react-icons/ri";
 import { TbClock2 } from "react-icons/tb";
+import { useEffect } from "react";
+import { getBookingsByUserId } from "../../utils/bookings";
+import { useState } from "react";
+import Loading from "../Loading";
 
 const UserBookings = () => {
 
-    const { userAuth } = useContext(AuthContext);
-    // ${showMenu ? `active` : `inactive`}`
+    const [userBookings , setUserBookings] = useState([])
+    const [ isLoadingBookings, setIsLoadingBookings] = useState(true)
+    const { userAuth} = useContext(AuthContext);
+    console.log(userAuth);
+
+        
+    useEffect ( () => {
+            console.log('hola')
+            console.log(getBookingsByUserId (userAuth.idUser, userAuth.token).then(resp => {
+                setUserBookings(resp.data);
+                setIsLoadingBookings(false)
+            }))
+        }, [])
+
+    //!isLoadingBookings&&console.log(userBookings)
+
     return (
     <div className="user-bookings">
         <h1>Mis reservas</h1>
-        {userAuth.bookingList.map(item => (
+        {isLoadingBookings ? <Loading /> : userBookings?.map(item => (
             <div>
                 <div className="booking-state">
                     <p>{new Date(item.endDate).setDate(new Date(item.endDate).getDate()) < (new Date()) ? "Realizada" : "Vigente"}</p>
