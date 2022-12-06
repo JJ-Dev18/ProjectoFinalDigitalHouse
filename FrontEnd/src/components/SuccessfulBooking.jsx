@@ -8,7 +8,7 @@ const SuccessfulBooking = () => {
        <img src={success}></img>
        <p>¡Muchas gracias!</p>
        <span>Su reserva se ha realizado con éxito</span>
-       <Link to="/bookings/bookings/my-bookings">
+       <Link to="/my-bookings">
         <button>OK</button>
        </Link>
     </div>
