@@ -49,7 +49,7 @@ const Header = () => {
       {auth ? (
         <div className="md-screen avatar">
           <button>
-            <Link to="/bookings/bookings/my-bookings">{menuItems[2]}</Link>
+            <Link to="/my-bookings">{menuItems[2]}</Link>
           </button>
           <div className="logout" onClick={logoutHandler}>
             {" "}
@@ -94,7 +94,7 @@ const Header = () => {
           </div>
           <ul className="list">
             <li>
-              <Link to="/bookings/bookings/my-bookings">{menuItems[2]}</Link>
+              <Link to="/my-bookings">{menuItems[2]}</Link>
             </li>
             <hr />
             <li>

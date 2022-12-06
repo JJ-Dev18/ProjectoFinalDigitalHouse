@@ -25,7 +25,7 @@ const App = () => {
             <Route path="/successful-booking" element={<SuccessfulBooking />} />
             <Route path="/product-detail/:productId" element={<ProductDetail />} />
             <Route path="/product-detail/:productId/bookings" element={<Booking />} />
-            <Route path="/bookings/bookings/my-bookings" element={<UserBookings />} />
+            <Route path="/my-bookings" element={<UserBookings />} />
           </Routes>
         </Layout>
         </BookingProvider>

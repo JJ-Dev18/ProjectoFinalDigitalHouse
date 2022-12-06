@@ -5,6 +5,7 @@
     align-items: center;
     color: var(--dark-gray);
     background: var(--semi-dark-gray);
+    padding-bottom: 90px;
 }
 
 .user-bookings h1 {
