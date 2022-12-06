@@ -15,4 +15,8 @@ public interface IBookingRepository extends JpaRepository<Booking, Long> {
             nativeQuery = true)
     List<Booking> findBookingsByProductId (Long productId);
 
+    @Query(value = "select * from bookings where id_user = :userId order by start_date",
+            nativeQuery = true)
+    List<Booking> findBookingsByUserId (Long userId);
+
 }
