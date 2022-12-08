@@ -68,8 +68,6 @@ public class JWTTokenService implements Clock, TokenService {
     }
 
     private String newToken(final Map<String, String> attributes, final int expiresInSec) {
-
-
         final LocalDateTime now = LocalDateTime.now();
         final Claims claims = Jwts
                 .claims()
