@@ -30,7 +30,7 @@ public class Booking {
     @Column(name = "end_date")
     private LocalDate endDate;
 
-    @JsonIncludeProperties(value = {"idProduct", "title"})
+    @JsonIncludeProperties(value = {"idProduct", "title", "images"})
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "id_product")
     private Product product;
