@@ -1,6 +1,8 @@
 package Grupo7.DHBooking.Controller;
 
 import Grupo7.DHBooking.Entities.Product;
+import Grupo7.DHBooking.Entities.User;
+import Grupo7.DHBooking.Repository.IUserRepository;
 import Grupo7.DHBooking.Service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/products")
 public class ProductController {
+
+    @Autowired
+    private IUserRepository userRepository;
 
     @Autowired
     private IProductService productService;
@@ -63,8 +68,18 @@ public class ProductController {
         }
     }
     @PostMapping
-    public ResponseEntity<Product> createProduct(@RequestBody Product product){
-        return new ResponseEntity<>(productService.createProduct(product), HttpStatus.CREATED);
+    public ResponseEntity<Product> createProduct(@RequestHeader("UserEmail") String email,
+                                                 @RequestBody Product product){
+        if(!email.isEmpty()){
+            Optional<User> user = Optional.ofNullable(userRepository.findUserByEmail(email));
+            if(user.isPresent() && user.get().getRole().getName().equals("ADMIN")){
+                return new ResponseEntity<>(productService.createProduct(product), HttpStatus.CREATED);
+            } else {
+                return new ResponseEntity<>(HttpStatus.UNAVAILABLE_FOR_LEGAL_REASONS);
+            }
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PutMapping
