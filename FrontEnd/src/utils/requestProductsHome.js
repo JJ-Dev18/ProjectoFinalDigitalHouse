@@ -23,7 +23,6 @@ export const getProductsByCityAndDate = async (cityId,startDate,endDate) => {
     endDate,
     cityId
   });
-  console.log(resp);
   return resp;
 };
 

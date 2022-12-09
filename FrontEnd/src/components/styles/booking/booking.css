@@ -63,6 +63,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  .skeleton-calendar{
+    width: 554px;
+    height: 263px;
+  }
   .booking-calendar
     .react-datepicker
     .react-datepicker__month-container
@@ -112,6 +116,10 @@
 }
 
 @media screen and (min-width: 1350px) {
+  .skeleton-calendar{
+   height: 297px;
+    width: 847px;
+}
   .booking-calendar {
     height: 297px;
     width: 847px;
@@ -156,3 +164,4 @@
     display: flex;
   }
 }
+

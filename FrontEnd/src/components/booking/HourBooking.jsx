@@ -40,9 +40,19 @@ const HourBooking = ({hour,handleInputChange}) => {
       </div>
       <div className="select-hours">
         <label htmlFor="hora">Indicá tu horario estimado de llegada</label>
-        <select id="hora" name="hour" placeholder="Seleccionar hora de llegada" value={hour}  onChange={handleInputChange}>
-          { hours.map((hour,index) => (
-            <option value={hour} key={index}>{hour}</option>
+        <select
+          id="hora"
+          name="hour"
+          value={hour}
+          onChange={handleInputChange}
+        >
+          <option  value="">
+            Seleccionar hora de llegada
+          </option>
+          {hours.map((hour, index) => (
+            <option value={hour} key={index}>
+              {hour}
+            </option>
           ))}
         </select>
       </div>

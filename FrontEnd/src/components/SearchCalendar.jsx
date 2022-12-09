@@ -10,7 +10,7 @@ const SearchCalendar = (props) => {
   const windowWidth = window.innerWidth;
   const { range, setRange } = useContext(BookingContext);
 
-  props.forbiddenDates&&console.log(props.forbiddenDates)
+  // props.forbiddenDates&&console.log(props.forbiddenDates)
 
   const onDateChange = (dates) => {
     const [start, end] = dates;

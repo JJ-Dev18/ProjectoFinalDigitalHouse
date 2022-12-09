@@ -15,10 +15,10 @@ const SearchBlock = ({ setproducts ,setIsLoadingProducts}) => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [datesPicked, setDatesPicked] = useState("");
   const [cityInput, setCityInput] = useState("");
-  // const [loading, setLoading] = useState(false);
-
+  const [finding, setfinding] = useState(false)
 
   const { range, setRange ,city, setCity} = useContext(BookingContext);
+  console.log(!city && !range[0]);
  
 
   const clickCityHandler = () => {
@@ -108,7 +108,10 @@ const SearchBlock = ({ setproducts ,setIsLoadingProducts}) => {
             class={`select picker ${showCalendar ? `active` : `inactive`}`}
           />
         </div>
-        <button className="form-button" onClick={searchProducts}>
+        <button 
+        className="form-button" onClick={searchProducts}
+        disabled={(!city  && !range[0]) ? true : false}
+        >
           Buscar
         </button>
       </form>

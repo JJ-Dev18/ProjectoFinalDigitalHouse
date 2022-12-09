@@ -39,6 +39,9 @@ background: #DFE4EA;
 color: black;
 
 }
+.content-form select{
+  background-color: white;
+}
 
 .form-control{
   display: flex;

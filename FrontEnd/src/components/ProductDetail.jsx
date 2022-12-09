@@ -10,7 +10,7 @@ import ProductReservation from "./Product-detail/ProductReservation";
 import ProductDescription from "./Product-detail/ProductDescription";
 import useWindowSize from "../utils/useWindowSize";
 import useFetch from "../hooks/useFetch";
-
+import Loading from './Loading'
 
 const ProductDetail = ({ modo }) => {
   const params = useParams();
@@ -22,7 +22,7 @@ const ProductDetail = ({ modo }) => {
   if (!!isLoading)
     return (
       <div className="product-detail-container">
-        <h2>Cargando...</h2>
+        <Loading/>
       </div>
     );
 
