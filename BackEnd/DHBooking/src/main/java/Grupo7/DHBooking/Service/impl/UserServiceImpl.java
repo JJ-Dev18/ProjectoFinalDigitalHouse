@@ -60,11 +60,6 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void deleteUser(Long id) {
-        userRepository.deleteById(id);
-    }
-
-    @Override
     public List<UserDTO> listUser() {
         List<User> users = userRepository.findAll();
         List<UserDTO> userDTOS = new ArrayList<>();
@@ -93,6 +88,23 @@ public class UserServiceImpl implements IUserService {
         }
 
         return userDTOResponse;
+
+    }
+
+    @Override
+    public String deleteUserByEmail(String email) {
+        String answer = "";
+        User userQuery = getUserByEmail(email);
+        if(userQuery != null) {
+            userRepository.delete(mapper.map(userQuery, User.class));
+            answer = "Se ha eliminado el usuario de forma satisfactoria";
+        }
+        return answer;
+    }
+
+    private User getUserByEmail(String email) {
+        Optional<User> userQuery = Optional.ofNullable(userRepository.findUserByEmail(email));
+        return userQuery.orElse(null);
 
     }
 }

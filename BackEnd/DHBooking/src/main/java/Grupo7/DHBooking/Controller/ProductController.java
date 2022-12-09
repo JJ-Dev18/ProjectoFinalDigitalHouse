@@ -7,6 +7,7 @@ import Grupo7.DHBooking.Service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -94,6 +95,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
+    @Transactional
     public ResponseEntity<String> deleteProduct(@PathVariable Long id){
         Optional<Product> productQuery = Optional.ofNullable(productService.getProductById(id));
         if (productQuery.isPresent()){
