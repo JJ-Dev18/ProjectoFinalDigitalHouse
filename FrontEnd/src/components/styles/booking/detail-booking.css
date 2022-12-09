@@ -35,6 +35,9 @@
   cursor: pointer;
   margin-top: auto;
 }
+.content-detail button:hover{
+  background: var(--hover-button);
+}
 .category-info h2 {
   font-size: 20px;
   font-weight: 700;

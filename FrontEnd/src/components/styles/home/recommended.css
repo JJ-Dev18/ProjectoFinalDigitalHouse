@@ -151,6 +151,12 @@
   box-shadow: 0px 2px 4px 0px #0000001f;
   cursor: pointer;
 }
+.btn-product:hover{
+  background: var(--hover-button);
+}
+#title-nobusqueda{
+  color: white;
+}
 
 .detail-producto .description-product {
   height: 52px;
@@ -207,6 +213,10 @@
     display: flex;
     align-items: center;
   }
+  #title-nobusqueda{
+  color: var(--dark-gray);
+}
+
 }
 
 @media screen and (min-width: 1060px) {

@@ -35,6 +35,28 @@ import PropTypes from 'prop-types'
      <rect x="0" y="0" rx="8" ry="8" className="skeleton-recomended" />
    </ContentLoader>
  );
+
+  export const SkeletonCalendar = (props) => (
+    <ContentLoader
+      className="skeleton-calendar"
+      speed={2}
+      //  viewBox="0 0 350 500"
+      backgroundColor="#f3f3f3"
+      foregroundColor="#ecebeb"
+      {...props}
+    >
+      <rect
+        x="0"
+        y="0"
+        rx="8"
+        ry="8"
+        width="310"
+        height="246"
+        className="skeleton-calendar"
+      />
+    </ContentLoader>
+  );
+/**
 /**
   Este componente sirve para crear el numero de skleleton segun el numero de pokemones 
  */
@@ -59,6 +81,16 @@ export const SkeletonR = ({ numRecomended = 4 }) => {
   }
   return <>{list}</>;
 };
+
+// export const SkeletonCa = ({ numRecomended = 1 }) => {
+//   const list = [];
+
+//   for (let i = 0; i < numRecomended; i++) {
+//     list.push(<SkeletonRecomended key={i} />);
+//   }
+//   return <>{list}</>;
+// };
+
 
 
 

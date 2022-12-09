@@ -59,8 +59,8 @@
 }
 
 .search-block .form-button:hover {
-    background-color: var(--hover-button-over-dark);
-    color: var(--dark-gray);
+    background-color: var(--hover-button);
+    /* color: var(--dark-gray); */
 }
 
 .input-container {
