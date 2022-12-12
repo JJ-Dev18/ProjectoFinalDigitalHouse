@@ -25,3 +25,15 @@ export const getBookingsByUserId = async (idUser, token) => {
     console.log(resp)
     return resp;
 }
+
+
+export const deleteBookingByUser = async (id,token) => {
+  let config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    const resp = await backendApi.delete(`/bookings/${id}`, config);
+
+    return resp
+}
