@@ -6,10 +6,10 @@ import { RiLoginCircleFill } from "react-icons/ri";
 import { RiLogoutCircleFill } from "react-icons/ri";
 import { TbClock2 } from "react-icons/tb";
 import { useEffect } from "react";
-import { getBookingsByUserId } from "../../utils/bookings";
+import { deleteBookingByUser, getBookingsByUserId } from "../../utils/bookings";
 import { useState } from "react";
 import Loading from "../Loading";
-
+import back from '../../resources/back.svg'
 const UserBookings = () => {
 
     const [userBookings , setUserBookings] = useState([])
@@ -21,21 +21,35 @@ const UserBookings = () => {
     useEffect ( () => {
         
             console.log(getBookingsByUserId (userAuth.idUser, userAuth.token).then(resp => {
-                console.log(resp.data)
-                setUserBookings(resp.data);
+                console.log(resp.data.sort())
+                setUserBookings(resp.data.sort((a,b)=>{
+                  return (
+                    new Date(a.endDate).setDate(
+                      new Date(a.endDate).getDate()
+                    ) < new Date()
+                  );
+                }));
                 setIsLoadingBookings(false)
             }))
         }, [])
-
+   
+    const deleteBooking = (id) => {
+      console.log(id,"este es el id ")
+        deleteBookingByUser(id, userAuth.token).then((resp) =>
+          console.log(resp)
+        );
+       let bookingsUpdate = userBookings.filter(booking => booking.idBooking != id)
+       setUserBookings(bookingsUpdate)
+    }
     //!isLoadingBookings&&console.log(userBookings)
 
     return (
       <div className="user-bookings">
-          <h1>Mis reservas</h1>
+        <h1>Mis reservas</h1>
         <div className="content-bookings">
           {isLoadingBookings ? (
             <Loading />
-          ) : (
+          ) : userBookings.length > 0 ? (
             userBookings?.map((item) => (
               <div>
                 <div className="booking-state">
@@ -57,6 +71,7 @@ const UserBookings = () => {
                   } `}
                 >
                   <div className="card-header">
+                    <img src={item.product.images[0].url} alt="img product" />
                     <h3>{item.product.title}</h3>
                   </div>
                   <div className="card-body">
@@ -69,7 +84,7 @@ const UserBookings = () => {
                       </span>{" "}
                       {item.startDate}
                     </p>
-                    <hr />
+
                     <p className="card-body-item">
                       {" "}
                       <span>
@@ -78,7 +93,7 @@ const UserBookings = () => {
                       </span>{" "}
                       {item.startHour} Hs
                     </p>
-                    <hr />
+
                     <p className="card-body-item">
                       {" "}
                       <span>
@@ -96,10 +111,30 @@ const UserBookings = () => {
                     >
                       <button>Ver lugar</button>
                     </Link>
+                    {new Date(item.endDate).setDate(
+                      new Date(item.endDate).getDate()
+                    ) > new Date() && (
+                      <button
+                        onClick={()=> deleteBooking(item.idBooking)}
+                        id="btn-cancelar"
+                      >
+                        Cancelar
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
             ))
+          ) : (
+            <div id="booking-empty">
+              <h1 id="booking-empty-title" style={{ margin: 0 }}>
+                Aún no has efectuado ninguna reserva
+              </h1>
+              <Link to="/" id="booking-empty-title">
+                <img src={back} alt="icono back" />
+                Volver al inicio
+              </Link>
+            </div>
           )}
         </div>
       </div>
