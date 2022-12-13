@@ -1,7 +1,7 @@
 package Grupo7.DHBooking.Controller;
 
-import Grupo7.DHBooking.Entities.Product;
-import Grupo7.DHBooking.Entities.User;
+import Grupo7.DHBooking.Exceptions.Entities.Product;
+import Grupo7.DHBooking.Exceptions.Entities.User;
 import Grupo7.DHBooking.Repository.IUserRepository;
 import Grupo7.DHBooking.Service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;

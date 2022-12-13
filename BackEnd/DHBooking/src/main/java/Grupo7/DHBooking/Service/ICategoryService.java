@@ -1,6 +1,6 @@
 package Grupo7.DHBooking.Service;
 
-import Grupo7.DHBooking.Entities.Category;
+import Grupo7.DHBooking.Exceptions.Entities.Category;
 
 import java.util.List;
 

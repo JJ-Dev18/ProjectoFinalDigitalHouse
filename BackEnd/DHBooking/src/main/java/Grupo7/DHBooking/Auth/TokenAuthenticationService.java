@@ -1,8 +1,8 @@
 package Grupo7.DHBooking.Auth;
 
-import Grupo7.DHBooking.Entities.DTO.UserAuthDTO;
-import Grupo7.DHBooking.Entities.DTO.UserDTO;
-import Grupo7.DHBooking.Entities.User;
+import Grupo7.DHBooking.Exceptions.Entities.DTO.UserAuthDTO;
+import Grupo7.DHBooking.Exceptions.Entities.DTO.UserDTO;
+import Grupo7.DHBooking.Exceptions.Entities.User;
 import Grupo7.DHBooking.Repository.IUserRepository;
 import Grupo7.DHBooking.Service.IUserService;
 import com.google.common.collect.ImmutableMap;

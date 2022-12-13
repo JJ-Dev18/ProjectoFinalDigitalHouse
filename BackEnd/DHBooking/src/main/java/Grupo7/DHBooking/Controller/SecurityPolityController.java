@@ -1,7 +1,7 @@
 package Grupo7.DHBooking.Controller;
 
-import Grupo7.DHBooking.Entities.NormPolicy;
-import Grupo7.DHBooking.Entities.SecurityPolicy;
+import Grupo7.DHBooking.Exceptions.Entities.NormPolicy;
+import Grupo7.DHBooking.Exceptions.Entities.SecurityPolicy;
 import Grupo7.DHBooking.Service.INormPolityService;
 import Grupo7.DHBooking.Service.ISecurityPolityService;
 import org.springframework.beans.factory.annotation.Autowired;

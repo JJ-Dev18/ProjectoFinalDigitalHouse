@@ -1,7 +1,7 @@
 package Grupo7.DHBooking.Service.impl;
 
-import Grupo7.DHBooking.Entities.Booking;
-import Grupo7.DHBooking.Entities.Product;
+import Grupo7.DHBooking.Exceptions.Entities.Booking;
+import Grupo7.DHBooking.Exceptions.Entities.Product;
 import Grupo7.DHBooking.Repository.IBookingRepository;
 import Grupo7.DHBooking.Service.IBookingService;
 import Grupo7.DHBooking.Service.IProductService;
@@ -9,14 +9,10 @@ import Grupo7.DHBooking.Util.DateParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
 
 
