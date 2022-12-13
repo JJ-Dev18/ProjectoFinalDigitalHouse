@@ -11,6 +11,7 @@ import { AuthProvider } from "./context/AuthContext";
 import Booking from "./components/Booking";
 import {BookingProvider} from "./context/BookingContext";
 import UserBookings from "./components/User/UserBookings";
+import ProductCreate from "./components/Product/ProductCreate"
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="/" element={<Main />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/administrator" element={<ProductCreate />} />
             <Route path="/successful-booking" element={<SuccessfulBooking />} />
             <Route path="/product-detail/:productId" element={<ProductDetail />} />
             <Route path="/product-detail/:productId/bookings" element={<Booking />} />
