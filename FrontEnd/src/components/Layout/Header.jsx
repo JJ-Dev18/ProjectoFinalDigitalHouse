@@ -17,6 +17,7 @@ const Header = () => {
   const {auth, handleAuth , userAuth} = useContext(AuthContext)
   let [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate()
+  
   const clickHandler = () => {
     setShowMenu(!showMenu);
    
