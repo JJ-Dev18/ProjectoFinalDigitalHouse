@@ -13,9 +13,9 @@ public interface IUserService {
 
     public UserDTO updateUser(UserDTO userDTO);
 
-    public void deleteUser(Long id);
-
     public List<UserDTO> listUser();
 
     public UserDTO verifyCredentials(UserDTO userDTO);
+
+    public String deleteUserByEmail(String email);
 }

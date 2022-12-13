@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -46,6 +47,18 @@ public class AuthController {
         }
         return new ResponseEntity(HttpStatus.CONFLICT);
 
+    }
+
+    @DeleteMapping
+    @Transactional
+    public ResponseEntity<String> deleteUser(@RequestHeader("UserEmail") String email){
+        String answer = userService.deleteUserByEmail(email);
+        if (!answer.isEmpty()){
+            return new ResponseEntity(answer.getBytes(), HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity(answer, HttpStatus.NOT_FOUND);
+        }
     }
 
 }
