@@ -8,8 +8,10 @@ import heart from '../../resources/heart.svg'
 import { Link } from 'react-router-dom';
 
 const getRating  = (quality) => {
-  let rating = Math.min(Math.max(quality, 1), 10); //clamp value
-  return  rating / 2 
+  // let rating = Math.min(Math.max(quality, 1), 10); //clamp value
+  let stars = Math.floor(quality / 2);
+  return stars
+      // {wordsRating[stars - 1]}
 }
 
 const Recommended = ({products}) => {
@@ -23,6 +25,7 @@ const Recommended = ({products}) => {
     "Muy Bueno",
     "Excelente",
   ];
+  // let stars = Math.floor(props.rating / 2);
   // const dobleRating = getRating(8) / 2;
 
   // console.log(dobleRating)
@@ -31,71 +34,75 @@ const Recommended = ({products}) => {
     <div className="recommended-block">
       <div className="content-recommended">
         <ul className="list-recommended">
-          {
-          
-          (products.length > 0)
-          ? products.map((product, index) => (
-            <li className="card-producto" key={product.idProduct}>
-              <div className="title-recommended">
-                <h2>Recomendaciones</h2>
-              </div>
-              <div className="content-image">
-                <img src={heart} alt="like image" className="heart" />
-                <img src={product.images[0]?.url} alt="image product" />
-              </div>
-              <div className="content-info-producto ">
-                <div className="info-producto">
-                  <div>
-                    <div className="content-category">
-                      <h4>{product.category.title.toUpperCase()}</h4>
-                      {Array(5)
-                        .fill("")
-                        .map((_, i) => {
-                          return (
-                            <img
-                              key={`star-${i}`}
-                              src={star}
-                              className={
-                                getRating(product.quality) < i
-                                  ? "disable"
-                                  : undefined
-                              }
-                              alt="star icon"
-                            />
-                          );
-                        })}
-                    </div>
-                    <h2>{product.title}</h2>
-                  </div>
-                  <div className="content-mediaScore">
-                    <span>{getRating(product.quality) * 2}</span>
-                    <p> {wordsRating[getRating(product.quality) - 1]}</p>
-                  </div>
+          {products.length > 0 ? (
+            products.map((product, index) => (
+              <li className="card-producto" key={product.idProduct}>
+                <div className="title-recommended">
+                  <h2>Recomendaciones</h2>
                 </div>
-                <div className="detail-producto">
-                  <div>
-                    <p>
-                      <img src={gps} alt="gps" className="gps" />A 940 m del
-                      centro - <span>MOSTRAR EN EL MAPA</span>
-                    </p>
-                    <div className="content-wifi">
-                      <img src={wifi} alt="" className="wifi" />
-                      <img src={swim} alt="" className="swim" />
+                <div className="content-image">
+                  <img src={heart} alt="like image" className="heart" />
+                  <img src={product.images[0]?.url} alt="image product" />
+                </div>
+                <div className="content-info-producto ">
+                  <div className="info-producto">
+                    <div>
+                      <div className="content-category">
+                        <h4>{product.category.title.toUpperCase()}</h4>
+                       
+                        {Array(5)
+                          .fill("")
+                          .map((_, i) => {
+                            return (
+                              <img
+                                key={`star-${i}`}
+                                src={star}
+                                className={
+                                  getRating(product.quality) > i
+                                    ? ""
+                                    : "disable"
+                                }
+                                alt="star icon"
+                              />
+                            );
+                          })}
+                      </div>
+                      <h2>{product.title}</h2>
                     </div>
-                  </div>
-                  <p className="description-product">
-                    {product.description} <span>más...</span>
-                  </p>
+                    <div className="content-mediaScore">
+                      <span>{product.quality}</span>
 
-                  <Link key={index} to={`/product-detail/${product.idProduct}`}>
-                    <button className="btn-product">Ver más </button>
-                  </Link>
+                      <p> {wordsRating[getRating(product.quality) - 1]}</p>
+                    </div>
+                  </div>
+                  <div className="detail-producto">
+                    <div>
+                      <p>
+                        <img src={gps} alt="gps" className="gps" />A 940 m del
+                        centro - <span>MOSTRAR EN EL MAPA</span>
+                      </p>
+                      <div className="content-wifi">
+                        <img src={wifi} alt="" className="wifi" />
+                        <img src={swim} alt="" className="swim" />
+                      </div>
+                    </div>
+                    <p className="description-product">
+                      {product.description} <span>más...</span>
+                    </p>
+
+                    <Link
+                      key={index}
+                      to={`/product-detail/${product.idProduct}`}
+                    >
+                      <button className="btn-product">Ver más </button>
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            </li>
-          ))
-         : <h1 id="title-nobusqueda">No se encontraron Productos</h1>
-        }
+              </li>
+            ))
+          ) : (
+            <h1 id="title-nobusqueda">No se encontraron Productos</h1>
+          )}
         </ul>
       </div>
     </div>
