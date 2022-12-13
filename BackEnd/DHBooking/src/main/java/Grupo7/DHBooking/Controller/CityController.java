@@ -1,7 +1,7 @@
 package Grupo7.DHBooking.Controller;
 
 
-import Grupo7.DHBooking.Entities.City;
+import Grupo7.DHBooking.Exceptions.Entities.City;
 import Grupo7.DHBooking.Service.ICityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,10 +34,6 @@ public class CityController {
         }
     }
 
-    @PostMapping
-    public ResponseEntity<City> createCity(@RequestBody City city){
-        return new ResponseEntity<>(cityService.createCity(city), HttpStatus.CREATED);
-    }
 
     @PutMapping
     public ResponseEntity<City> updateCity(@RequestBody City city){

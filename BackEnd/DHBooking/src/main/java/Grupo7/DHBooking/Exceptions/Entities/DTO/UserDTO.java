@@ -1,18 +1,16 @@
-package Grupo7.DHBooking.Entities.DTO;
+package Grupo7.DHBooking.Exceptions.Entities.DTO;
 
-import Grupo7.DHBooking.Entities.Booking;
-import Grupo7.DHBooking.Entities.Role;
+import Grupo7.DHBooking.Exceptions.Entities.Booking;
 import lombok.*;
 
 import java.util.List;
 
-@Setter
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserAuthDTO {
-
+public class UserDTO {
     private static final long serialVersionUID = 1L;
 
     private Long idUser;
@@ -23,9 +21,11 @@ public class UserAuthDTO {
 
     private String email;
 
-    private RoleDTO role;
+    private String city;
 
-    private String token;
+    private String password;
+
+    private RoleDTO role;
 
     private List<Booking> bookingList;
 }

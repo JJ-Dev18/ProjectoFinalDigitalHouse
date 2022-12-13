@@ -1,6 +1,6 @@
 package Grupo7.DHBooking.Service;
 
-import Grupo7.DHBooking.Entities.CancellationPolity;
+import Grupo7.DHBooking.Exceptions.Entities.CancellationPolity;
 
 import java.util.List;
 
