@@ -14,7 +14,7 @@ const getRating  = (quality) => {
 
 const Recommended = ({products}) => {
   
-  console.log(getRating(10))
+
 
   const wordsRating = [
     "Muy malo",
@@ -31,7 +31,10 @@ const Recommended = ({products}) => {
     <div className="recommended-block">
       <div className="content-recommended">
         <ul className="list-recommended">
-          {products.map((product, index) => (
+          {
+          
+          (products.length > 0)
+          ? products.map((product, index) => (
             <li className="card-producto" key={product.idProduct}>
               <div className="title-recommended">
                 <h2>Recomendaciones</h2>
@@ -90,7 +93,9 @@ const Recommended = ({products}) => {
                 </div>
               </div>
             </li>
-          ))}
+          ))
+         : <h1 id="title-nobusqueda">No se encontraron Productos</h1>
+        }
         </ul>
       </div>
     </div>

@@ -18,38 +18,12 @@ import Loading from "./Loading"
 
 const Booking = () => {
   const { userAuth } = useContext(AuthContext);
-  const {range,city} = useContext(BookingContext);
+  const {range,city,resetBooking} = useContext(BookingContext);
   const [checkin, setcheckin] = useState("___/___/____");
   const [checkout, setcheckout] = useState("___/___/____");
   const { state } = useLocation();
-  const [forbiddenDates , setForbiddenDates] = useState([]);
-  const [ isLoadingDates, setIsLoadingDates] = useState(true)
-  const [forbiddenDatesFormat, setForbiddenDatesFormat] = useState([])
-
-  useEffect(() => {
-    const forbidden = []
-    if(isLoadingDates){
-      getBookingsByProductId(state.idProduct).then(res => { 
-        setForbiddenDates(res.data)
-        setIsLoadingDates(false)
-    });
-    } else {
-      forbiddenDates.map(item => forbidden.push( new Date(new Date(item).setDate(new Date(item).getDate() + 1))) )
-
-      setForbiddenDatesFormat(forbidden) 
-    }
-  }, [state.idProduct, isLoadingDates]);
-
-
-  !isLoadingDates&&console.log(forbiddenDatesFormat);
-
-  // const forbiddenDatesFormat = []
-  // !isLoadingDates&&forbiddenDates.map(item => forbiddenDatesFormat.push( new Date(item)))
-
-  // console.log('prohibidos')
-  // !isLoadingDates&&console.log(forbiddenDatesFormat);
-
-  // !isLoadingDates&&setForbiddenDates(forbiddenDatesFormat)
+  console.log(state, "State")
+ 
 
   const address = `${state.location.address}, ${state.city.name}, ${state.city.state}, ${state.city.country}`;
   const [formValues, handleInputChange, reset] = useForm({
@@ -92,16 +66,17 @@ const Booking = () => {
               city={ciudad}
               handleInputChange={handleInputChange}
             />
-            {!isLoadingDates ?
-            <SearchCalendar
-              booking={true}
-              setcheckin={setcheckin}
-              setcheckout={setcheckout}
-              // clickDateHandler={clickDateHandler}
-              // setValues={setDatesPicked}
-              class="booking-calendar"
-              forbiddenDates={forbiddenDatesFormat} 
-            /> : <Loading />}
+           
+              <SearchCalendar
+                booking={true}
+                setcheckin={setcheckin}
+                setcheckout={setcheckout}
+                // clickDateHandler={clickDateHandler}
+                // setValues={setDatesPicked}
+                class="booking-calendar"
+                forbiddenDates={state.forbiddenDatesFormat}
+              />
+            
             <HourBooking hour={hour} handleInputChange={handleInputChange} />
           </div>
 
@@ -115,6 +90,7 @@ const Booking = () => {
             checkout={range[1]?.toLocaleDateString("en-US")}
             dataBooking={dataBooking}
             token={userAuth.token}
+            resetBooking={resetBooking}
           />
         </div>
       </div>

@@ -43,8 +43,11 @@ header a{
 }
 
 
+header button:hover {
+  background-color: var(--light-blue); 
+}
 header button:hover a {
-  color: var(--dark-gray);
+  color: white;
 }
 
 

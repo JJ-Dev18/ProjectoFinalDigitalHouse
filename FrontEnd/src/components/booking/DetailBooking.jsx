@@ -16,6 +16,7 @@ const DetailBooking = ({
   checkout,
   dataBooking,
   token,
+  resetBooking
 }) => {
   const navigate = useNavigate();
   let stars = Math.floor(rating / 2); //clamp value
@@ -27,7 +28,7 @@ const DetailBooking = ({
     "Excelente",
   ];
   const [error, setError] = useState("");
-
+  console.log(error)
   const confirmBooking = () => {
     try {
       let urlPost = baseURL + "bookings";
@@ -38,7 +39,7 @@ const DetailBooking = ({
           },
         })
         .then((response) => {
-         
+          resetBooking();
           navigate(`/successful-booking`);
         })
         .catch((e) => setError(e));
@@ -82,7 +83,21 @@ const DetailBooking = ({
           <h4>Check out</h4>
           <p>{!checkout ? "___/___/____" : checkout}</p>
         </div>
-        <button onClick={confirmBooking}>Confirmar reserva</button>
+        {error && (
+          <div className="div-error">
+            {!!error && (
+              <span className="error">
+                { error.response.status === 500 ? "Por favor seleccionar hora de llegada" : "Fechas no disponibles, por favor cambiar"}
+              </span>
+            )}
+          </div>
+        )}
+        <button
+          disabled={!checkin || !checkout ? true : false}
+          onClick={confirmBooking}
+        >
+          Confirmar reserva
+        </button>
       </div>
     </div>
   );

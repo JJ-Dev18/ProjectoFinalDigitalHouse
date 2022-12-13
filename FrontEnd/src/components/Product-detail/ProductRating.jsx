@@ -5,7 +5,7 @@ import StarIcon from "../../resources/star.svg";
 const ProductRating = (props) => {
   //let rating = Math.min(Math.max(props.rating, 1), 5); //clamp value
   let stars = Math.floor(props.rating/2); //clamp value
-  console.log(stars)
+  
   const wordsRating = ['Muy malo', 'Regular', 'Bueno', 'Muy Bueno', 'Excelente'];
   //const dobleRating = rating * 2;
   return (
