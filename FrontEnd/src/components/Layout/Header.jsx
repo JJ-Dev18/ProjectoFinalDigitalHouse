@@ -49,7 +49,7 @@ const Header = () => {
       />
       {auth ? (
         <div className="md-screen avatar">
-          {userAuth.role.idRole === 1 ?
+          {userAuth.role.idRole != null && userAuth.role.idRole ===1 ?
             <button>
               <Link to="/administrator">{menuItems[3]}</Link>
             </button>
@@ -101,7 +101,7 @@ const Header = () => {
           </div>
           <ul className="list">
           <li>
-              {userAuth.role.idRole === 1 ?
+              {userAuth.role.idRole != null && userAuth.role.idRole ===1 ?
                 <Link to="/administrator">{menuItems[3]}</Link>
                 :
                 <Link to="/my-bookings">{menuItems[2]}</Link>
