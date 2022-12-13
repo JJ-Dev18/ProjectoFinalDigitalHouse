@@ -24,6 +24,9 @@ const Register = () => {
                 name: document.getElementById('name').value,
                 lastName: document.getElementById('lastname').value,
                 password: document.getElementById('password').value,
+                role: {
+                    idRole: 2    
+                }
             }
             let urlPost = baseURL + 'auth/register'
             axios.post(urlPost, data)
