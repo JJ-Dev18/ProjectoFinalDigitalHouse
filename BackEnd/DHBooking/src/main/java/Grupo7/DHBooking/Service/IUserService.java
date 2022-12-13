@@ -1,6 +1,6 @@
 package Grupo7.DHBooking.Service;
 
-import Grupo7.DHBooking.Entities.DTO.UserDTO;
+import Grupo7.DHBooking.Exceptions.Entities.DTO.UserDTO;
 
 import java.io.IOException;
 import java.util.List;

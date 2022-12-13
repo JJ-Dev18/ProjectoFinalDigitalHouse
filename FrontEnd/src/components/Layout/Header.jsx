@@ -13,7 +13,7 @@ import Avatar from "@material-ui/core/Avatar";
 import AuthContext from "../../context/AuthContext";
 
 const Header = () => {
-  let menuItems = ["Crear Cuenta", "Iniciar Sesión", "Mis Reservas"];
+  let menuItems = ["Crear Cuenta", "Iniciar Sesión", "Mis Reservas", "Administrador"];
   const {auth, handleAuth , userAuth} = useContext(AuthContext)
   let [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate()
@@ -48,9 +48,15 @@ const Header = () => {
       />
       {auth ? (
         <div className="md-screen avatar">
-          <button>
-            <Link to="/my-bookings">{menuItems[2]}</Link>
-          </button>
+          {userAuth.role.idRole === 1 ?
+            <button>
+              <Link to="/administrator">{menuItems[3]}</Link>
+            </button>
+            :
+            <button>
+              <Link to="/my-bookings">{menuItems[2]}</Link>
+            </button>
+          }
           <div className="logout" onClick={logoutHandler}>
             {" "}
             X{" "}
@@ -93,8 +99,12 @@ const Header = () => {
             </div>
           </div>
           <ul className="list">
-            <li>
-              <Link to="/my-bookings">{menuItems[2]}</Link>
+          <li>
+              {userAuth.role.idRole === 1 ?
+                <Link to="/administrator">{menuItems[3]}</Link>
+                :
+                <Link to="/my-bookings">{menuItems[2]}</Link>
+              }
             </li>
             <hr />
             <li>

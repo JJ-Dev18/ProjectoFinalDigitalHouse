@@ -1,4 +1,4 @@
-package Grupo7.DHBooking.Entities;
+package Grupo7.DHBooking.Exceptions.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

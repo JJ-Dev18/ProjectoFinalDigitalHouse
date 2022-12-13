@@ -1,32 +1,34 @@
-package Grupo7.DHBooking.Entities;
+package Grupo7.DHBooking.Exceptions.Entities;
+
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.Getter;
 import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "categories")
+@Table(name = "cities")
 @Getter
 @Setter
-public class Category {
+public class City {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_category")
-    private Long idCategory;
+    @Column(name = "id_city")
+    private Integer idCity;
 
     @Column
-    private String title;
+    private String name;
 
     @Column
-    private String description;
+    private String state;
 
-    @Column(name = "image_url")
-    private String imageUrl;
+    @Column
+    private String country;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "city")
     private List<Product> productList;
 }

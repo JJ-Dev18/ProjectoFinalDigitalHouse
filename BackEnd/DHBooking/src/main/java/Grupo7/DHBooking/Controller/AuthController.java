@@ -1,8 +1,8 @@
 package Grupo7.DHBooking.Controller;
 
 import Grupo7.DHBooking.Auth.UserAuthenticationService;
-import Grupo7.DHBooking.Entities.DTO.UserAuthDTO;
-import Grupo7.DHBooking.Entities.DTO.UserDTO;
+import Grupo7.DHBooking.Exceptions.Entities.DTO.UserAuthDTO;
+import Grupo7.DHBooking.Exceptions.Entities.DTO.UserDTO;
 import Grupo7.DHBooking.Service.IUserService;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;

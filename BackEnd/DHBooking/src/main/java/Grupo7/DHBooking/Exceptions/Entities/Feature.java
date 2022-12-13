@@ -1,5 +1,4 @@
-package Grupo7.DHBooking.Entities;
-
+package Grupo7.DHBooking.Exceptions.Entities;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.Getter;
@@ -9,26 +8,22 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "cities")
+@Table(name = "features")
 @Getter
 @Setter
-public class City {
-
+public class Feature {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_city")
-    private Integer idCity;
+    @Column(name = "id_feature")
+    private Long idFeature;
 
     @Column
-    private String name;
+    private String title;
 
-    @Column
-    private String state;
-
-    @Column
-    private String country;
+    @Column(name = "url_icon")
+    private String url;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "city")
+    @ManyToMany(mappedBy = "feature", fetch = FetchType.LAZY)
     private List<Product> productList;
 }

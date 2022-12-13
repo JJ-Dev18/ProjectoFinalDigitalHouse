@@ -1,4 +1,4 @@
-package Grupo7.DHBooking.Entities.DTO;
+package Grupo7.DHBooking.Exceptions.Entities.DTO;
 
 import lombok.Getter;
 import lombok.Setter;
