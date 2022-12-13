@@ -42,6 +42,7 @@ const SearchBlock = ({ setproducts ,setIsLoadingProducts}) => {
         range[1].toLocaleDateString("en-US")
       ).then((resp) => {
         // setLoading(false);
+        
         setproducts(resp.data);
      
         setIsLoadingProducts(false);
@@ -51,9 +52,10 @@ const SearchBlock = ({ setproducts ,setIsLoadingProducts}) => {
     if (!range[1] && city != "") {
       setIsLoadingProducts(true);
       getProductsByCity(city).then((resp) => {
+        console.log(resp)
         setproducts(resp.data);
         setIsLoadingProducts(false);
-     
+       
       });
     }
   };

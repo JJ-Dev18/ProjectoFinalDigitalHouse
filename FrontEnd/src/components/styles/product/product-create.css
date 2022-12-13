@@ -2,7 +2,7 @@
     margin: var(--header-xl-h) 0;
 }
 .product-header-container{
-    width: 1366px;
+    width: 100%;
 }
 
 .create {

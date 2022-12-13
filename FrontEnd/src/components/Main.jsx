@@ -32,7 +32,7 @@ const Main = (props) => {
   //   url: auth ? "/products/recommended" : "/products/random",
   // });
 
-
+  console.log(products)
 
   useEffect(() => {
     auth
