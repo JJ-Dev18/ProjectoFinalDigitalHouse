@@ -25,7 +25,7 @@ const Register = () => {
                 lastName: document.getElementById('lastname').value,
                 password: document.getElementById('password').value,
                 role: {
-                    idRole: 2    
+                    idRole: 2
                 }
             }
             let urlPost = baseURL + 'auth/register'
