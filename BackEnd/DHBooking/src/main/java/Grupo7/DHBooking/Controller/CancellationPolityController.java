@@ -1,6 +1,6 @@
 package Grupo7.DHBooking.Controller;
 
-import Grupo7.DHBooking.Exceptions.Entities.CancellationPolity;
+import Grupo7.DHBooking.Entities.CancellationPolity;
 import Grupo7.DHBooking.Service.ICancellationPolityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

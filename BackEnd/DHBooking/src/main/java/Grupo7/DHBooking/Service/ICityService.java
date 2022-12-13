@@ -1,6 +1,6 @@
 package Grupo7.DHBooking.Service;
 
-import Grupo7.DHBooking.Exceptions.Entities.City;
+import Grupo7.DHBooking.Entities.City;
 import java.util.List;
 
 public interface ICityService {

@@ -1,6 +1,6 @@
 package Grupo7.DHBooking.Controller;
 
-import Grupo7.DHBooking.Exceptions.Entities.Category;
+import Grupo7.DHBooking.Entities.Category;
 import Grupo7.DHBooking.Service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

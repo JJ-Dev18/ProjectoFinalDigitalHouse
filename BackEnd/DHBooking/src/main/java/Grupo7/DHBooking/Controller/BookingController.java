@@ -1,9 +1,9 @@
 package Grupo7.DHBooking.Controller;
 
-import Grupo7.DHBooking.Exceptions.Entities.Booking;
-import Grupo7.DHBooking.Exceptions.Entities.DTO.UserDTO;
-import Grupo7.DHBooking.Exceptions.Entities.Product;
-import Grupo7.DHBooking.Exceptions.Entities.User;
+import Grupo7.DHBooking.Entities.Booking;
+import Grupo7.DHBooking.Entities.DTO.UserDTO;
+import Grupo7.DHBooking.Entities.Product;
+import Grupo7.DHBooking.Entities.User;
 import Grupo7.DHBooking.Service.IBookingService;
 import Grupo7.DHBooking.Service.IProductService;
 import Grupo7.DHBooking.Service.IUserService;

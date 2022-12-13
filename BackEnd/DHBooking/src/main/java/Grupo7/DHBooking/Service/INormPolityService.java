@@ -1,6 +1,6 @@
 package Grupo7.DHBooking.Service;
 
-import Grupo7.DHBooking.Exceptions.Entities.NormPolicy;
+import Grupo7.DHBooking.Entities.NormPolicy;
 
 import java.util.List;
 

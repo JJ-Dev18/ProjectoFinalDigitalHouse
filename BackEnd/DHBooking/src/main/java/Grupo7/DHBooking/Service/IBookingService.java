@@ -1,7 +1,7 @@
 package Grupo7.DHBooking.Service;
 
-import Grupo7.DHBooking.Exceptions.Entities.Booking;
-import Grupo7.DHBooking.Exceptions.Entities.Product;
+import Grupo7.DHBooking.Entities.Booking;
+import Grupo7.DHBooking.Entities.Product;
 
 import java.text.ParseException;
 import java.util.List;

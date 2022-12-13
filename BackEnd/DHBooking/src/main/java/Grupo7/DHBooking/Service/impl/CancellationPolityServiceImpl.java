@@ -1,6 +1,6 @@
 package Grupo7.DHBooking.Service.impl;
 
-import Grupo7.DHBooking.Exceptions.Entities.CancellationPolity;
+import Grupo7.DHBooking.Entities.CancellationPolity;
 import Grupo7.DHBooking.Repository.ICancellationPolityRepository;
 import Grupo7.DHBooking.Service.ICancellationPolityService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package Grupo7.DHBooking.Repository;
 
-import Grupo7.DHBooking.Exceptions.Entities.Booking;
+import Grupo7.DHBooking.Entities.Booking;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

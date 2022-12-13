@@ -1,6 +1,6 @@
 package Grupo7.DHBooking.Service.impl;
 
-import Grupo7.DHBooking.Exceptions.Entities.Feature;
+import Grupo7.DHBooking.Entities.Feature;
 import Grupo7.DHBooking.Repository.IFeatureRepository;
 import Grupo7.DHBooking.Service.IFeatureService;
 import org.springframework.beans.factory.annotation.Autowired;
