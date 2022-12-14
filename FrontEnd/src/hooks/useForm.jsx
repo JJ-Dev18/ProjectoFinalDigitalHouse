@@ -13,6 +13,74 @@ export const useForm = (initialState = {}) => {
       [target.name]: target.value,
     });
   };
+  const handleInputChangeAddress = ({ target }) => {
+    setvalues({
+      ...values,
+      location : {
+        latitude: "",
+        longitude: "",
+        [target.name]: target.value,
+      }
+    });
+  };
 
-  return [values, handleInputChange, reset];
+  const handleInputChangeCategory = ({ target }) => {
+    setvalues({
+      ...values,
+      category: {
+        [target.name]: target.value
+      }
+    });
+  };
+
+  const handleInputChangeCity = ({ target }) => {
+    setvalues({
+      ...values,
+      city: {
+        [target.name]: target.value
+      }
+    });
+  };
+
+  const handleFeature = (features) => {
+    setvalues({
+      ...values,
+      feature: features
+    });
+  };
+
+  const handleCancellationPolicie = (cancellationPolicy) => {
+    setvalues({
+      ...values,
+      cancellationPolity: cancellationPolicy
+    });
+  };
+
+  const handleSecurityPolicie = (securityPolicy) => {
+    setvalues({
+      ...values,
+      securityPolicy: securityPolicy
+    });
+  };
+
+  const handleNormPolicie = (normPolicies) => {
+    setvalues({
+      ...values,
+      normPolicy: normPolicies
+    });
+  };
+
+  const handleImage = (images) => {
+    setvalues({
+      ...values,
+      images: images
+    });
+  };
+  
+
+  return [values, handleInputChange,
+    handleInputChangeAddress, handleInputChangeCategory,
+    handleInputChangeCity, handleFeature,
+    handleCancellationPolicie, handleSecurityPolicie,
+    handleNormPolicie, handleImage, reset];
 };

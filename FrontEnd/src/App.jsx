@@ -7,6 +7,7 @@ import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import Layout from './components/Layout'
 import SuccessfulBooking from "./components/SuccessfulBooking";
+import SuccessfulProduct from "./components/SuccessfulProduct";
 import { AuthProvider } from "./context/AuthContext";
 import Booking from "./components/Booking";
 import {BookingProvider} from "./context/BookingContext";
@@ -25,6 +26,7 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/administrator" element={<ProductCreate />} />
             <Route path="/successful-booking" element={<SuccessfulBooking />} />
+            <Route path="/successful-product" element={<SuccessfulProduct />} />
             <Route path="/product-detail/:productId" element={<ProductDetail />} />
             <Route path="/product-detail/:productId/bookings" element={<Booking />} />
             <Route path="/my-bookings" element={<UserBookings />} />
