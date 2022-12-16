@@ -18,18 +18,28 @@ const App = () => {
     <div>
       <AuthProvider>
         <BookingProvider>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/administrator" element={<ProductCreate />} />
-            <Route path="/successful-booking" element={<SuccessfulBooking />} />
-            <Route path="/product-detail/:productId" element={<ProductDetail />} />
-            <Route path="/product-detail/:productId/bookings" element={<Booking />} />
-            <Route path="/my-bookings" element={<UserBookings />} />
-          </Routes>
-        </Layout>
+          <Layout>
+            <Routes>
+              <Route index element={<Main />} />
+              <Route path="/" element={<Main />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/administrator" element={<ProductCreate />} />
+              <Route
+                path="/successful-booking"
+                element={<SuccessfulBooking />}
+              />
+              <Route
+                path="/product-detail/:productId"
+                element={<ProductDetail />}
+              />
+              <Route
+                path="/product-detail/:productId/bookings"
+                element={<Booking />}
+              />
+              <Route path="/my-bookings" element={<UserBookings />} />
+            </Routes>
+          </Layout>
         </BookingProvider>
       </AuthProvider>
     </div>
