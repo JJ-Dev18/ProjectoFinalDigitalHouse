@@ -1,8 +1,10 @@
 import axios from "axios";
 
 export const backendApi = axios.create({
-    baseURL: "http://52.14.228.70/DHBooking/",
+  baseURL:
+    "https://projectofinaldigitalhouse-production.up.railway.app/DHBooking",
 });
 
-const baseURL = "http://52.14.228.70/DHBooking/";
+const baseURL =
+  "https://projectofinaldigitalhouse-production.up.railway.app/DHBooking";
 export default baseURL
