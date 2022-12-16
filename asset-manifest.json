@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/ProjectoFinalDigitalHouse/static/css/main.fe618484.css",
+    "main.js": "/ProjectoFinalDigitalHouse/static/js/main.38225d29.js",
+    "static/js/787.31579f04.chunk.js": "/ProjectoFinalDigitalHouse/static/js/787.31579f04.chunk.js",
+    "static/media/logo_desktop.svg": "/ProjectoFinalDigitalHouse/static/media/logo_desktop.82406618e8d9d0dfccbdc6de8492d17c.svg",
+    "static/media/swim.svg": "/ProjectoFinalDigitalHouse/static/media/swim.19282d4943d77305a909492ac103a33e.svg",
+    "static/media/logo_non_desktop.svg": "/ProjectoFinalDigitalHouse/static/media/logo_non_desktop.a1818ea9257819afe960dfe1ebcc1c8d.svg",
+    "static/media/wifi.svg": "/ProjectoFinalDigitalHouse/static/media/wifi.4266f6bc8eacfb80bb34459f8cf3c538.svg",
+    "static/media/instagram-dark.svg": "/ProjectoFinalDigitalHouse/static/media/instagram-dark.3455cb09ef21a1af8b5df65796d426d8.svg",
+    "static/media/instagram.svg": "/ProjectoFinalDigitalHouse/static/media/instagram.e3b2dd6487e88ec2880099171200eb16.svg",
+    "static/media/tweeter-dark.svg": "/ProjectoFinalDigitalHouse/static/media/tweeter-dark.dd437837f62bdc29e9f5fba6c1f8bda6.svg",
+    "static/media/back.svg": "/ProjectoFinalDigitalHouse/static/media/back.47f5a1a55c079e53730babe71a8fc257.svg",
+    "static/media/tweeter.svg": "/ProjectoFinalDigitalHouse/static/media/tweeter.e1cd75868c0f43669ed3891aed1619e7.svg",
+    "static/media/share.svg": "/ProjectoFinalDigitalHouse/static/media/share.ab4803d5c24357bd791e0a6625080262.svg",
+    "static/media/linkedin-dark.svg": "/ProjectoFinalDigitalHouse/static/media/linkedin-dark.423026681b75c98668937592d94aa0e5.svg",
+    "static/media/gps.svg": "/ProjectoFinalDigitalHouse/static/media/gps.db4f11c24c771578112270f760f57e33.svg",
+    "static/media/linkedin.svg": "/ProjectoFinalDigitalHouse/static/media/linkedin.6ad8d962470e9f34679f74359763a877.svg",
+    "static/media/heart.svg": "/ProjectoFinalDigitalHouse/static/media/heart.a6d37b7b3cb62c81e4ac341a87e8debb.svg",
+    "static/media/atomo close.svg": "/ProjectoFinalDigitalHouse/static/media/atomo close.c4876f3eee7213634a45aae3e19145bd.svg",
+    "static/media/heart-line.svg": "/ProjectoFinalDigitalHouse/static/media/heart-line.57424a34b8fb8a865ddbd6bc569e9be2.svg",
+    "static/media/facebook-dark.svg": "/ProjectoFinalDigitalHouse/static/media/facebook-dark.82ec19e02b1e2269dceded6e7698117d.svg",
+    "index.html": "/ProjectoFinalDigitalHouse/index.html",
+    "static/media/success-icon.svg": "/ProjectoFinalDigitalHouse/static/media/success-icon.6e94307c2baf5728a1ec4259e73e6f7e.svg",
+    "static/media/facebook.svg": "/ProjectoFinalDigitalHouse/static/media/facebook.efbc6487d936b639d65e99a39040dc0f.svg",
+    "static/media/atomo plus.svg": "/ProjectoFinalDigitalHouse/static/media/atomo plus.7dce2c2c090290f08cd8a34434c77ba6.svg",
+    "static/media/kitchen.svg": "/ProjectoFinalDigitalHouse/static/media/kitchen.eec2d319556df170271b79225e7f8694.svg",
+    "static/media/check.svg": "/ProjectoFinalDigitalHouse/static/media/check.9d411352ac58533800a837f331ac552c.svg",
+    "static/media/close_menu.svg": "/ProjectoFinalDigitalHouse/static/media/close_menu.e3c2a686bb521954e871e5b4c6ff1579.svg",
+    "static/media/star.svg": "/ProjectoFinalDigitalHouse/static/media/star.d038688072ad72c58cf6433ae7c615e9.svg",
+    "static/media/menu.svg": "/ProjectoFinalDigitalHouse/static/media/menu.35363cdc9f2dee44148171fddd2e5ee1.svg",
+    "main.fe618484.css.map": "/ProjectoFinalDigitalHouse/static/css/main.fe618484.css.map",
+    "main.38225d29.js.map": "/ProjectoFinalDigitalHouse/static/js/main.38225d29.js.map",
+    "787.31579f04.chunk.js.map": "/ProjectoFinalDigitalHouse/static/js/787.31579f04.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fe618484.css",
+    "static/js/main.38225d29.js"
+  ]
+}
