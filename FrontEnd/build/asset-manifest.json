@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ProjectoFinalDigitalHouse/static/css/main.fe618484.css",
-    "main.js": "/ProjectoFinalDigitalHouse/static/js/main.476cf292.js",
+    "main.js": "/ProjectoFinalDigitalHouse/static/js/main.a4b005eb.js",
     "static/js/787.31579f04.chunk.js": "/ProjectoFinalDigitalHouse/static/js/787.31579f04.chunk.js",
     "static/media/logo_desktop.svg": "/ProjectoFinalDigitalHouse/static/media/logo_desktop.82406618e8d9d0dfccbdc6de8492d17c.svg",
     "static/media/swim.svg": "/ProjectoFinalDigitalHouse/static/media/swim.19282d4943d77305a909492ac103a33e.svg",
@@ -30,11 +30,11 @@
     "static/media/star.svg": "/ProjectoFinalDigitalHouse/static/media/star.d038688072ad72c58cf6433ae7c615e9.svg",
     "static/media/menu.svg": "/ProjectoFinalDigitalHouse/static/media/menu.35363cdc9f2dee44148171fddd2e5ee1.svg",
     "main.fe618484.css.map": "/ProjectoFinalDigitalHouse/static/css/main.fe618484.css.map",
-    "main.476cf292.js.map": "/ProjectoFinalDigitalHouse/static/js/main.476cf292.js.map",
+    "main.a4b005eb.js.map": "/ProjectoFinalDigitalHouse/static/js/main.a4b005eb.js.map",
     "787.31579f04.chunk.js.map": "/ProjectoFinalDigitalHouse/static/js/787.31579f04.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fe618484.css",
-    "static/js/main.476cf292.js"
+    "static/js/main.a4b005eb.js"
   ]
 }

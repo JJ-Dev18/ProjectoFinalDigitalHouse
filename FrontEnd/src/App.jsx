@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Auth } from "./utils/Auth";
 import Main from "./components/Main";
 import ProductDetail from "./components/ProductDetail";
@@ -25,6 +25,7 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/administrator" element={<ProductCreate />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
               <Route
                 path="/successful-booking"
                 element={<SuccessfulBooking />}
