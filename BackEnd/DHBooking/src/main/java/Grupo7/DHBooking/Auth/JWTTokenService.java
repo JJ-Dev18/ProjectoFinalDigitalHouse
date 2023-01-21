@@ -26,7 +26,7 @@ public class JWTTokenService implements Clock, TokenService {
     private static final String DOT = ".";
     private static final GzipCompressionCodec COMPRESSION_CODEC = new GzipCompressionCodec();
 
-    String issuer;
+    String issuer ;
     int expirationSec;
     int clockSkewSec;
     String secretKey;
